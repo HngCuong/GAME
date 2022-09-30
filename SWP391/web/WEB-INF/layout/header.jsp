@@ -12,16 +12,22 @@
     <div class="header__top">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-6">
+                <div class="col-lg-10 col-md-6">
                     <div class="header__top__left">
                         <ul>
                             <li><i class="fa fa-envelope"></i>CUONGHCSE150679@fpt.edu.vn</li>
                             <li>Support 24/24</li>
-                            <li>Gaming Market Site</li>
+                            <li><a href="../template/index.jsp">Home</a></li>
+                            <li><a href="../template/categories.jsp">Blog</a></li>
+                            <li><a href="../template/community.jsp">forums</a></li>
+                            <li><a href="../template/contact.jsp">Contact</a></li>
+
+
+
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6">
+                <div class="col-lg-2 col-md-6">
                     <div class="header__top__right">
                         <!--Language--> 
                         <div class="header__top__right__language">
@@ -34,9 +40,15 @@
                                 <span class="arrow_carrot-down"></span>
                                 <ul>
                                     <!--<li><a href="#">My Profile</a></li>-->
-                                    <li><a onclick="document.getElementById('reset').style.display = 'block'">Reset Password</a></li>
-                                        <%--<li><a href="<c:url value="/user/reset_form.do" />">Reset Password</a></li>--%>
-                                        <c:if test="${user.role == 'ADMIN'}">
+                                    <li><a><button onclick="document.getElementById('reset').style.display = 'block'" style="font-size: 20px;
+                                                   border: #222222;
+                                                   color: white;
+                                                   background-color: #222222;
+                                                   padding: 0;
+                                                   padding-right: 30px">Reset Pass</button></a></li>
+
+                                    <%--<li><a href="<c:url value="/user/reset_form.do" />">Reset Password</a></li>--%>
+                                    <c:if test="${user.role == 'ADMIN'}">
                                         <li><a href="<c:url value="/admin/manage.do?op=listFull" />">Management</a></li>
                                         </c:if>
                                     <li><a href="<c:url value="/user/logout.do" />">Log Out</a></li>

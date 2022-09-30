@@ -9,4 +9,9 @@
             100
         </session-timeout>
     </session-config>
+  <welcome-file-list>
+      <welcome-file>
+          FirstPage
+      </welcome-file>
+  </welcome-file-list>  
 </web-app>

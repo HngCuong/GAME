@@ -14,13 +14,15 @@ public class User {
     private String userName;
     private String password;
     private String role;
+    private String email;
 
     public User() {
     }
 
-    public User(String userName, String password) {
+    public User(String userName, String password,String email) {
         this.userName = userName;
         this.password = password;
+        this.email = email;
     }
 
  
@@ -30,7 +32,17 @@ public class User {
         this.password = password;
         this.role = role;
     }
+ 
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    
     public int getId() {
         return id;
     }

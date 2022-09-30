@@ -195,8 +195,9 @@ public class UserController extends HttpServlet {
             String userName = request.getParameter("userName").toLowerCase();
             String password = request.getParameter("password");
             String password2 = request.getParameter("password2");
+            String email =  request.getParameter("email");
 
-            User account = new User(userName, password);
+            User account = new User(userName,password,email);
             if (UserDAO.register(account)) { // check duplicate
                 if (password.equals(password2)) { // check confirm_password
                     //Lưu thông báo lỗi confirm vào request

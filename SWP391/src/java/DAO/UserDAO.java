@@ -115,11 +115,12 @@ public class UserDAO {
             done = false;
         } else {
             //Creating and executing sql statements            
-            String sql = "insert Users values(?, ?, ?)";
+            String sql = "insert Users values(?, ?, ?, ?)";
             PreparedStatement stm = con.prepareStatement(sql);
             stm.setString(1, user.getUserName());
             stm.setString(2, Hasher.hash(user.getPassword()));
             stm.setString(3, "USER");
+            stm.setString(4, user.getEmail());
             stm.executeUpdate();
             //Closing the connection
             con.close();
