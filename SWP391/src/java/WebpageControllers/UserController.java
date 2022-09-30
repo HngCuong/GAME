@@ -13,8 +13,17 @@ import DAO.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Properties;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -26,7 +35,9 @@ import models.Consoles;
 import models.Genre;
 import models.Product;
 import models.User;
-
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
 /**
  *
  * @author Lenovo
@@ -78,9 +89,52 @@ public class UserController extends HttpServlet {
             case "reset_form":
                 resetForm(request, response);
                 break;
+            case "confirmMail":
+                confirmMail(request, response);
+                break;    
         }
     }
+    protected void confirmMail(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+            String email =  request.getParameter("email");
+            String password1 = request.getParameter("password");
+            String password2 = request.getParameter("password2");
+            String userName = request.getParameter("userName").toLowerCase();
+            Properties prop = new Properties();
+            String username = "CUONGHCSE150679@fpt.edu.vn";
+            String password = "22042001";
+            prop.put("mail.smtp.host", "smtp.gmail.com");
+            prop.put("mail.smtp.port", "587");
+            prop.put("mail.smtp.auth", "true");
+            prop.put("mail.smtp.starttls.enable", "true");
+            prop.put("mail.smtp.starttls.required", "true");
+            Session session = Session.getInstance(prop, new Authenticator() {
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(username, password);
+                }
 
+            });
+            try{
+                Message message = new MimeMessage(session);
+                message.setFrom(new InternetAddress(username));
+                message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
+                message.setSubject("Confirm your email.");
+              //  String htmlContent = "<h1>Welcome to <a href=\"gpcoder.com\">GP Coder</a></h1>";
+                String htmlContent ="<h1>Enter to create account <a href = \"http//localhost:8080/GameStore/user/register.do?userName="+userName
+                        + "&email="+email
+                        + "&password="+password1
+                        + "&password2="+password2
+                        + " \">Confirm</a></h1>" ;
+                message.setContent(htmlContent,"text/html");
+                Transport.send(message);
+                request.setAttribute("confirm", "Please check your mail to create account");
+            }catch(Exception e){
+                
+            }
+            request.getRequestDispatcher("/user/login_form.do").forward(request, response);
+      
+    }
+            
     protected void loginHandler(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
@@ -242,13 +296,50 @@ public class UserController extends HttpServlet {
             User account = UserDAO.find(userName);
             if (account != null) {
                 request.setAttribute("user", account);
+                int code = (int) Math.floor(((Math.random() * 899999) + 100000));
+                String html = Integer.toString(code);
+                 Properties prop = new Properties();
+            String username = "CUONGHCSE150679@fpt.edu.vn";
+            String password = "22042001";
+            prop.put("mail.smtp.host", "smtp.gmail.com");
+            prop.put("mail.smtp.port", "587");
+            prop.put("mail.smtp.auth", "true");
+            prop.put("mail.smtp.starttls.enable", "true");
+            prop.put("mail.smtp.starttls.required", "true");
+            Session session = Session.getInstance(prop, new Authenticator() {
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(username, password);
+                }
+
+            });
+            try{
+                Message message = new MimeMessage(session);
+                message.setFrom(new InternetAddress(username));
+                message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(account.getEmail()));
+                message.setSubject("Confirm your password.");
+              //  String htmlContent = "<h1>Welcome to <a href=\"gpcoder.com\">GP Coder</a></h1>";
+                message.setText(html);
+                Transport.send(message);
+                request.setAttribute("confirm", "Please check your mail to create account");
+                request.getRequestDispatcher("user/forgot_password.do").forward(request, response);
+            }catch(Exception e){
+                
+            }
+            
+                
+                
+                
+                
             } else {
                 // save wrong name
                 request.setAttribute("userName", userName);
                 // send message
                 request.setAttribute("message", "User name not found.");
+                
             }
 //            request.setAttribute("path", path);
+            
+            
             //Cho hiện lại trang forgot_password.jsp
             request.getRequestDispatcher("/WEB-INF/views/user/forgot_password.jsp").forward(request, response);
         } catch (Exception ex) {

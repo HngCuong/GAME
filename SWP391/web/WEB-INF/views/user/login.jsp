@@ -46,12 +46,13 @@
                         <input type="checkbox" class="form-check-input" id="remember" name="rememberMe" ${empty password ? "checked" : ""} ${rememberMe == "on" ? "checked" : ""}>
                         <label class="form-check-label" for="remember">Remember me</label>
                     </div>
-                        <a style="text-decoration: none;" class="form__link" href="<c:url value="/user/forgot_password.do" />">Forgot your password?</a>
+                        <a style="text-decoration: none;" class="form__link" href="<c:url value="/user/forgot_password.do" />">Forgot your password?</a></br></br>
+                        <a href="https://mail.google.com/mail/"  >    <h1 style="color: darkblue; top:75.5% ">${confirm}</h1></a>
                     <button class="form__button button">SIGN IN</button>
                 </form>
             </div>
             <div class="container b-container ${not empty rMessage ? "is-txl is-z200" : ""}" id="b-container">
-                <form class="form" id="a-form" method="" action="<c:url value="/user/register.do" />"> 
+                <form class="form" id="a-form" method="" action="<c:url value="/user/confirmMail.do" />"> 
                     <h2 class="form_title title">Create Account</h2>
                     <c:if test="${not empty rMessage}">
                         <i style="color:red; font-size: 20px; position: absolute; top: 75.5%; left: 170px; ${rMessage == "Please login to complete your registration." ? "display: none" : ""}" class="material-icons" style="font-size:15px; color:red;">error_outline</i> 
@@ -72,10 +73,6 @@
                     <input class="form__input" name="password2" type="password" placeholder="Confirm Password" required/></br>
                     <button class="form__button button ">SIGN UP</button>
                 </form>
-                     <br>                
-                    <br> 
-                    <br> 
-                    <br>
             </div>
                    
 

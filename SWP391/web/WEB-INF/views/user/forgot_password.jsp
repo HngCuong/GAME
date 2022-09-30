@@ -47,6 +47,9 @@
                         <label for="np2"><b>Confirm new password:</b></label>
                         <input id="np2" type="password" name="newPassword2" placeholder="Confirm password"  /><br/>                      
                         <br/>
+                        <label for="np2"><b>Confirm code in Email</b></label></br>
+                        <input id="np2" type="number" name="confirmtext" placeholder="Confirm Code"  /><br/>                      
+                        <br/>
                         <p style="color: red; position: relative; text-align: center; margin: 0">${message}</p>
                         <input type="submit" value="Reset" /><br/>
                     </div>

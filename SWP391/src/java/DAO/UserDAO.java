@@ -146,6 +146,7 @@ public class UserDAO {
             user.setUserName(rs.getString(2));
             user.setPassword(rs.getString(3));
             user.setRole(rs.getString(4));
+            user.setEmail(rs.getString(5));
         }
         //Closing the connection
         con.close();
