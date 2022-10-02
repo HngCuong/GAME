@@ -94,11 +94,10 @@
 	<footer class="footer-section">
 		<div class="container">
 			<ul class="footer-menu">
-				<li><a href="index.jsp">Home</a></li>
-				<li><a href="review.jsp">Games</a></li>
-				<li><a href="categories.jsp">Blog</a></li>
-				<li><a href="community.jsp">Forums</a></li>
-				<li><a href="contact.jsp">Contact</a></li>
+				<li><a href="../template/index.jsp">Home</a></li>
+				<li><a href="../template/categories.jsp">Blog</a></li>
+				<li><a href="../template/community.jsp">Forums</a></li>
+				<li><a href="../template/contact.jsp">Contact</a></li>
 			</ul>
 			<p class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
