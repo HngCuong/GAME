@@ -102,7 +102,7 @@ public class UserController extends HttpServlet {
             String userName = request.getParameter("userName").toLowerCase();
             Properties prop = new Properties();
             String username = "CUONGHCSE150679@fpt.edu.vn";
-            String password = "22042001";
+            String password = "Cuong679";
             prop.put("mail.smtp.host", "smtp.gmail.com");
             prop.put("mail.smtp.port", "587");
             prop.put("mail.smtp.auth", "true");
