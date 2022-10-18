@@ -4,6 +4,7 @@
     Author     : DELL
 --%>
 
+<%@page import="DAO.UserDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!DOCTYPE html>
@@ -100,12 +101,16 @@
 
 
 	<!-- Page section -->
+        <% UserDAO dao = new UserDAO();
+         int mem = dao.findAll();
+         
+            %>
 	<section class="page-section community-page set-bg" data-setbg="img/community-bg.jpg">
 		<div class="community-warp spad">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6">
-						<h3 class="community-top-title">All Members (344)</h3>
+						<h3 class="community-top-title">All Members <%= mem %> </h3>
 					</div>
 					<div class="col-md-6 text-lg-right">
 						<form class="community-filter">

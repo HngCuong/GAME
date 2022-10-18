@@ -12,6 +12,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import models.ContactDTO;
 import models.User;
 
 /**
@@ -44,7 +47,44 @@ public class UserDAO {
         con.close();
         return user;
     }
-
+    
+    public static void contact(String user, String email, String subject, String message) throws Exception {
+        //Connecting to a database
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+      
+            //Creating and executing sql statements            
+            String sql = "insert Contact values(?, ?, ?, ?)";
+            PreparedStatement stm = con.prepareStatement(sql);
+            stm.setString(1,user);
+            stm.setString(2,email );
+            stm.setString(3, subject);
+            stm.setString(4, message);
+            stm.executeUpdate();
+            //Closing the connection
+            con.close();
+   
+    }
+    
+       public static List<ContactDTO> contact() throws Exception {
+           List<ContactDTO> list = new ArrayList();
+        //Connecting to a database
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+        //Creating and executing sql statements            
+        String sql = "select * from Contact ";
+        PreparedStatement stm = con.prepareStatement(sql);
+  
+   
+        ResultSet rs = stm.executeQuery();
+        //if userId and password are correct
+        while (rs.next()) {
+            list.add(new ContactDTO(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)));
+        }
+        //Closing the connection
+        con.close();
+        return list;
+    }
     // Check user cookies
     public static User check_web(String userName, String password) throws Exception {
         User user = null;
@@ -151,6 +191,25 @@ public class UserDAO {
         //Closing the connection
         con.close();
         return user;
+    }
+    public static int findAll() throws Exception {
+       
+        int count = 0;
+        //Connecting to a database
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+        //Creating and executing sql statements            
+        String sql = "select *  from Users";
+        PreparedStatement stm = con.prepareStatement(sql);
+        
+        ResultSet rs = stm.executeQuery();
+        //if userId and password are correct
+        while (rs.next() ) {
+            count = count + 1;
+        }
+        //Closing the connection
+        con.close();
+       return count;
     }
 
     public void update(User user) throws Exception {

@@ -81,6 +81,7 @@ public class HomeController extends HttpServlet {
             case "checkout":
                 checkout(request, response);
                 break;
+              
 
         }
         //Lấy controller để sau truyền lại cho main hiện view cần hiển thị
@@ -91,6 +92,7 @@ public class HomeController extends HttpServlet {
         }
 
     }
+   
 
     protected void homepage(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

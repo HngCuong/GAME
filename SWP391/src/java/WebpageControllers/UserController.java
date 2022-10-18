@@ -92,7 +92,13 @@ public class UserController extends HttpServlet {
             case "confirmMail":
                 confirmMail(request, response);
                 break;    
+            case "contact":
+                contact(request, response);
+                break;    
         }
+    }
+     protected void contact(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        request.getRequestDispatcher("/WEB-INF/layout/main.jsp").forward(request, response);
     }
     protected void confirmMail(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -102,7 +108,7 @@ public class UserController extends HttpServlet {
             String userName = request.getParameter("userName").toLowerCase();
             Properties prop = new Properties();
             String username = "CUONGHCSE150679@fpt.edu.vn";
-            String password = "Cuong679";
+            String password = "Cuong150679";
             prop.put("mail.smtp.host", "smtp.gmail.com");
             prop.put("mail.smtp.port", "587");
             prop.put("mail.smtp.auth", "true");
@@ -183,7 +189,7 @@ public class UserController extends HttpServlet {
                 request.setAttribute("cap_userName", output);
 
                 //Chuyển đến trang index.jsp => header.jsp
-                request.getRequestDispatcher("index.jsp").forward(request, response);
+                request.getRequestDispatcher("index1.jsp").forward(request, response);
             } else {
                 //Lưu thông tin đã nhập vào request để bảo tồn trạng thái của form
                 request.setAttribute("userName", userName);

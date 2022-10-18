@@ -1,14 +1,18 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:setLocale value="en-us" />
+<link rel="stylesheet" href="../template/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="../template/css/font-awesome.min.css"/>
+	<link rel="stylesheet" href="../template/css/owl.carousel.css"/>
+	<link rel="stylesheet" href="../template/css/style.css"/>
+	<link rel="stylesheet" href="../template/css/animate.css"/>
 <!-- Page Preloder -->
 <div id="preloder">
     <div class="loader"></div>
 </div>
 <link rel="stylesheet" href="<c:url value="/css/reset_pwd.css" />" type="text/css">
 
-<!-- Header Section Begin -->
-<header class="header">
+<header class="header" style="padding-top:0px">
     <div class="header__top">
         <div class="container">
             <div class="row">
@@ -51,7 +55,12 @@
                                     <c:if test="${user.role == 'ADMIN'}">
                                         <li><a href="<c:url value="/admin/manage.do?op=listFull" />">Management</a></li>
                                         </c:if>
-                                    <li><a href="<c:url value="/user/logout.do" />">Log Out</a></li>
+                                    <li ><a href="<c:url value="/user/logout.do" />"><button style="font-size: 20px;
+                                                   border: #222222;
+                                                   color: white;
+                                                   background-color: #222222;
+                                                   padding: 0;
+                                                   padding-right: 30px">Log out</button></a></li>
                                 </ul>
                             </c:if>  
 
@@ -156,7 +165,12 @@
     </form>
 </div>
 
-
+<!--====== Javascripts & Jquery ======-->
+	<script src="../template/js/jquery-3.2.1.min.js"></script>
+	<script src="../template/js/bootstrap.min.js"></script>
+	<script src="../template/js/owl.carousel.min.js"></script>
+	<script src="../template/js/jquery.marquee.min.js"></script>
+	<script src="../template/js/main.js"></script>
 <script>
     // Get the modal
     var modal = document.getElementById('reset');

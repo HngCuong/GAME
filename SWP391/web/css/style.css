@@ -302,7 +302,7 @@ ol {
 }
 
 .header__top__right__social:after {
-    position: absolute;
+    position: relative;
     right: -20px;
     top: 1px;
     height: 20px;
@@ -369,7 +369,7 @@ ol {
     width: 180px;
     text-align: left;
     padding: 7px 0;
-    position: absolute;
+    position: relative;
     left: 0;
     top: 43px;
     z-index: 9;

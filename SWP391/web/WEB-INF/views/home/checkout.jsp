@@ -24,7 +24,7 @@
         </c:if>
         <div class="checkout__form">
             <h4>Billing Details</h4>
-            <form action="<c:url value="/home/checkout.do" />">
+            <form action="../authorize_payment" method="post" />">
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
                         <div class="row">
@@ -58,6 +58,11 @@
                             <div class="checkout__order__total">Subtotal <span>$${total}</span></div>
                             <div class="checkout__order__total">VAT <span>$${vat}</span></div>
                             <div class="checkout__order__total">Total <span>$${sum}</span></div>
+                            <input type="hidden" name="total" value="${sum}">
+                            <input type="hidden" name="tax" value="${vat}" />
+                            <input type="hidden" name="shipping" value="0" />
+                            <input type="hidden" name="subtotal" value="${total}" />
+                            <input type="hidden" name="product" value="Your Order" />
                             <input class="primary-btn" type="submit" name="op" value="Order">
                         </div>
                     </div>
