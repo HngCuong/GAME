@@ -50,7 +50,34 @@ public class ProductDAO {
         }
         return list;
     }
-    
+     public List<Product> topRating(){
+                List<Product> list = null;
+        DBUtil db = new DBUtil();
+        try {
+            list = new ArrayList<>();
+            Connection con = db.getConnection();
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT TOP(4) * FROM Product\n" +
+"ORDER BY Rating DESC");
+            while (rs.next()) {
+               int productID = rs.getInt(1);
+               int price = rs.getInt(2);
+                String desc =rs.getString(5);
+                byte rating = rs.getByte(6);
+                String productName = rs.getString(3);
+                String linkImg1 = rs.getString(7);
+                
+               Genre genre = new Genre(1, "");
+                
+                Product pro = new Product(productID,price, productName,desc,rating, linkImg1, genre);
+                list.add(pro);
+            }
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
     public List<Product> listNew() {
         List<Product> list = null;
         DBUtil db = new DBUtil();

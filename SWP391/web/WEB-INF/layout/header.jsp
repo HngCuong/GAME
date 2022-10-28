@@ -50,11 +50,19 @@
                                                    background-color: #222222;
                                                    padding: 0;
                                                    padding-right: 30px">Reset Pass</button></a></li>
+                                                                        <li ><a href="<c:url value="../profile.jsp?user=${user.userName}" />"><button style="font-size: 20px;
+                                                   border: #222222;
+                                                   color: white;
+                                                   background-color: #222222;
+                                                   padding: 0;
+                                                   padding-right: 30px">Edit Profile</button></a></li>
+                                                                       
 
                                     <%--<li><a href="<c:url value="/user/reset_form.do" />">Reset Password</a></li>--%>
                                     <c:if test="${user.role == 'ADMIN'}">
                                         <li><a href="<c:url value="/admin/manage.do?op=listFull" />">Management</a></li>
                                         </c:if>
+
                                     <li ><a href="<c:url value="/user/logout.do" />"><button style="font-size: 20px;
                                                    border: #222222;
                                                    color: white;

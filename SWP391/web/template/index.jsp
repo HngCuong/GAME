@@ -224,57 +224,33 @@
 
 
     <!-- Review section -->
-    <section class="review-section spad set-bg" data-setbg="img/review-bg.png">
+    <section class="review-section spad set-bg" data-setbg="">
         <div class="container">
             <div class="section-title">
                 <div class="cata new">new</div>
-                <h2>Recent Reviews</h2>
+                <h2>Top Rating</h2>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-md-6">
+                 <%
+              
+                List<Product> listR = dao.topRating();
+                for(Product op : listR){ %>
+                
+                        <div class="col-lg-6 col-md-6">
                     <div class="review-item">
-                        <div class="review-cover set-bg" data-setbg="img/review/1.jpg">
-                            <div class="score yellow">9.3</div>
+                        <div class="review-cover set-bg" data-setbg=<%=op.getLinkImg1()%>>
+                            <div class="score yellow"><%=op.getRating()%>  </div>
                         </div>
                         <div class="review-text">
-                            <h5>Assasin’’s Creed</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit ame.</p>
+                            <h5><%=op.getProductName()%></h5>
+                            <p><%=op.getDesc()%></p>
                         </div>
                     </div>
+                        </br></br>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="review-item">
-                        <div class="review-cover set-bg" data-setbg="img/review/2.jpg">
-                            <div class="score purple">9.5</div>
-                        </div>
-                        <div class="review-text">
-                            <h5>Doom</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit ame.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="review-item">
-                        <div class="review-cover set-bg" data-setbg="img/review/3.jpg">
-                            <div class="score green">9.1</div>
-                        </div>
-                        <div class="review-text">
-                            <h5>Overwatch</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit ame.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="review-item">
-                        <div class="review-cover set-bg" data-setbg="img/review/4.jpg">
-                            <div class="score pink">9.7</div>
-                        </div>
-                        <div class="review-text">
-                            <h5>GTA</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit ame.</p>
-                        </div>
-                    </div>
-                </div>
+                   <%}%> 
+                
+              
             </div>
         </div>
     </section>
@@ -296,52 +272,80 @@
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-widget mb-5 mb-md-0">
-                        <h4 class="fw-title">About US</h4>
+                         <h3 class="fw-title">Address</h3>
+                         </br>
+                         </br>
                         <div class="latest-blog">
                             <div class="lb-item">
                                 <div class="lb-thumb set-bg" data-setbg="img/latest-blog/1.jpg"></div>
                                 <div class="lb-content">
-                                    <div class="lb-date">June 21, 2018</div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum </p>
-                                    <a href="#" class="lb-author">By Admin</a>
+                                   
+                                    <p>FPT University, Hi-Tech Park, District 9 Ho Chi Minh City 71216 Vietnam · ~3.6 km </p>
+                                    
                                 </div>
                             </div>
                             
                         </div>
-                    </div>
+                    </br>
+                    </br>
+                    
+                        <h3 class="fw-title">Phone / Mail</h3></br>
+                        <div class="latest-blog">
+                            <div class="lb-item">
+                                <div class="lb-thumb set-bg" data-setbg="img/latest-blog/1.jpg"></div>
+                                <div class="lb-content">
+                                 
+                                    <p>
+Mail: CUONGHCSE150679@fpt.edu.vn Phone: +84 776 190 244</p>
+                                    
+                                    
+                                </div></br></br>
+                                
+                              
+                            </div>
+                            
+                        </div>
+                    </div>    
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-widget">
                         <h4 class="fw-title">Our Team</h4>
                         <div class="top-comment">
                             <div class="tc-item">
-                                <div class="tc-thumb set-bg" data-setbg="img/authors/1.jpg"></div>
-                                <img src="img/authors/1.jpg" alt=""/>
-                                <div class="tc-content">
-                                    <p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
-                                    <div class="tc-date">June 21, 2018</div>
-                                </div>
-                            </div>
-                            <div class="tc-item">
-                                <div class="tc-thumb set-bg" data-setbg="img/authors/2.jpg"></div>
+                                <div class="tc-thumb set-bg" data-setbg="1.jpg"></div>
                                 
                                 <div class="tc-content">
-                                    <p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
-                                    <div class="tc-date">June 21, 2018</div>
+                                    <p><a href="#">Phan Thiên Ân</a></br> <span>on</span>  FPT University HCM</p>
+                                    <div class="tc-date">09xx.xxx.xxx</div>
                                 </div>
                             </div>
                             <div class="tc-item">
-                                <div class="tc-thumb set-bg" data-setbg="img/authors/1.jpg"></div>
+                                <div class="tc-thumb set-bg" data-setbg="2.jpg"></div>
+                                
                                 <div class="tc-content">
-                                    <p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
-                                    <div class="tc-date">June 21, 2018</div>
+                                    <p><a href="#">Nguyễn Quang Minh</a></br> <span>on</span>  FPT University HCM</p>
+                                    <div class="tc-date">09xx.xxx.xxx</div>
                                 </div>
                             </div>
                             <div class="tc-item">
-                                <div class="tc-thumb set-bg" data-setbg="img/authors/8.jpg"></div>
+                                <div class="tc-thumb set-bg" data-setbg="3.jpg"></div>
                                 <div class="tc-content">
-                                    <p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
-                                    <div class="tc-date">June 21, 2018</div>
+                                    <p><a href="#">Phạm Quang Quý</a></br> <span>on</span>  FPT University HCM</p>
+                                    <div class="tc-date">09xx.xxx.xxx</div>
+                                </div>
+                            </div>
+                            <div class="tc-item">
+                                <div class="tc-thumb set-bg" data-setbg="4.jpg"></div>
+                                <div class="tc-content">
+                                    <p><a href="#">Huỳn Chí Cường</a></br> <span>on</span>  FPT University HCM</p>
+                                    <div class="tc-date">09xx.xxx.xxx</div>
+                                </div>
+                            </div>
+                            <div class="tc-item">
+                                <div class="tc-thumb set-bg" data-setbg="5.jpg"></div>
+                                <div class="tc-content">
+                                    <p><a href="#">Võ Chí Cường</a></br> <span>on</span>  FPT University HCM</p>
+                                    <div class="tc-date">09xx.xxx.xxx</div>
                                 </div>
                             </div>
                         </div>
