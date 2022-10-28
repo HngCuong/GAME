@@ -4,6 +4,9 @@
     Author     : DELL
 --%>
 
+<%@page import="DAO.ProductDAO"%>
+<%@page import="java.util.List"%>
+<%@page import="models.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -100,7 +103,7 @@
                 <div class="hs-text">
                     <div class="container">
                         <h2>The Best <span>Games</span> Out There</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada <br> lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. <br>Suspendisse cursus faucibus finibus.</p>
+                        <p>Team 5 is an online distribution platform <br> Digital rights management, multiplayer video games, and internet-based social communication services developed by FPT students. <br>Team 5 provides users with information about new games coming to the market and community features such as being able to leave comments under the posts of the page. </p>
                         <a href="#" class="site-btn">Read More</a>
                     </div>
                 </div>
@@ -109,7 +112,7 @@
                 <div class="hs-text">
                     <div class="container">
                         <h2>The Best <span>Games</span> Out There</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada <br> lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. <br>Suspendisse cursus faucibus finibus.</p>
+                       <p>Team 5 is an online distribution platform <br> Digital rights management, multiplayer video games, and internet-based social communication services developed by FPT students. <br>Team 5 provides users with information about new games coming to the market and community features such as being able to leave comments under the posts of the page. </p>
                         <a href="#" class="site-btn">Read More</a>
                     </div>
                 </div>
@@ -121,67 +124,18 @@
 
     <!-- Latest news section -->
     <div class="latest-news-section">
-        <div class="ln-title">Latest News</div>
+        <div class="ln-title">Latest Games</div>
         <div class="news-ticker">
             <div class="news-ticker-contant">
-                <div class="nt-item"><span class="new">new</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
-                <div class="nt-item"><span class="strategy">strategy</span>Isum dolor sit amet, consectetur adipiscing elit. </div>
-                <div class="nt-item"><span class="racing">racing</span>Isum dolor sit amet, consectetur adipiscing elit. </div>
+                <% ProductDAO dao = new ProductDAO();
+                List<Product> list = dao.latest();
+                for(Product op : list){ %>
+                <div class="nt-item"><span class="new">new</span><%=op.getProductName()%></div>
+                   <%}%>    
             </div>
         </div>
     </div>
     <!-- Latest news section end -->
-
-
-    <!-- Feature section -->
-    <section class="feature-section spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 p-0">
-                    <div class="feature-item set-bg" data-setbg="img/features/1.jpg">
-                        <span class="cata new">new</span>
-                        <div class="fi-content text-white">
-                            <h5><a href="#">Suspendisse ut justo tem por, rutrum</a></h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                            <a href="#" class="fi-comment">3 Comments</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 p-0">
-                    <div class="feature-item set-bg" data-setbg="img/features/2.jpg">
-                        <span class="cata strategy">strategy</span>
-                        <div class="fi-content text-white">
-                            <h5><a href="#">Justo tempor, rutrum erat id, molestie</a></h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                            <a href="#" class="fi-comment">3 Comments</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 p-0">
-                    <div class="feature-item set-bg" data-setbg="img/features/3.jpg">
-                        <span class="cata new">new</span>
-                        <div class="fi-content text-white">
-                            <h5><a href="#">Nullam lacinia ex eleifend orci porttitor</a></h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                            <a href="#" class="fi-comment">3 Comments</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 p-0">
-                    <div class="feature-item set-bg" data-setbg="img/features/4.jpg">
-                        <span class="cata racing">racing</span>
-                        <div class="fi-content text-white">
-                            <h5><a href="#">Lacinia ex eleifend orci suscipit</a></h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                            <a href="#" class="fi-comment">3 Comments</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Feature section end -->
-
 
     <!-- Recent game section  -->
     <section class="recent-game-section spad set-bg" data-setbg="img/recent-game-bg.png">
@@ -191,54 +145,31 @@
                 <h2>Recent Games</h2>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-6">
+                 <% 
+                for(Product op : list){ %>
+                
+                        <div class="col-lg-6 col-md-6">
                     <div class="recent-game-item">
-                        <div class="rgi-thumb set-bg" data-setbg="img/recent-game/1.jpg">
+                        <div class="rgi-thumb set-bg" data-setbg=<%=op.getLinkImg1()%> >
                             <div class="cata new">new</div>
                         </div>
                         <div class="rgi-content">
-                            <h5>Suspendisse ut justo tem por, rutrum</h5>
+                            <h5><%=op.getProductName()%></h5>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit amet, consectetur elit. </p>
-                            <a href="#" class="comment">3 Comments</a>
+                        
                             <div class="rgi-extra">
                                 <div class="rgi-star"><img src="img/icons/star.png" alt=""></div>
                                 <div class="rgi-heart"><img src="img/icons/heart.png" alt=""></div>
                             </div>
                         </div>
-                    </div>	
+                    </div>
+                                                        </br>
+
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="recent-game-item">
-                        <div class="rgi-thumb set-bg" data-setbg="img/recent-game/2.jpg">
-                            <div class="cata racing">racing</div>
-                        </div>
-                        <div class="rgi-content">
-                            <h5>Susce pulvinar metus nulla, vel  facilisis sem </h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit amet, consectetur elit. </p>
-                            <a href="#" class="comment">3 Comments</a>
-                            <div class="rgi-extra">
-                                <div class="rgi-star"><img src="img/icons/star.png" alt=""></div>
-                                <div class="rgi-heart"><img src="img/icons/heart.png" alt=""></div>
-                            </div>
-                        </div>
-                    </div>	
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="recent-game-item">
-                        <div class="rgi-thumb set-bg" data-setbg="img/recent-game/3.jpg">
-                            <div class="cata adventure">Adventure</div>
-                        </div>
-                        <div class="rgi-content">
-                            <h5>Suspendisse ut justo tem por, rutrum</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit amet, consectetur elit. </p>
-                            <a href="#" class="comment">3 Comments</a>
-                            <div class="rgi-extra">
-                                <div class="rgi-star"><img src="img/icons/star.png" alt=""></div>
-                                <div class="rgi-heart"><img src="img/icons/heart.png" alt=""></div>
-                            </div>
-                        </div>
-                    </div>	
-                </div>
+                   <%}%> 
+                
+              
+               
             </div>
         </div>
     </section>
@@ -365,7 +296,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-widget mb-5 mb-md-0">
-                        <h4 class="fw-title">Latest Posts</h4>
+                        <h4 class="fw-title">About US</h4>
                         <div class="latest-blog">
                             <div class="lb-item">
                                 <div class="lb-thumb set-bg" data-setbg="img/latest-blog/1.jpg"></div>
@@ -375,29 +306,30 @@
                                     <a href="#" class="lb-author">By Admin</a>
                                 </div>
                             </div>
-                            <div class="lb-item">
-                                <div class="lb-thumb set-bg" data-setbg="img/latest-blog/2.jpg"></div>
-                                <div class="lb-content">
-                                    <div class="lb-date">June 21, 2018</div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum </p>
-                                    <a href="#" class="lb-author">By Admin</a>
-                                </div>
-                            </div>
-                            <div class="lb-item">
-                                <div class="lb-thumb set-bg" data-setbg="img/latest-blog/3.jpg"></div>
-                                <div class="lb-content">
-                                    <div class="lb-date">June 21, 2018</div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum </p>
-                                    <a href="#" class="lb-author">By Admin</a>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-widget">
-                        <h4 class="fw-title">Top Comments</h4>
+                        <h4 class="fw-title">Our Team</h4>
                         <div class="top-comment">
+                            <div class="tc-item">
+                                <div class="tc-thumb set-bg" data-setbg="img/authors/1.jpg"></div>
+                                <img src="img/authors/1.jpg" alt=""/>
+                                <div class="tc-content">
+                                    <p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
+                                    <div class="tc-date">June 21, 2018</div>
+                                </div>
+                            </div>
+                            <div class="tc-item">
+                                <div class="tc-thumb set-bg" data-setbg="img/authors/2.jpg"></div>
+                                
+                                <div class="tc-content">
+                                    <p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
+                                    <div class="tc-date">June 21, 2018</div>
+                                </div>
+                            </div>
                             <div class="tc-item">
                                 <div class="tc-thumb set-bg" data-setbg="img/authors/1.jpg"></div>
                                 <div class="tc-content">
@@ -406,21 +338,7 @@
                                 </div>
                             </div>
                             <div class="tc-item">
-                                <div class="tc-thumb set-bg" data-setbg="img/authors/2.jpg"></div>
-                                <div class="tc-content">
-                                    <p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
-                                    <div class="tc-date">June 21, 2018</div>
-                                </div>
-                            </div>
-                            <div class="tc-item">
-                                <div class="tc-thumb set-bg" data-setbg="img/authors/3.jpg"></div>
-                                <div class="tc-content">
-                                    <p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
-                                    <div class="tc-date">June 21, 2018</div>
-                                </div>
-                            </div>
-                            <div class="tc-item">
-                                <div class="tc-thumb set-bg" data-setbg="img/authors/4.jpg"></div>
+                                <div class="tc-thumb set-bg" data-setbg="img/authors/8.jpg"></div>
                                 <div class="tc-content">
                                     <p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
                                     <div class="tc-date">June 21, 2018</div>

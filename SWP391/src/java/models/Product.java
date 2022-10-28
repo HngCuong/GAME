@@ -28,12 +28,22 @@ public class Product {
     public Product() {
     }
 
+    public Product(int productID, int price, String productName,String desc,byte rating, String linkImg1, Genre genre) {
+        this.productID = productID;
+        this.price = price;
+        this.productName = productName;
+        this.linkImg1 = linkImg1;
+        this.genre = genre;
+        this.rating=rating;
+        this.desc=desc;
+    }
     public Product(int productID, int price, String productName, String linkImg1, Genre genre) {
         this.productID = productID;
         this.price = price;
         this.productName = productName;
         this.linkImg1 = linkImg1;
         this.genre = genre;
+        
     }
 
     public Product(int id, int price, String productName, byte quantity, String desc, byte rating, String linkImg1, String linkImg2, String linkImg3, String linkImg4, String linkImg5) {
@@ -72,6 +82,7 @@ public class Product {
         this.productName = productName;
         this.linkImg1 = linkImg1;
     }
+   
 
     public Genre getGenre() {
         return genre;
