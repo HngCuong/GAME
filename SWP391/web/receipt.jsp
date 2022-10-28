@@ -20,7 +20,6 @@
     <h2>Receipt Details:</h2>
     <table>
         <tr>
-            <td><button>OUT</button><b>Merchant</b></td>
             <td>Company ABC Ltd.</td>
         </tr>
         <tr>
@@ -49,7 +48,7 @@
         </tr> 
           
     </table>
-        
+        <a href="http://localhost:8080/GameStore/template/index.jsp" ><button>Back Home</button></a>
 </div>
 <script type="text/javascript">
 <!-- Begin

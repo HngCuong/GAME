@@ -256,8 +256,7 @@ ol {
 }
 
 .site-logo {
-	display: inline-block;
-	float: left;
+	
 	padding-top: 6px;
 }
 
@@ -267,6 +266,7 @@ ol {
 	background: #ffb320;
 	padding: 8px 28px;
 	border-radius: 30px;
+  
 }
 
 .user-panel a {
@@ -1357,7 +1357,7 @@ ol {
 		position: relative;
 	}
 	.site-logo {
-		float: none;
+	
 		padding-top: 0;
 	}
 	.main-menu {
@@ -1389,7 +1389,7 @@ ol {
 		display: none;
 	}
 	.hero-slider .hs-item {
-		height: 700px;
+		height: 500px;
 	}
 	.hero-slider .hs-text h2 {
 		font-size: 36px;

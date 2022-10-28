@@ -50,6 +50,7 @@ public class AdminController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
+        
         //Lấy action
         String action = (String) request.getAttribute("action");
         //Xác Minh Admin

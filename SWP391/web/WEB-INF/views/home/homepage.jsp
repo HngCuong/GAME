@@ -80,6 +80,7 @@
                                 <input style="width: 48%; float: right; margin-top: 0px " class="btn-block btn btn-outline-info right_input" type="reset" />
                             </div>
                         </div>
+                        
                         <div class="sidebar__item">
                             <div class="latest-product__text">
                                 <h4>Featured Product </h4>
@@ -106,6 +107,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                     </form>
                 </div>
             </div>

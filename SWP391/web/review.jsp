@@ -88,7 +88,7 @@
         </tr>
         <tr>
             <td colspan="2" align="center">
-                <input type="submit" value="Pay Now" />
+                <input type="submit" value="Pay Now more ok" />
             </td>
         </tr>    
     </table>

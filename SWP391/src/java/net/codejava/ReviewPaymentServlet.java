@@ -40,7 +40,7 @@ public class ReviewPaymentServlet extends HttpServlet {
              
             String url = "review.jsp?paymentId=" + paymentId + "&PayerID=" + payerId;
              
-            request.getRequestDispatcher(url).forward(request, response);
+            request.getRequestDispatcher("review.jsp").forward(request, response);
              
         } catch (PayPalRESTException ex) {
             request.setAttribute("errorMessage", ex.getMessage());

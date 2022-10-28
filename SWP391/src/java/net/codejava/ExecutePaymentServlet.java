@@ -36,7 +36,7 @@ public class ExecutePaymentServlet extends HttpServlet {
             request.setAttribute("payer", payerInfo);
             request.setAttribute("transaction", transaction);          
  
-            request.getRequestDispatcher("https://search.yahoo.com/search?fr=mcafee&type=E211US826G0&p=javascript+t%E1%BB%B1+%C4%91%E1%BB%99ng+load+trang").forward(request, response);
+            request.getRequestDispatcher("receipt.jsp").forward(request, response);
              
         } catch (PayPalRESTException ex) {
             request.setAttribute("errorMessage", ex.getMessage());
