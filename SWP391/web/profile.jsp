@@ -116,46 +116,32 @@ select:focus{
 <form action="Edit">
 <div class="wrapper bg-white mt-sm-5">
     <h4 class="pb-4 border-bottom">Account settings</h4>
-    <div class="d-flex align-items-start py-3 border-bottom">
-        <img 
-            height="150px"
-            width="150px"
-            src="${img}" 
-            alt="vi du" name="image"/>
-       
-        <div class="pl-sm-4 pl-2" id="img-section">
-            <b>Profile Photo</b>
-            <p>Accepted file type .png. Less than 1MB</p>
-            <input type="file" name="image" >
-            <button class="btn button border"><b>Upload</b></button>
-        </div>
-      
-    </div>
+   
     <div class="py-2">
         <div class="row py-2">
             <div class="col-md-6">
                 <label for="firstname">First Name</label>
-                <input type="text" class="bg-light form-control" placeholder="Steve" name="fname">
+                <input type="text" class="bg-light form-control" placeholder="Steve" name="fname" required="">
             </div>
             <div class="col-md-6 pt-md-0 pt-3">
                 <label for="lastname">Last Name</label>
-                <input type="text" class="bg-light form-control" placeholder="Smith" name="lname">
+                <input type="text" class="bg-light form-control" placeholder="Smith" name="lname" required="">
             </div>
         </div>
         <div class="row py-2">
             <div class="col-md-6">
                 <label for="email">Address</label>
-                <input type="text" class="bg-light form-control" placeholder="TP.Thủ Đức" name="address">
+                <input type="text" class="bg-light form-control" placeholder="TP.Thủ Đức" name="address" required="">
             </div>
             <div class="col-md-6 pt-md-0 pt-3">
                 <label for="phone">Phone Number</label>
-                <input type="tel" class="bg-light form-control" placeholder="+1 213-548-6015" name="phone">
+                <input type="tel" class="bg-light form-control" placeholder="+1 213-548-6015" name="phone" required="">
             </div>
         </div>
         <div class="row py-2">
             <div class="col-md-6">
                 <label for="country">Country</label>
-                <input type="text" class="bg-light form-control" placeholder="Viet Nam" name="country">
+                <input type="text" class="bg-light form-control" placeholder="Viet Nam" name="country" required="">
             </div>
             <div class="col-md-6 pt-md-0 pt-3" id="lang">
                 <label for="language">Age</label>
