@@ -3,7 +3,7 @@
     Created on : Oct 15, 2022, 1:06:41 AM
     Author     : DELL
 --%>
-<!Contact All>
+<!Contact >
 <%@page import="models.ContactDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="DAO.UserDAO"%>
@@ -39,14 +39,15 @@
                                     <div style="text-align: center">
                         <input type="text" name="search"> <button>Search</button>
                     </div>
-                </form>
-                    </br>
-
-
+                </form></br>
+             
                 <%
                     UserDAO dao = new UserDAO();
-                    List<ContactDTO> list = dao.contact();
+                    String name = request.getParameter("search");
+                    List<ContactDTO> list = dao.searchContact(name);
                     for (ContactDTO op : list) {
+
+
                 %> 
                 <div class="d-flex flex-start">
                     <img class="rounded-circle shadow-1-strong me-3"
@@ -62,7 +63,7 @@
                                     <%= op.getSubject()%> <br>
                                     <%= op.getMsg()%> 
                                 </p>
-                                 
+                               
                                 <div class="d-flex justify-content-between align-items-center">
                                     
                                     <form action="Reply"">
@@ -72,16 +73,18 @@
                                     </form>
                                                                                 </br>
 
-                                    <a href="DeleteReply?name=<%= op.getUser()%>&msg=<%= op.getMsg()%> " class="link-muted"><i class="fas fa-times me-1"></i> Check</a>
+                                    
+                                      <a href="DeleteReply?name=<%= op.getUser()%>&msg=<%= op.getMsg()%> " class="link-muted"><i class="fas fa-times me-1"></i> Check</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <br>
-                <% }%>
-               <div style="text-align: center"><a href="index3.jsp"><button>Hide</button></a></div>
+                <%break;
+                    }%>
+                <div style="text-align: center"><a href="index2.jsp"><button>Show ALL</button></a></div>
 
             </div>
         </div>

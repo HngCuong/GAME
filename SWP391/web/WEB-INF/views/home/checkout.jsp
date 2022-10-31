@@ -24,7 +24,7 @@
         </c:if>
         <div class="checkout__form">
             <h4>Billing Details</h4>
-            <form action="../authorize_payment" method="post" />">
+           <form action="<c:url value="/home/checkout.do" />">
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
                         <div class="row">

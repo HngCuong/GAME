@@ -9,7 +9,7 @@ package DAO;
  *
  * @author DELL
  */
-public class ProfileDAO {
+public class Profile {
     String UserName;
     String FullName;
     String Address;
@@ -17,7 +17,7 @@ public class ProfileDAO {
     int Age;
     int Phone;
 
-    public ProfileDAO(String UserName, String FullName, String Address, int Phone, String Country, int Age) {
+    public Profile(String UserName, String FullName, String Address, int Phone, String Country, int Age) {
         this.UserName = UserName;
         this.FullName = FullName;
         this.Address = Address;
@@ -26,7 +26,7 @@ public class ProfileDAO {
         this.Phone = Phone;
     }
 
-    public ProfileDAO() {
+    public Profile() {
     }
 
     public String getUserName() {

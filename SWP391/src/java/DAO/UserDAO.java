@@ -22,7 +22,37 @@ import models.User;
  * @author Lenovo
  */
 public class UserDAO {
+       public static List<ContactDTO> searchContact(String user) throws Exception {
+       List<ContactDTO> list = new ArrayList();
+        //Connecting to a database
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+        //Creating and executing sql statements            
+        String sql = "select * from Contact where name = ?";
+        PreparedStatement stm = con.prepareStatement(sql);
+        stm.setString(1,user);
 
+        ResultSet rs = stm.executeQuery();
+        //if userId and password are correct
+         while (rs.next()) {
+            list.add(new ContactDTO(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)));
+        }
+        //Closing the connection
+        con.close();
+        return list;
+    }
+       
+        public static void clear(String user, String msg) throws SQLException, Exception {
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+        String sql = "DELETE FROM contact WHERE name = ? and message = ?";
+        PreparedStatement stm = con.prepareStatement(sql);
+        stm.setString(1,user);
+        stm.setString(2,msg);
+        stm.executeUpdate();
+ 
+    }
+   
     // Check user servlet
     public static User check(String userName, String password) throws Exception {
         User user = null;
