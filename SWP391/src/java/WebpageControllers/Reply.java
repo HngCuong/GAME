@@ -49,8 +49,8 @@ public class Reply extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
              String a = request.getParameter("reply");
              String b = request.getParameter("email");
-        final String username = "CUONGHCSE150679@fpt.edu.vn";
-        final String password = "kqpwyqcnfvzrusjt";
+        final String username = "cuonghc2011@gmail.com";
+        final String password = "xadspblkqlqywohp";
 
         Properties prop = new Properties();
 		prop.put("mail.smtp.host", "smtp.gmail.com");
@@ -68,7 +68,7 @@ public class Reply extends HttpServlet {
 
         try {
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("CUONGHCSE150679@fpt.edu.vn"));
+            message.setFrom(new InternetAddress("cuonghc2011@gmail.com"));
             message.setRecipients(
                     Message.RecipientType.TO,
                     InternetAddress.parse(b)

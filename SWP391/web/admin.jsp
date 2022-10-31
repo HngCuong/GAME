@@ -35,9 +35,20 @@
                 </div>
             <div class="col">
                 <div class="row flex-lg-nowrap" style="padding-top: 30px">
-       ádsadsadsadsadsadasdsadas
+                    <div style="text-align: center"> <h4>CREATE ACCOUNT</h4></div></br>
+                    </br>
+                    <div style="">
+                        <form action="userBlog">
+                            <input type="text" name="user" placeholder="Enter account" required></br>
+                            <input type="password" name="password" placeholder="Enter password" required></br>
+                            <button>register</button>                          
+                        </form>
+                        <h3>${success}</h3>
+                          <a href="test"><button>Show Account</button></a>
+                    </div>
                 </div>
             </div>
+                  
          </div>
     </div>
     

@@ -52,6 +52,15 @@ public class UserDAO {
         stm.executeUpdate();
  
     }
+        public static void clearAccount(String user) throws SQLException, Exception {
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+        String sql = "DELETE FROM Users WHERE UserName = ?";
+        PreparedStatement stm = con.prepareStatement(sql);
+        stm.setString(1,user);
+        stm.executeUpdate();
+ 
+    }
    
     // Check user servlet
     public static User check(String userName, String password) throws Exception {
@@ -95,7 +104,45 @@ public class UserDAO {
             con.close();
    
     }
-    
+           public static List<User> showStaff() throws Exception {
+           List<User> list = new ArrayList();
+        //Connecting to a database
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+        //Creating and executing sql statements            
+        String sql = "select UserName,Passwords from Users where Roles = 'STAFF' ";
+        PreparedStatement stm = con.prepareStatement(sql);
+  
+   
+        ResultSet rs = stm.executeQuery();
+        //if userId and password are correct
+        while (rs.next()) {
+            list.add(new User(1,rs.getString(1),rs.getString(2),""));
+        }
+        //Closing the connection
+        con.close();
+        return list;
+    }
+           
+          public static List<User> showAccount(String user) throws Exception {
+           List<User> list = new ArrayList();
+        //Connecting to a database
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+        //Creating and executing sql statements            
+        String sql = "select UserName,Passwords from Users where UserName = ? ";
+        PreparedStatement stm = con.prepareStatement(sql);
+         stm.setString(1, user);
+   
+        ResultSet rs = stm.executeQuery();
+        //if userId and password are correct
+        while (rs.next()) {
+            list.add(new User(1,rs.getString(1),rs.getString(2),""));
+        }
+        //Closing the connection
+        con.close();
+        return list;
+    }    
        public static List<ContactDTO> contact() throws Exception {
            List<ContactDTO> list = new ArrayList();
         //Connecting to a database
@@ -198,6 +245,24 @@ public class UserDAO {
 
         return done;
     }
+    
+    public static void registerStaff(String name, String password) throws Exception {
+        //Connecting to a database
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+        //Check_duplication
+      
+            //Creating and executing sql statements            
+            String sql = "insert Users values(?, ?, ?, ?)";
+            PreparedStatement stm = con.prepareStatement(sql);
+            stm.setString(1, name);
+            stm.setString(2, password);
+            stm.setString(3, "STAFF");
+            stm.setString(4, "@company.com");
+            stm.executeUpdate();
+            //Closing the connection
+            con.close();
+    }
 
     public static User find(String userName) throws Exception {
         User user = null;
@@ -251,4 +316,14 @@ public class UserDAO {
         stm.setInt(2, user.getId());
         stm.executeUpdate();
     }
+    public void updatePass(String user, String pass) throws Exception{
+        //Connecting to a database
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+        PreparedStatement stm = con.prepareStatement("update users set Passwords=? where UserName=?");
+        stm.setString(1,pass);
+        stm.setString(2,user);
+        stm.executeUpdate();
+    }
+    
 }

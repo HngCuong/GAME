@@ -23,7 +23,6 @@ import java.util.Properties;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.mail.PasswordAuthentication;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -98,6 +97,7 @@ public class UserController extends HttpServlet {
      protected void contact(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         request.getRequestDispatcher("/WEB-INF/layout/main.jsp").forward(request, response);
     }
+    
     protected void confirmMail(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             String email =  request.getParameter("email");
@@ -105,8 +105,8 @@ public class UserController extends HttpServlet {
             String password2 = request.getParameter("password2");
             String userName = request.getParameter("userName").toLowerCase();
             Properties prop = new Properties();
-            String username = "CUONGHCSE150679@fpt.edu.vn";
-            String password = "kqpwyqcnfvzrusjt";
+            String username = "cuonghc2011@gmail.com";
+            String password = "xadspblkqlqywohp";
            
 		prop.put("mail.smtp.host", "smtp.gmail.com");
         prop.put("mail.smtp.port", "587");
@@ -305,8 +305,8 @@ public class UserController extends HttpServlet {
                 int code = (int) Math.floor(((Math.random() * 899999) + 100000));
                 String html = Integer.toString(code);
                  Properties prop = new Properties();
-            String username = "CUONGHCSE150679@fpt.edu.vn";
-            String password = "kqpwyqcnfvzrusjt";
+            String username = "cuonghc2011@gmail.com";
+            String password = "xadspblkqlqywohp";
              
 		prop.put("mail.smtp.host", "smtp.gmail.com");
         prop.put("mail.smtp.port", "587");

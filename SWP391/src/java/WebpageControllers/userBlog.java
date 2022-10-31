@@ -20,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author DELL
  */
-@WebServlet(name = "test", urlPatterns = {"/test"})
-public class test extends HttpServlet {
+@WebServlet(name = "userBlog", urlPatterns = {"/userBlog"})
+public class userBlog extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,11 +36,12 @@ public class test extends HttpServlet {
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-             UserDAO dao = new UserDAO();
-            String user =request.getParameter("name");
-
-            dao.clearAccount(user);
-            response.sendRedirect("show.jsp");
+           UserDAO dao = new UserDAO();
+           String a = request.getParameter("user");
+           String b = request.getParameter("password");
+           dao.registerStaff(a, b);
+           request.setAttribute("success", "Done");
+           request.getRequestDispatcher("admin.jsp").forward(request, response);
         }
     }
 
@@ -59,7 +60,7 @@ public class test extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(test.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(userBlog.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -77,7 +78,7 @@ public class test extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(test.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(userBlog.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -14,14 +14,6 @@
                     <file>${file.reference.mssql-jdbc-9.4.1.jre8.jar-1}</file>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.javax.mail__1_.jar}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library dirs="200">
-                    <file>${file.reference.activation-1.1.jar}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library dirs="200">
                     <file>${file.reference.slf4j-api-1.7.25.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>

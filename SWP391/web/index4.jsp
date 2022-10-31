@@ -82,7 +82,7 @@
                 </div>
 
                 <br>
-                <%break;
+                <%
                     }%>
                 <div style="text-align: center"><a href="index2.jsp"><button>Show ALL</button></a></div>
 

@@ -20,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author DELL
  */
-@WebServlet(name = "test", urlPatterns = {"/test"})
-public class test extends HttpServlet {
+@WebServlet(name = "Change", urlPatterns = {"/Change"})
+public class Change extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,10 +36,11 @@ public class test extends HttpServlet {
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-             UserDAO dao = new UserDAO();
+          UserDAO dao = new UserDAO();
             String user =request.getParameter("name");
+            String pass = request.getParameter("new");
 
-            dao.clearAccount(user);
+            dao.updatePass(user,pass);
             response.sendRedirect("show.jsp");
         }
     }
@@ -59,7 +60,7 @@ public class test extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(test.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Change.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -77,7 +78,7 @@ public class test extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(test.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Change.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
