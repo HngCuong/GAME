@@ -12,8 +12,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import models.Checkout;
 import models.ContactDTO;
 import models.User;
 
@@ -143,6 +146,82 @@ public class UserDAO {
         con.close();
         return list;
     }    
+          public static List<Checkout> searchChekout(int user) throws Exception {
+           List<Checkout> list = new ArrayList();
+        //Connecting to a database
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+        //Creating and executing sql statements            
+        String sql = "select Total,Phone,DateOrder,UserID from Checkout where UserID = ? ";
+        PreparedStatement stm = con.prepareStatement(sql);
+         stm.setInt(1, user);
+   
+        ResultSet rs = stm.executeQuery();
+        //if userId and password are correct
+        while (rs.next()) {
+            list.add(new Checkout(rs.getDouble(1),rs.getString(2),rs.getDate(3),rs.getInt(4)));
+        }
+        //Closing the connection
+        con.close();
+        return list;
+    }    
+          public static List<Checkout> searchChekoutbyDay(String user) throws Exception {
+           List<Checkout> list = new ArrayList();
+        //Connecting to a database
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+        //Creating and executing sql statements            
+        String sql = "select Total,Phone,DateOrder,UserID from Checkout where DateOrder = ? ";
+        PreparedStatement stm = con.prepareStatement(sql);
+         stm.setString(1, user);
+   
+        ResultSet rs = stm.executeQuery();
+        //if userId and password are correct
+        while (rs.next()) {
+            list.add(new Checkout(rs.getDouble(1),rs.getString(2),rs.getDate(3),rs.getInt(4)));
+        }
+        //Closing the connection
+        con.close();
+        return list;
+    }    
+             public static List<Checkout> searchChekoutbyDay(String user, int id) throws Exception {
+           List<Checkout> list = new ArrayList();
+        //Connecting to a database
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+        //Creating and executing sql statements            
+        String sql = "select Total,Phone,DateOrder,UserID from Checkout where DateOrder = ? and UserID = ?";
+        PreparedStatement stm = con.prepareStatement(sql);
+         stm.setString(1, user);
+         stm.setInt(2, id);
+   
+        ResultSet rs = stm.executeQuery();
+        //if userId and password are correct
+        while (rs.next()) {
+            list.add(new Checkout(rs.getDouble(1),rs.getString(2),rs.getDate(3),rs.getInt(4)));
+        }
+        //Closing the connection
+        con.close();
+        return list;
+    } 
+             
+          public static List<Checkout> showCheckout() throws Exception {
+          List<Checkout> list = new ArrayList();
+        //Connecting to a database
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+        //Creating and executing sql statements            
+        String sql = "select Total,Phone,DateOrder,UserID from Checkout";
+        PreparedStatement stm = con.prepareStatement(sql);
+        ResultSet rs = stm.executeQuery();
+        //if userId and password are correct
+        while (rs.next()) {
+            list.add(new Checkout(rs.getDouble(1),rs.getString(2),rs.getDate(3),rs.getInt(4)));
+        }
+        //Closing the connection
+        con.close();
+        return list;
+    } 
        public static List<ContactDTO> contact() throws Exception {
            List<ContactDTO> list = new ArrayList();
         //Connecting to a database

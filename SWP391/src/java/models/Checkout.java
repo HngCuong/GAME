@@ -24,6 +24,13 @@ public class Checkout {
     public Checkout() {
     }
 
+    public Checkout(double total, String phone, Date dateOder, int userID) {
+        this.total = total;
+        this.phone = phone;
+        this.dateOder = dateOder;
+        this.userID = userID;
+    }
+    
     public Checkout(int checkoutID, String fullName, String address, double total, String email, String phone, Date dateOder, int userID) {
         this.checkoutID = checkoutID;
         this.fullName = fullName;

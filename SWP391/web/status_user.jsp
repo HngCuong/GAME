@@ -1,8 +1,14 @@
 <%-- 
-    Document   : status_user
-    Created on : Oct 28, 2022, 10:38:27 AM
+    Document   : status
+    Created on : Oct 28, 2022, 10:22:47 AM
     Author     : DELL
 --%>
+
+<%@page import="models.User"%>
+<%@page import="java.sql.Date"%>
+<%@page import="models.Checkout"%>
+<%@page import="java.util.List"%>
+<%@page import="DAO.UserDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <style>
@@ -50,15 +56,19 @@ thead {
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container mt-5">
         <div class="d-flex justify-content-center row">
-            <div class="col-md-10">
+            <div class="col-md-12">
+                 <div style="text-align: center; color: blue"><h1>Check Order</h1></div></br>
+                  <form action="FindHistory">
+                    <input type="text" name="search"><button>Search</button>
+                </form>
                 <div class="rounded">
                     <div class="table-responsive table-borderless">
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th class="text-center">S. No.</th>
-                                    <th>Order #</th>
-                                    <th>Company name</th>
+                                    <th>UserID</th>
+                                    <th>Phone</th>
                                     <th>status</th>
                                     <th>Total</th>
                                     <th>Created</th>
@@ -66,72 +76,37 @@ thead {
                                 </tr>
                             </thead>
                             <tbody class="table-body">
-                                <tr class="cell-1" data-toggle="collapse" data-target="#demo">
-                                    <td class="text-center">1</td>
-                                    <td>#SO-13487</td>
-                                    <td>Gasper Antunesaasdsadsad jsadnsajkdsajkdsajkdjkadjkasdjkadkjasasd msa dnsa dnmsad anmsd asnmd snmd samndsanmd samndsadnma dmnsad mnasda smndasmnd ámn</td>
-                                    <td><span class="badge badge-danger">Fullfilled</span></td>
-                                    <td>$2674.00</td>
-                                    <td>Today</td>
-                                    <td class="table-elipse" data-toggle="collapse" data-target="#demo"><i class="fa fa-ellipsis-h text-black-50"></i></td>
-                                </tr>
-                                <tr id="demo" class="collapse cell-1 row-child">
-                                    <td class="text-center" colspan="1"><i class="fa fa-angle-up"></i></td>
-                                    <td colspan="1">Product&nbsp;</td>
-                                    <td colspan="3">iphone SX with ratina display</td>
-                                    <td colspan="1">QTY</td>
-                                    <td colspan="2">2</td>
-                                </tr>
+                                                           <%int count = 1;
+                    UserDAO dao = new UserDAO();
+                    String a = request.getParameter("search");
+                    User b = (User)session.getAttribute("user");
+                    int c = b.getId();
+                   
+                    List<Checkout> list = dao.showCheckout();
+                    for (Checkout op : list) {
+                    
+                %> 
+                
                                 <tr class="cell-1" data-toggle="collapse" data-target="#demo-2">
-                                    <td class="text-center">2</td>
-                                    <td>#SO-13488</td>
-                                    <td>Tinder Steel</td>
-                                    <td><span class="badge badge-success">Fullfilled</span></td>
-                                    <td>$3664.00</td>
-                                    <td>Yesterday</td>
+                                    <td class="text-center"><%=count%></td>
+                                    <td><%=op.getUserID()%></td>
+                                    <td><%=op.getPhone()%></td>
+                                    <td><span class="badge badge-success">SUCCESS</span></td>
+                                    <td><%=op.getTotal()%></td>
+                                    <td><%=op.getDateOder()%></td>
                                     <td class="table-elipse" data-toggle="collapse" data-target="#demo"><i class="fa fa-ellipsis-h text-black-50"></i></td>
                                 </tr>
-                                <tr id="demo-2" class="collapse cell-1 row-child">
-                                    <td class="text-center" colspan="1"><i class="fa fa-angle-up"></i></td>
-                                    <td colspan="1">Product&nbsp;</td>
-                                    <td colspan="3">iphone SX with ratina display</td>
-                                    <td colspan="1">QTY</td>
-                                    <td colspan="2">2</td>
-                                </tr>
-                                <tr class="cell-1" data-toggle="collapse" data-target="#demo-3">
-                                    <td class="text-center">3</td>
-                                    <td>#SO-13489</td>
-                                    <td>Micro Steel</td>
-                                    <td><span class="badge badge-success">Placed</span></td>
-                                    <td>$2674.00</td>
-                                    <td>March 20, 2020</td>
-                                    <td class="table-elipse" data-toggle="collapse" data-target="#demo"><i class="fa fa-ellipsis-h text-black-50"></i></td>
-                                </tr>
-                                <tr id="demo-3" class="collapse cell-1 row-child">
-                                    <td class="text-center" colspan="1"><i class="fa fa-angle-up"></i></td>
-                                    <td colspan="1">Product&nbsp;</td>
-                                    <td colspan="3">iphone SX with ratina display</td>
-                                    <td colspan="1">QTY</td>
-                                    <td colspan="2">2</td>
-                                </tr>
-                                <tr class="cell-1" data-toggle="collapse" data-target="#demo-4">
-                                    <td class="text-center">4</td>
-                                    <td>#SO-13490</td>
-                                    <td>B Mobiles</td>
-                                    <td><span class="badge badge-success">Delivered</span></td>
-                                    <td>$4674.00</td>
-                                    <td>March 22, 2020</td>
-                                    <td class="table-elipse" data-toggle="collapse" data-target="#demo"><i class="fa fa-ellipsis-h text-black-50"></i></td>
-                                </tr>
-                                <tr id="demo-4" class="collapse cell-1 row-child">
-                                    <td class="text-center" colspan="1"><i class="fa fa-angle-up"></i></td>
-                                    <td colspan="1">Product&nbsp;</td>
-                                    <td colspan="3">iphone SX with ratina display</td>
-                                    <td colspan="1">QTY</td>
-                                    <td colspan="2">2</td>
-                                </tr>
+               
+                <% count = count+1;
+             
+                    if(count > 1 && a==null)
+                    {break;}
+                        }%>
+                                
+                               
                             </tbody>
                         </table>
+                                <div style="text-align: center; color: blue"><p><a href="http://localhost:8080/GameStore/status.jsp?all=1">show all</a><p></div>
                     </div>
                 </div>
             </div>

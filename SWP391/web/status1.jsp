@@ -4,7 +4,7 @@
     Author     : DELL
 --%>
 
-<%@page import="java.sql.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="models.Checkout"%>
 <%@page import="java.util.List"%>
 <%@page import="DAO.UserDAO"%>
@@ -75,11 +75,14 @@ thead {
                                 </tr>
                             </thead>
                             <tbody class="table-body">
-                                                           <%int count = 1;
+                                                           
+                     <%int count = 1;
                     UserDAO dao = new UserDAO();
-                    String a =request.getParameter("all");
-                   
-                    List<Checkout> list = dao.showCheckout();
+                    int a = Integer.parseInt(request.getParameter("search"));
+                   // String a = (String)request.getParameter("search");
+                   List<Checkout> list = dao.searchChekout(a);
+   
+                    //List<Checkout> list = dao.searchChekoutbyDay(a);
                     for (Checkout op : list) {
                     
                 %> 
@@ -96,14 +99,13 @@ thead {
                
                 <% count = count+1;
              
-                    if(count > 1 && a==null)
-                    {break;}
+                    
                         }%>
                                 
                                
                             </tbody>
                         </table>
-                                <div style="text-align: center; color: blue"><p><a href="http://localhost:8080/GameStore/status.jsp?all=1">show all</a><p></div>
+                              
                     </div>
                 </div>
             </div>
