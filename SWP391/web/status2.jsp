@@ -60,6 +60,9 @@ thead {
                   <form action="FindHistory">
                     <input type="text" name="search"><button>Search</button>
                 </form>
+                 <form action="FindHistory1">
+                    <input type="text" name="search"><button>SearchByDay</button>
+                </form>
                 <div class="rounded">
                     <div class="table-responsive table-borderless">
                         <table class="table">

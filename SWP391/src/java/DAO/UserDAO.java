@@ -16,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import models.Blog;
 import models.Checkout;
 import models.ContactDTO;
 import models.User;
@@ -116,7 +117,7 @@ public class UserDAO {
         String sql = "select UserName,Passwords from Users where Roles = 'STAFF' ";
         PreparedStatement stm = con.prepareStatement(sql);
   
-   
+        
         ResultSet rs = stm.executeQuery();
         //if userId and password are correct
         while (rs.next()) {
@@ -126,21 +127,38 @@ public class UserDAO {
         con.close();
         return list;
     }
+ 
            
-          public static List<User> showAccount(String user) throws Exception {
-           List<User> list = new ArrayList();
+          public static List<Blog> showBlog() throws Exception {
+           List<Blog> list = new ArrayList();
         //Connecting to a database
         DBUtil db = new DBUtil();
         Connection con = db.getConnection();
         //Creating and executing sql statements            
-        String sql = "select UserName,Passwords from Users where UserName = ? ";
+        String sql = "select * from Blog";
         PreparedStatement stm = con.prepareStatement(sql);
-         stm.setString(1, user);
-   
         ResultSet rs = stm.executeQuery();
         //if userId and password are correct
         while (rs.next()) {
-            list.add(new User(1,rs.getString(1),rs.getString(2),""));
+            list.add( new Blog(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)));
+        }
+        //Closing the connection
+        con.close();
+        return list;
+    }    
+          public static List<Blog> showBlog(String a) throws Exception {
+           List<Blog> list = new ArrayList();
+        //Connecting to a database
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+        //Creating and executing sql statements            
+        String sql = "select * from Blog where Tittle = ?";
+        PreparedStatement stm = con.prepareStatement(sql);
+        stm.setString(1, a);
+        ResultSet rs = stm.executeQuery();
+        //if userId and password are correct
+        while (rs.next()) {
+            list.add( new Blog(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)));
         }
         //Closing the connection
         con.close();
@@ -213,6 +231,24 @@ public class UserDAO {
         //Creating and executing sql statements            
         String sql = "select Total,Phone,DateOrder,UserID from Checkout";
         PreparedStatement stm = con.prepareStatement(sql);
+        ResultSet rs = stm.executeQuery();
+        //if userId and password are correct
+        while (rs.next()) {
+            list.add(new Checkout(rs.getDouble(1),rs.getString(2),rs.getDate(3),rs.getInt(4)));
+        }
+        //Closing the connection
+        con.close();
+        return list;
+    } 
+           public static List<Checkout> showCheckout(int a) throws Exception {
+          List<Checkout> list = new ArrayList();
+        //Connecting to a database
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+        //Creating and executing sql statements            
+        String sql = "select Total,Phone,DateOrder,UserID from Checkout Where UserID = ? ";
+        PreparedStatement stm = con.prepareStatement(sql);
+        stm.setInt(1, a);
         ResultSet rs = stm.executeQuery();
         //if userId and password are correct
         while (rs.next()) {
@@ -338,6 +374,24 @@ public class UserDAO {
             stm.setString(2, password);
             stm.setString(3, "STAFF");
             stm.setString(4, "@company.com");
+            stm.executeUpdate();
+            //Closing the connection
+            con.close();
+    }
+    public static void addBlog(String img, String tittle, String a, String b) throws Exception {
+        //Connecting to a database
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+        //Check_duplication
+      
+            //Creating and executing sql statements            
+            String sql = "insert Blog values(?, ?, ?, ?, ?)";
+            PreparedStatement stm = con.prepareStatement(sql);
+            stm.setString(1, img);
+            stm.setString(2, "ADMIN");
+            stm.setString(3, tittle);
+            stm.setString(4, a);
+             stm.setString(5, b);
             stm.executeUpdate();
             //Closing the connection
             con.close();

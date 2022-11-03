@@ -4,6 +4,7 @@
     Author     : DELL
 --%>
 
+<%@page import="models.User"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="models.Checkout"%>
 <%@page import="java.util.List"%>
@@ -80,9 +81,9 @@ thead {
                     UserDAO dao = new UserDAO();
                    
                    String a = (String)request.getParameter("search");
-                   
-   
-                    List<Checkout> list = dao.searchChekoutbyDay(a);
+                    User b = (User)session.getAttribute("user");
+                     int c = b.getId();
+                    List<Checkout> list = dao.searchChekoutbyDay(a,c);
                     for (Checkout op : list) {
                     
                 %> 

@@ -112,7 +112,7 @@
 								<div class="rgi-content">
 									<h5>Suspendisse ut justo tem por, rutrum</h5>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit amet, consectetur elit. </p>
-									<a href="#" class="comment">3 Comments</a>
+									<a href="http://localhost:8080/GameStore/ListBlog.jsp" class="comment">3 Comments</a>
 									<div class="rgi-extra">
 										<div class="rgi-star"><img src="img/icons/star.png" alt=""></div>
 										<div class="rgi-heart"><img src="img/icons/heart.png" alt=""></div>
@@ -128,7 +128,7 @@
 								<div class="rgi-content">
 									<h5>Susce pulvinar metus nulla, vel  facilisis sem </h5>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit amet, consectetur elit. </p>
-									<a href="#" class="comment">3 Comments</a>
+									<a href="http://localhost:8080/GameStore/ListBlog.jsp" class="comment">3 Comments</a>
 									<div class="rgi-extra">
 										<div class="rgi-star"><img src="img/icons/star.png" alt=""></div>
 										<div class="rgi-heart"><img src="img/icons/heart.png" alt=""></div>
@@ -144,7 +144,7 @@
 								<div class="rgi-content">
 									<h5>Susce pulvinar metus nulla, vel  facilisis sem </h5>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit amet, consectetur elit. </p>
-									<a href="#" class="comment">3 Comments</a>
+									<a href="http://localhost:8080/GameStore/ListBlog.jsp" class="comment">3 Comments</a>
 									<div class="rgi-extra">
 										<div class="rgi-star"><img src="img/icons/star.png" alt=""></div>
 										<div class="rgi-heart"><img src="img/icons/heart.png" alt=""></div>
@@ -160,7 +160,7 @@
 								<div class="rgi-content">
 									<h5>Suspendisse ut justo tem por, rutrum</h5>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit amet, consectetur elit. </p>
-									<a href="#" class="comment">3 Comments</a>
+								<a href="http://localhost:8080/GameStore/ListBlog.jsp" class="comment">3 Comments</a>
 									<div class="rgi-extra">
 										<div class="rgi-star"><img src="img/icons/star.png" alt=""></div>
 										<div class="rgi-heart"><img src="img/icons/heart.png" alt=""></div>
@@ -168,70 +168,7 @@
 								</div>
 							</div>	
 						</div>
-						<div class="col-md-6">
-							<div class="recent-game-item">
-								<div class="rgi-thumb set-bg" data-setbg="img/recent-game/5.jpg">
-									<div class="cata racing">racing</div>
-								</div>
-								<div class="rgi-content">
-									<h5>Susce pulvinar metus nulla, vel  facilisis sem </h5>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit amet, consectetur elit. </p>
-									<a href="#" class="comment">3 Comments</a>
-									<div class="rgi-extra">
-										<div class="rgi-star"><img src="img/icons/star.png" alt=""></div>
-										<div class="rgi-heart"><img src="img/icons/heart.png" alt=""></div>
-									</div>
-								</div>
-							</div>	
-						</div>
-						<div class="col-md-6">
-							<div class="recent-game-item">
-								<div class="rgi-thumb set-bg" data-setbg="img/recent-game/6.jpg">
-									<div class="cata adventure">Adventure</div>
-								</div>
-								<div class="rgi-content">
-									<h5>Susce pulvinar metus nulla, vel  facilisis sem </h5>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit amet, consectetur elit. </p>
-									<a href="#" class="comment">3 Comments</a>
-									<div class="rgi-extra">
-										<div class="rgi-star"><img src="img/icons/star.png" alt=""></div>
-										<div class="rgi-heart"><img src="img/icons/heart.png" alt=""></div>
-									</div>
-								</div>
-							</div>	
-						</div>
-						<div class="col-md-6">
-							<div class="recent-game-item">
-								<div class="rgi-thumb set-bg" data-setbg="img/recent-game/7.jpg">
-									<div class="cata new">racing</div>
-								</div>
-								<div class="rgi-content">
-									<h5>Suspendisse ut justo tem por, rutrum</h5>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit amet, consectetur elit. </p>
-									<a href="#" class="comment">3 Comments</a>
-									<div class="rgi-extra">
-										<div class="rgi-star"><img src="img/icons/star.png" alt=""></div>
-										<div class="rgi-heart"><img src="img/icons/heart.png" alt=""></div>
-									</div>
-								</div>
-							</div>	
-						</div>
-						<div class="col-md-6">
-							<div class="recent-game-item">
-								<div class="rgi-thumb set-bg" data-setbg="img/recent-game/8.jpg">
-									<div class="cata racing">racing</div>
-								</div>
-								<div class="rgi-content">
-									<h5>Susce pulvinar metus nulla, vel  facilisis sem </h5>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit amet, consectetur elit. </p>
-									<a href="#" class="comment">3 Comments</a>
-									<div class="rgi-extra">
-										<div class="rgi-star"><img src="img/icons/star.png" alt=""></div>
-										<div class="rgi-heart"><img src="img/icons/heart.png" alt=""></div>
-									</div>
-								</div>
-							</div>	
-						</div>
+						
 					</div>
 					<div class="site-pagination">
 						<span class="active">01.</span>

@@ -58,7 +58,7 @@ thead {
         <div class="d-flex justify-content-center row">
             <div class="col-md-12">
                  <div style="text-align: center; color: blue"><h1>Check Order</h1></div></br>
-                  <form action="FindHistory">
+                  <form action="FindHistory2">
                     <input type="text" name="search"><button>Search</button>
                 </form>
                 <div class="rounded">
@@ -81,8 +81,8 @@ thead {
                     String a = request.getParameter("search");
                     User b = (User)session.getAttribute("user");
                     int c = b.getId();
-                   
-                    List<Checkout> list = dao.showCheckout();
+                    String d =request.getParameter("all");
+                    List<Checkout> list = dao.showCheckout(c);
                     for (Checkout op : list) {
                     
                 %> 
@@ -99,14 +99,14 @@ thead {
                
                 <% count = count+1;
              
-                    if(count > 1 && a==null)
+                    if(count > 1 && d==null)
                     {break;}
                         }%>
                                 
                                
                             </tbody>
                         </table>
-                                <div style="text-align: center; color: blue"><p><a href="http://localhost:8080/GameStore/status.jsp?all=1">show all</a><p></div>
+                                <div style="text-align: center; color: blue"><p><a href="http://localhost:8080/GameStore/status_user.jsp?all=1">show all</a><p></div>
                     </div>
                 </div>
             </div>

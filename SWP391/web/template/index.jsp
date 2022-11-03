@@ -89,6 +89,7 @@
 					<li><a href="categories.jsp">Blog</a></li>
 					<li><a href="community.jsp">Forums</a></li>
 					<li><a href="contact.jsp">Contact</a></li>
+                                        <li><a href="http://localhost:8080/demoSWP/index.jsp">Join with us</a></li>
 				</ul>
 			</nav>
 		</div>
