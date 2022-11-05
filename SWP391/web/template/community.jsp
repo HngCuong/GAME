@@ -1,322 +1,371 @@
 <%-- 
-    Document   : community
-    Created on : Sep 29, 2022, 10:35:09 AM
+    Document   : categories
+    Created on : Sep 29, 2022, 10:34:40 AM
     Author     : DELL
 --%>
 
+<%@page import="models.Blog"%>
 <%@page import="DAO.UserDAO"%>
+<%@page import="models.Product"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.List"%>
+<%@page import="DAO.ProductDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>SWP GAME STORE</title>
-	<meta charset="UTF-8">
-	<meta name="description" content="SWP GAME STORE">
-	<meta name="keywords" content="warrior, game, creative, html">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- Favicon -->   
-	<link href="img/favicon.ico" rel="shortcut icon"/>
+<html lang="zxx">
+    <head>
+        <title>Game Warrior Template</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="SWP GAME STORE">
+        <meta name="keywords" content="warrior, game, creative, html">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Favicon -->   
+        <link href="img/favicon.ico" rel="shortcut icon"/>
 
-	<!-- Google Fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i" rel="stylesheet">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i" rel="stylesheet">
 
-	<!-- Stylesheets -->
-	<link rel="stylesheet" href="css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="css/font-awesome.min.css"/>
-	<link rel="stylesheet" href="css/owl.carousel.css"/>
-	<link rel="stylesheet" href="css/style.css"/>
-	<link rel="stylesheet" href="css/animate.css"/>
-
-
-	<!--[if lt IE 9]>
-	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
-
-</head>
-<body>
-	<!-- Page Preloder -->
-	<div id="preloder">
-		<div class="loader"></div>
-	</div>
-
-	<!-- Header section -->
-	<header class="header-section">
-		<div class="container">
-			<!-- logo -->
-			<a class="site-logo" href="index.jsp">
-				<img src="./img/logo2.png" alt="">
-			</a>
-			<div class="user-panel">
-				<a href="#">Login</a>  /  <a href="#">Register</a>
-			</div>
-			<!-- responsive -->
-			<div class="nav-switch">
-				<i class="fa fa-bars"></i>
-			</div>
-			<!-- site menu -->
-			<nav class="main-menu">
-				<ul>
-					<li><a href="index.jsp">Home</a></li>
-					<li><a href="../home/homepage.do?op=list">Games</a></li>
-					<li><a href="categories.jsp">Blog</a></li>
-					<li><a href="community.jsp">Forums</a></li>
-					<li><a href="contact.jsp">Contact</a></li>
-				</ul>
-			</nav>
-		</div>
-	</header>
-	<!-- Header section end -->
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="css/owl.carousel.css"/>
+        <link rel="stylesheet" href="css/style.css"/>
+        <link rel="stylesheet" href="css/animate.css"/>
 
 
-	<!-- Latest news section -->
-	<div class="latest-news-section">
-		<div class="ln-title">Latest News</div>
-		<div class="news-ticker">
-			<div class="news-ticker-contant">
-				<div class="nt-item"><span class="new">new</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
-				<div class="nt-item"><span class="strategy">strategy</span>Isum dolor sit amet, consectetur adipiscing elit. </div>
-				<div class="nt-item"><span class="racing">racing</span>Isum dolor sit amet, consectetur adipiscing elit. </div>
-			</div>
-		</div>
-	</div>
-	<!-- Latest news section end -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    </head>
+    <body>
+        <!-- Page Preloder -->
+        <div id="preloder">
+            <div class="loader"></div>
+        </div>
+
+        <!-- Header section -->
+        <header class="header-section">
+            <div class="container">
+                <!-- logo -->
+                <a class="site-logo" href="index.jsp">
+                    <img src="./img/logo2.png" alt="">
+                </a>
+              
+                <!-- responsive -->
+                <div class="nav-switch">
+                    <i class="fa fa-bars"></i>
+                </div>
+                <!-- site menu -->
+                <nav class="main-menu">
+                    <ul>
+                        <li><a href="index.jsp">Home</a></li>
+                        <li><a href="../home/homepage.do?op=list">Games</a></li>
+                        <li><a href="categories.jsp">Blog</a></li>
+                        <li><a href="community.jsp">Forums</a></li>
+                        <li><a href="contact.jsp">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <!-- Header section end -->
+     
+
+        <!-- Latest news section -->
+        <div class="latest-news-section">
+            <div class="ln-title">Latest News</div>
+            <div class="news-ticker">
+                <div class="news-ticker-contant">
+                    <% ProductDAO dao = new ProductDAO();
+                    List<Product> list = dao.latest();
+                    for (Product op : list) {%>
+                    <div class="nt-item"><span class="new">new</span><%=op.getProductName()%></div>
+                    <%}%>    
+                </div>
+            </div>
+        </div>
+        <!-- Latest news section end -->
 
 
-	<!-- Page info section -->
-	<section class="page-info-section set-bg" data-setbg="img/page-top-bg/4.jpg">
-		<div class="pi-content">
-			<div class="container">
-				<div class="row">
-					<div class="col-xl-5 col-lg-6 text-white">
-						<h2>Our Community</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Page info section -->
+        <!-- Page info section -->
+        <section class="page-info-section set-bg" data-setbg="img/page-top-bg/1.jpg">
+            <div class="pi-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-5 col-lg-6 text-white">
+                            <h2>Our Blog</h2>
+                            <p>Welcome to our Blog. Here we will update the hottest articles we have seen on the forums. Hope we can bring you interesting news.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Page info section -->
 
 
-	<!-- Page section -->
-        <% UserDAO dao = new UserDAO();
-         int mem = dao.findAll();
-         
-            %>
-	<section class="page-section community-page set-bg" data-setbg="img/community-bg.jpg">
-		<div class="community-warp spad">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6">
-						<h3 class="community-top-title">All Members <%= mem %> </h3>
-					</div>
-					<div class="col-md-6 text-lg-right">
-						<form class="community-filter">
-							<label for="fdf5">Show</label>
-							<select id="fdf5">
-								<option value="#">Everything</option>
-								<option value="#">Everything</option>
-							</select>
-						</form>
-					</div>
-				</div>
-				<ul class="community-post-list">
-					<li>
-						<div class="community-post">
-							<div class="author-avator set-bg" data-setbg="img/authors/1.jpg"></div>
-							<div class="post-content">
-								<h5>James Smith<span>posted an update</span></h5>
-								<div class="post-date">June 21, 2018</div>
-								<p>Lorem ipsum dolor sit amet, cdictum nisl onsectetur adipisc ing ipsum dolor sit ame. Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit ame.Donec venenatis at eros sit amet aliquam. Donec vel orci efficitur, dictum nisl vitae, scelerisque nibh. Curabitur eget ipsum pulvinar nunc gravida interdum. </p>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="community-post">
-							<div class="author-avator set-bg" data-setbg="img/authors/8.jpg"></div>
-							<div class="post-content">
-								<h5>Partik Williams<span>posted an update</span></h5>
-								<div class="post-date">June 21, 2018</div>
-								<p>Lorem ipsum dolor sit amet, cdictum nisl onsectetur adipisc ing ipsum dolor sit ame. Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit ame.Donec venenatis at eros sit amet aliquam. Donec vel orci efficitur, dictum nisl vitae, scelerisque nibh. Curabitur eget ipsum pulvinar nunc gravida interdum. </p>
-								<div class="attachment-file">
-									<img src="img/attachment.jpg" alt="">
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="community-post">
-							<div class="author-avator set-bg" data-setbg="img/authors/5.jpg"></div>
-							<div class="post-content">
-								<h5>Cris The Man<span>posted an update</span></h5>
-								<div class="post-date">June 21, 2018</div>
-								<p>Lorem ipsum dolor sit amet, cdictum nisl onsectetur adipisc ing ipsum dolor sit ame. Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit ame.Donec venenatis at eros sit amet aliquam. Donec vel orci efficitur, dictum nisl vitae, scelerisque nibh. Curabitur eget ipsum pulvinar nunc gravida interdum. </p>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="community-post">
-							<div class="author-avator set-bg" data-setbg="img/authors/1.jpg"></div>
-							<div class="post-content">
-								<h5>James Smith<span>posted an update</span></h5>
-								<div class="post-date">June 21, 2018</div>
-								<p>Lorem ipsum dolor sit amet, cdictum nisl onsectetur adipisc ing ipsum dolor sit ame. Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit ame.Donec venenatis at eros sit amet aliquam. Donec vel orci efficitur, dictum nisl vitae, scelerisque nibh. Curabitur eget ipsum pulvinar nunc gravida interdum. </p>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="community-post">
-							<div class="author-avator set-bg" data-setbg="img/authors/4.jpg"></div>
-							<div class="post-content">
-								<h5>Cris The Man<span>posted an update</span></h5>
-								<div class="post-date">June 21, 2018</div>
-								<p>Lorem ipsum dolor sit amet, cdictum nisl onsectetur adipisc ing ipsum dolor sit ame. Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit ame.Donec venenatis at eros sit amet aliquam. Donec vel orci efficitur, dictum nisl vitae, scelerisque nibh. Curabitur eget ipsum pulvinar nunc gravida interdum. </p>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="community-post">
-							<div class="author-avator set-bg" data-setbg="img/authors/6.jpg"></div>
-							<div class="post-content">
-								<h5>James Smith<span>posted an update</span></h5>
-								<div class="post-date">June 21, 2018</div>
-								<p>Lorem ipsum dolor sit amet, cdictum nisl onsectetur adipisc ing ipsum dolor sit ame. Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit ame.Donec venenatis at eros sit amet aliquam. Donec vel orci efficitur, dictum nisl vitae, scelerisque nibh. Curabitur eget ipsum pulvinar nunc gravida interdum. </p>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="community-post">
-							<div class="author-avator set-bg" data-setbg="img/authors/7.jpg"></div>
-							<div class="post-content">
-								<h5>Maria Doe<span>posted an update</span></h5>
-								<div class="post-date">June 21, 2018</div>
-								<p>Lorem ipsum dolor sit amet, cdictum nisl onsectetur adipisc ing ipsum dolor sit ame. Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit ame.Donec venenatis at eros sit amet aliquam. Donec vel orci efficitur, dictum nisl vitae, scelerisque nibh. Curabitur eget ipsum pulvinar nunc gravida interdum. </p>
-							</div>
-						</div>
-					</li>
-				</ul>
-				<div class="site-pagination sp-style-2">
-					<span class="active">01.</span>
-					<a href="#">02.</a>
-					<a href="#">03.</a>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Page section end -->
+        <!-- Page section -->
+        <section class="page-section recent-game-page spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="row">
+                            
+                    <%
+                    UserDAO tool = new UserDAO();              
+                   List<Blog> blog = tool.showBlog();
+                    for (Blog op : blog) {
+                %> 
+                  
+                            <div class="col-md-6" >
+                                <div class="recent-game-item">
+                                    <div class="rgi-thumb set-bg" data-setbg="<%=op.getImage()%>">
+                               
+                                    </div>
+                                    <div class="rgi-content">
+                                        <a href="single-blog.jsp?img=<%=op.getImage()%>&tittle=<%=op.getTittle()%>&big=<%=op.getBig()%>&small=<%=op.getSmall()%> " class="comment">     <h5><%=op.getTittle()%></h5></a>
+                                        <p><%=op.getSmall()%></p>
+                                       
+                                        <div class="rgi-extra">
+                                            <div class="rgi-star"><img src="img/icons/star.png" alt=""></div>
+                                            <div class="rgi-heart"><img src="img/icons/heart.png" alt=""></div>
+                                        </div>
+                                    </div>
+                                </div>	
+                            </div>
+                            <% 
+                    }%>
+
+                        </div>
+                        <div class="site-pagination">
+                            <span class="active">01.</span>
+                            <a href="#">02.</a>
+                            <a href="#">03.</a>
+                        </div>
+                    </div>
+                    <!-- sidebar -->
+                    <div class="col-lg-4 col-md-7 sidebar pt-5 pt-lg-0">
+                        <!-- widget -->
+                        <div class="widget-item">
+                            <form class="search-widget">
+                                <input type="text" placeholder="Search">
+                                <button><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
+                        <!-- widget -->
+                        <div class="widget-item">
+                            <h4 class="widget-title">Latest Posts</h4>
+                            <div class="latest-blog">
+                                <div class="lb-item">
+                                    <div class="lb-thumb set-bg" data-setbg="img/latest-blog/1.jpg"></div>
+                                    <div class="lb-content">
+                                        <div class="lb-date">June 21, 2018</div>
+                                        <p>Ipsum dolor sit amet, consectetur adipisc ing consecips</p>
+                                        <a href="#" class="lb-author">By Admin</a>
+                                    </div>
+                                </div>
+                                <div class="lb-item">
+                                    <div class="lb-thumb set-bg" data-setbg="img/latest-blog/2.jpg"></div>
+                                    <div class="lb-content">
+                                        <div class="lb-date">June 21, 2018</div>
+                                        <p>Ipsum dolor sit amet, consectetur adipisc ing consecips</p>
+                                        <a href="#" class="lb-author">By Admin</a>
+                                    </div>
+                                </div>
+                                <div class="lb-item">
+                                    <div class="lb-thumb set-bg" data-setbg="img/latest-blog/3.jpg"></div>
+                                    <div class="lb-content">
+                                        <div class="lb-date">June 21, 2018</div>
+                                        <p>Ipsum dolor sit amet, consectetur adipisc ing consecips</p>
+                                        <a href="#" class="lb-author">By Admin</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- widget -->
+                        <div class="widget-item">
+                            <h4 class="widget-title">Top Comments</h4>
+                            <div class="top-comment">
+                                <div class="tc-item">
+                                    <div class="tc-thumb set-bg" data-setbg="img/authors/1.jpg"></div>
+                                    <div class="tc-content">
+                                        <p><a href="#">James Smith</a> <span>on</span> CHào các bạn của tôi</p>
+                                        <div class="tc-date">June 21, 2018</div>
+                                    </div>
+                                </div>
+                                <div class="tc-item">
+                                    <div class="tc-thumb set-bg" data-setbg="img/authors/2.jpg"></div>
+                                    <div class="tc-content">
+                                        <p><a href="#">Michael James</a> <span>on</span>CHào các bạn của tôi/p>
+                                        <div class="tc-date">June 21, 2018</div>
+                                    </div>
+                                </div>
+                                <div class="tc-item">
+                                    <div class="tc-thumb set-bg" data-setbg="img/authors/3.jpg"></div>
+                                    <div class="tc-content">
+                                        <p><a href="#">Justin More</a> <span>on</span>CHào các bạn của tôio</p>
+                                        <div class="tc-date">June 21, 2018</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- widget -->
+                    
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Page section end -->
 
 
-	<!-- Footer top section -->
-	<section class="footer-top-section">
-		<div class="container">
-			<div class="footer-top-bg">
-				<img src="img/footer-top-bg.png" alt="">
-			</div>
-			<div class="row">
-				<div class="col-lg-4">
-					<div class="footer-logo text-white">
-						<img src="img/footer-logo.png" alt="">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit ame.</p>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="footer-widget mb-5 mb-md-0">
-						<h4 class="fw-title">Latest Posts</h4>
-						<div class="latest-blog">
-							<div class="lb-item">
-								<div class="lb-thumb set-bg" data-setbg="img/latest-blog/1.jpg"></div>
-								<div class="lb-content">
-									<div class="lb-date">June 21, 2018</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum </p>
-									<a href="#" class="lb-author">By Admin</a>
-								</div>
-							</div>
-							<div class="lb-item">
-								<div class="lb-thumb set-bg" data-setbg="img/latest-blog/2.jpg"></div>
-								<div class="lb-content">
-									<div class="lb-date">June 21, 2018</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum </p>
-									<a href="#" class="lb-author">By Admin</a>
-								</div>
-							</div>
-							<div class="lb-item">
-								<div class="lb-thumb set-bg" data-setbg="img/latest-blog/3.jpg"></div>
-								<div class="lb-content">
-									<div class="lb-date">June 21, 2018</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum </p>
-									<a href="#" class="lb-author">By Admin</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="footer-widget">
-						<h4 class="fw-title">Top Comments</h4>
-						<div class="top-comment">
-							<div class="tc-item">
-								<div class="tc-thumb set-bg" data-setbg="img/authors/1.jpg"></div>
-								<div class="tc-content">
-									<p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
-									<div class="tc-date">June 21, 2018</div>
-								</div>
-							</div>
-							<div class="tc-item">
-								<div class="tc-thumb set-bg" data-setbg="img/authors/2.jpg"></div>
-								<div class="tc-content">
-									<p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
-									<div class="tc-date">June 21, 2018</div>
-								</div>
-							</div>
-							<div class="tc-item">
-								<div class="tc-thumb set-bg" data-setbg="img/authors/3.jpg"></div>
-								<div class="tc-content">
-									<p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
-									<div class="tc-date">June 21, 2018</div>
-								</div>
-							</div>
-							<div class="tc-item">
-								<div class="tc-thumb set-bg" data-setbg="img/authors/4.jpg"></div>
-								<div class="tc-content">
-									<p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
-									<div class="tc-date">June 21, 2018</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Footer top section end -->
+        <!-- Footer top section -->
+        <section class="footer-top-section">
+            <div class="container">
+                <div class="footer-top-bg">
+                    <img src="img/footer-top-bg.png" alt="">
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="footer-logo text-white">
+                            <img src="img/footer-logo.png" alt="">
+                            <p>Our company's website is pleased to bring you games at extremely low prices. If you want to be part of our family. Join now.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-widget mb-5 mb-md-0">
+                            <h3 class="fw-title">Address</h3>
+                            </br>
+                            </br>
+                            <div class="latest-blog">
+                                <div class="lb-item">
+                                    <div class="lb-thumb set-bg" data-setbg="img/latest-blog/1.jpg"></div>
+                                    <div class="lb-content">
+                                        <p>FPT University, Hi-Tech Park, District 9 Ho Chi Minh City 71216 Vietnam · ~3.6 km </p>
+                                    </div>
+                                </div>
+                            </div>
+                            </br>
+                            </br>
+                            <h3 class="fw-title">Phone / Mail</h3></br>
+                            <div class="latest-blog">
+                                <div class="lb-item">
+                                    <div class="lb-thumb set-bg" data-setbg="img/latest-blog/1.jpg"></div>
+                                    <div class="lb-content">
 
-	
-	<!-- Footer section -->
-	<footer class="footer-section">
-		<div class="container">
-			<ul class="footer-menu">
-				<li><a href="index.jsp">Home</a></li>
-				<li><a href="review.jsp">Games</a></li>
-				<li><a href="categories.jsp">Blog</a></li>
-				<li><a href="community.jsp">Forums</a></li>
-				<li><a href="contact.jsp">Contact</a></li>
-			</ul>
-			<p class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-</p>
-		</div>
-	</footer>
-	<!-- Footer section end -->
+                                        <p>
+                                            Mail: CUONGHCSE150679@fpt.edu.vn Phone: +84 776 190 244</p>
+                                    </div></br></br>
+                                </div>
+
+                            </div>
+                        </div>    
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-widget">
+                            <h4 class="fw-title">Our Team</h4>
+                            <div class="top-comment">
+                                <div class="tc-item">
+                                    <div class="tc-thumb set-bg" data-setbg="1.jpg"></div>
+
+                                    <div class="tc-content">
+                                        <p><a href="#">Phan Thiên Ân</a></br> <span>on</span>  FPT University HCM</p>
+                                        <div class="tc-date">09xx.xxx.xxx</div>
+                                    </div>
+                                </div>
+                                <div class="tc-item">
+                                    <div class="tc-thumb set-bg" data-setbg="2.jpg"></div>
+
+                                    <div class="tc-content">
+                                        <p><a href="#">Nguyễn Quang Minh</a></br> <span>on</span>  FPT University HCM</p>
+                                        <div class="tc-date">09xx.xxx.xxx</div>
+                                    </div>
+                                </div>
+                                <div class="tc-item">
+                                    <div class="tc-thumb set-bg" data-setbg="3.jpg"></div>
+                                    <div class="tc-content">
+                                        <p><a href="#">Phạm Quang Quý</a></br> <span>on</span>  FPT University HCM</p>
+                                        <div class="tc-date">09xx.xxx.xxx</div>
+                                    </div>
+                                </div>
+                                <div class="tc-item">
+                                    <div class="tc-thumb set-bg" data-setbg="4.jpg"></div>
+                                    <div class="tc-content">
+                                        <p><a href="#">Huỳn Chí Cường</a></br> <span>on</span>  FPT University HCM</p>
+                                        <div class="tc-date">09xx.xxx.xxx</div>
+                                    </div>
+                                </div>
+                                <div class="tc-item">
+                                    <div class="tc-thumb set-bg" data-setbg="5.jpg"></div>
+                                    <div class="tc-content">
+                                        <p><a href="#">Võ Chí Cường</a></br> <span>on</span>  FPT University HCM</p>
+                                        <div class="tc-date">09xx.xxx.xxx</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer top section end -->
+
+        <!-- Footer section -->
+        <footer class="footer-section">
+            <div class="container">
+                <ul class="footer-menu">
+                    <li><a href="index.jsp">Home</a></li>
+                    <li><a href="review.jsp">Games</a></li>
+                    <li><a href="categories.jsp">Blog</a></li>
+                    <li><a href="community.jsp">Forums</a></li>
+                    <li><a href="contact.jsp">Contact</a></li>
+                </ul>
+
+            </div>
+
+            <script src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js'></script>
+            <!--Back to Top Button Start-www.thenaynhe.com--><script>
+                jQuery(document).ready(function () {
+                    var offset = 220;
+                    var duration = 500;
+                    jQuery(window).scroll(function () {
+                        if (jQuery(this).scrollTop() > offset) {
+                            jQuery('.back-to-top').fadeIn(duration);
+                        } else {
+                            jQuery('.back-to-top').fadeOut(duration);
+                        }
+                    });
+                    jQuery('.back-to-top').click(function (event) {
+                        event.preventDefault();
+                        jQuery('html, body').animate({scrollTop: 0}, duration);
+                        return false;
+                })
+            });</script>
+            <style>
+                div#page {
+                    max-width: 900px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    padding: 20px;}
+                .back-to-top {
+                    position: fixed;
+                    bottom: 2em;
+                    right: 0px;
+                    text-decoration: none;
+                    color: #000000;
+                    background-color: rgba(235, 235, 235, 0.80);
+                    font-size: 12px;
+                    padding: 1em;
+                    display: none;}
+                .back-to-top:hover {
+                    text-decoration: none;}</style>
+            <a href="#" class="back-to-top"><img src="them-nut-len-dau-trang-back-to-top-button-63-4.jpg" alt="Back to Top" /></a>
 
 
-	<!--====== Javascripts & Jquery ======-->
-	<script src="js/jquery-3.2.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/jquery.marquee.min.js"></script>
-	<script src="js/main.js"></script>
+            <!--====== Javascripts & Jquery ======-->
+            <script src="js/jquery-3.2.1.min.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+            <script src="js/owl.carousel.min.js"></script>
+            <script src="js/jquery.marquee.min.js"></script>
+            <script src="js/main.js"></script>
     </body>
 </html>

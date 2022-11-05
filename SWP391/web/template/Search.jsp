@@ -112,8 +112,9 @@
                         <div class="row">
                             
                     <%
-                    UserDAO tool = new UserDAO();              
-                   List<Blog> blog = tool.showBlog();
+                    UserDAO tool = new UserDAO(); 
+                    String b = request.getParameter("search");
+                   List<Blog> blog = tool.showBlog(b);
                     for (Blog op : blog) {
                 %> 
                   
@@ -137,11 +138,7 @@
                     }%>
 
                         </div>
-                        <div class="site-pagination">
-                            <span class="active">01.</span>
-                            <a href="#">02.</a>
-                            <a href="#">03.</a>
-                        </div>
+                     
                     </div>
                     <!-- sidebar -->
                     <div class="col-lg-4 col-md-7 sidebar pt-5 pt-lg-0">
@@ -149,7 +146,7 @@
                         <div class="widget-item">
                             <form action="../FindHistory4">
                                  <input type="text" name="search">
-                                <button>Seach</button>
+                                <button><i class="fa fa-search"></i></button>
                             </form>
                         </div>
                         <!-- widget -->
@@ -194,14 +191,14 @@
                                     </div>
                                 </div>
                                 <div class="tc-item">
-                                    <div class="tc-thumb set-bg" data-setbg="img/authors/1.jpg"></div>
+                                    <div class="tc-thumb set-bg" data-setbg="img/authors/2.jpg"></div>
                                     <div class="tc-content">
                                         <p><a href="#">Michael James</a> <span>on</span>CHào các bạn của tôi/p>
                                         <div class="tc-date">June 21, 2018</div>
                                     </div>
                                 </div>
                                 <div class="tc-item">
-                                    <div class="tc-thumb set-bg" data-setbg="img/authors/1.jpg"></div>
+                                    <div class="tc-thumb set-bg" data-setbg="img/authors/3.jpg"></div>
                                     <div class="tc-content">
                                         <p><a href="#">Justin More</a> <span>on</span>CHào các bạn của tôio</p>
                                         <div class="tc-date">June 21, 2018</div>

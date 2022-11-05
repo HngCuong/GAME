@@ -146,6 +146,23 @@ public class UserDAO {
         con.close();
         return list;
     }    
+              public static List<Blog> showBlogdown() throws Exception {
+           List<Blog> list = new ArrayList();
+        //Connecting to a database
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+        //Creating and executing sql statements            
+        String sql = "select * from Blog";
+        PreparedStatement stm = con.prepareStatement(sql);
+        ResultSet rs = stm.executeQuery();
+        //if userId and password are correct
+        while (rs.next()) {
+            list.add( new Blog(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)));
+        }
+        //Closing the connection
+        con.close();
+        return list;
+    }    
           public static List<Blog> showBlog(String a) throws Exception {
            List<Blog> list = new ArrayList();
         //Connecting to a database

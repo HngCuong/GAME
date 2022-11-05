@@ -1,3 +1,6 @@
+<%@page import="models.Product"%>
+<%@page import="java.util.List"%>
+<%@page import="DAO.ProductDAO"%>
 
 form<%-- 
     Document   : contact
@@ -48,9 +51,7 @@ form<%--
 			<a class="site-logo" href="index.jsp">
 				<img src="./img/logo2.png" alt="">
 			</a>
-			<div class="user-panel">
-				<a href="#">Login</a>  /  <a href="#">Register</a>
-			</div>
+
 			<!-- responsive -->
 			<div class="nav-switch">
 				<i class="fa fa-bars"></i>
@@ -75,9 +76,11 @@ form<%--
 		<div class="ln-title">Latest News</div>
 		<div class="news-ticker">
 			<div class="news-ticker-contant">
-				<div class="nt-item"><span class="new">new</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
-				<div class="nt-item"><span class="strategy">strategy</span>Isum dolor sit amet, consectetur adipiscing elit. </div>
-				<div class="nt-item"><span class="racing">racing</span>Isum dolor sit amet, consectetur adipiscing elit. </div>
+				<% ProductDAO dao = new ProductDAO();
+                    List<Product> list = dao.latest();
+                    for (Product op : list) {%>
+                    <div class="nt-item"><span class="new">new</span><%=op.getProductName()%></div>
+                    <%}%>    
 			</div>
 		</div>
 	</div>
@@ -155,108 +158,142 @@ form<%--
 	<!-- Page section end -->
 
 
-	<!-- Footer top section -->
-	<section class="footer-top-section">
-		<div class="container">
-			<div class="footer-top-bg">
-				<img src="img/footer-top-bg.png" alt="">
-			</div>
-			<div class="row">
-				<div class="col-lg-4">
-					<div class="footer-logo text-white">
-						<img src="img/footer-logo.png" alt="">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit ame.</p>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="footer-widget mb-5 mb-md-0">
-						<h4 class="fw-title">Latest Posts</h4>
-						<div class="latest-blog">
-							<div class="lb-item">
-								<div class="lb-thumb set-bg" data-setbg="img/latest-blog/1.jpg"></div>
-								<div class="lb-content">
-									<div class="lb-date">June 21, 2018</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum </p>
-									<a href="#" class="lb-author">By Admin</a>
-								</div>
-							</div>
-							<div class="lb-item">
-								<div class="lb-thumb set-bg" data-setbg="img/latest-blog/2.jpg"></div>
-								<div class="lb-content">
-									<div class="lb-date">June 21, 2018</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum </p>
-									<a href="#" class="lb-author">By Admin</a>
-								</div>
-							</div>
-							<div class="lb-item">
-								<div class="lb-thumb set-bg" data-setbg="img/latest-blog/3.jpg"></div>
-								<div class="lb-content">
-									<div class="lb-date">June 21, 2018</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum </p>
-									<a href="#" class="lb-author">By Admin</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="footer-widget">
-						<h4 class="fw-title">Top Comments</h4>
-						<div class="top-comment">
-							<div class="tc-item">
-								<div class="tc-thumb set-bg" data-setbg="img/authors/1.jpg"></div>
-								<div class="tc-content">
-									<p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
-									<div class="tc-date">June 21, 2018</div>
-								</div>
-							</div>
-							<div class="tc-item">
-								<div class="tc-thumb set-bg" data-setbg="img/authors/2.jpg"></div>
-								<div class="tc-content">
-									<p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
-									<div class="tc-date">June 21, 2018</div>
-								</div>
-							</div>
-							<div class="tc-item">
-								<div class="tc-thumb set-bg" data-setbg="img/authors/3.jpg"></div>
-								<div class="tc-content">
-									<p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
-									<div class="tc-date">June 21, 2018</div>
-								</div>
-							</div>
-							<div class="tc-item">
-								<div class="tc-thumb set-bg" data-setbg="img/authors/4.jpg"></div>
-								<div class="tc-content">
-									<p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
-									<div class="tc-date">June 21, 2018</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Footer top section end -->
+      <!-- Footer top section -->
+        <section class="footer-top-section">
+            <div class="container">
+                <div class="footer-top-bg">
+                    <img src="img/footer-top-bg.png" alt="">
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="footer-logo text-white">
+                            <img src="img/footer-logo.png" alt="">
+                            <p>Our company's website is pleased to bring you games at extremely low prices. If you want to be part of our family. Join now.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-widget mb-5 mb-md-0">
+                            <h3 class="fw-title">Address</h3>
+                            </br>
+                            </br>
+                            <div class="latest-blog">
+                                <div class="lb-item">
+                                    <div class="lb-thumb set-bg" data-setbg="img/latest-blog/1.jpg"></div>
+                                    <div class="lb-content">
+                                        <p>FPT University, Hi-Tech Park, District 9 Ho Chi Minh City 71216 Vietnam · ~3.6 km </p>
+                                    </div>
+                                </div>
+                            </div>
+                            </br>
+                            </br>
+                            <h3 class="fw-title">Phone / Mail</h3></br>
+                            <div class="latest-blog">
+                                <div class="lb-item">
+                                    <div class="lb-thumb set-bg" data-setbg="img/latest-blog/1.jpg"></div>
+                                    <div class="lb-content">
 
-	
-	<!-- Footer section -->
-	<footer class="footer-section">
-		<div class="container">
-			<ul class="footer-menu">
-				<li><a href="index.jsp">Home</a></li>
-				<li><a href="review.jsp">Games</a></li>
-				<li><a href="categories.jsp">Blog</a></li>
-				<li><a href="community.jsp">Forums</a></li>
-				<li><a href="contact.jsp">Contact</a></li>
-			</ul>
-			<p class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-</p>
-		</div>
-	</footer>
-	<!-- Footer section end -->
+                                        <p>
+                                            Mail: CUONGHCSE150679@fpt.edu.vn Phone: +84 776 190 244</p>
+                                    </div></br></br>
+                                </div>
+
+                            </div>
+                        </div>    
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-widget">
+                            <h4 class="fw-title">Our Team</h4>
+                            <div class="top-comment">
+                                <div class="tc-item">
+                                    <div class="tc-thumb set-bg" data-setbg="1.jpg"></div>
+
+                                    <div class="tc-content">
+                                        <p><a href="#">Phan Thiên Ân</a></br> <span>on</span>  FPT University HCM</p>
+                                        <div class="tc-date">09xx.xxx.xxx</div>
+                                    </div>
+                                </div>
+                                <div class="tc-item">
+                                    <div class="tc-thumb set-bg" data-setbg="2.jpg"></div>
+
+                                    <div class="tc-content">
+                                        <p><a href="#">Nguyễn Quang Minh</a></br> <span>on</span>  FPT University HCM</p>
+                                        <div class="tc-date">09xx.xxx.xxx</div>
+                                    </div>
+                                </div>
+                                <div class="tc-item">
+                                    <div class="tc-thumb set-bg" data-setbg="3.jpg"></div>
+                                    <div class="tc-content">
+                                        <p><a href="#">Phạm Quang Quý</a></br> <span>on</span>  FPT University HCM</p>
+                                        <div class="tc-date">09xx.xxx.xxx</div>
+                                    </div>
+                                </div>
+                                <div class="tc-item">
+                                    <div class="tc-thumb set-bg" data-setbg="4.jpg"></div>
+                                    <div class="tc-content">
+                                        <p><a href="#">Huỳn Chí Cường</a></br> <span>on</span>  FPT University HCM</p>
+                                        <div class="tc-date">09xx.xxx.xxx</div>
+                                    </div>
+                                </div>
+                                <div class="tc-item">
+                                    <div class="tc-thumb set-bg" data-setbg="5.jpg"></div>
+                                    <div class="tc-content">
+                                        <p><a href="#">Võ Chí Cường</a></br> <span>on</span>  FPT University HCM</p>
+                                        <div class="tc-date">09xx.xxx.xxx</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer top section end -->
+
+        <!-- Footer section -->
+        <footer class="footer-section">
+            <div class="container">
+                <ul class="footer-menu">
+                    <li><a href="index.jsp">Home</a></li>
+                    <li><a href="review.jsp">Games</a></li>
+                    <li><a href="categories.jsp">Blog</a></li>
+                    <li><a href="community.jsp">Forums</a></li>
+                    <li><a href="contact.jsp">Contact</a></li>
+                </ul>
+
+            </div>
+      
+        <script src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js'></script>
+        <!--Back to Top Button Start-www.thenaynhe.com--><script>
+jQuery(document).ready(function() {
+var offset = 220;
+var duration = 500;
+jQuery(window).scroll(function() {
+if (jQuery(this).scrollTop() > offset) {
+jQuery('.back-to-top').fadeIn(duration);} else {
+jQuery('.back-to-top').fadeOut(duration);}});
+jQuery('.back-to-top').click(function(event) {
+event.preventDefault();
+jQuery('html, body').animate({scrollTop: 0}, duration);
+return false;})});</script>
+<style>
+div#page {
+max-width: 900px;
+margin-left: auto;
+margin-right: auto;
+padding: 20px;}
+.back-to-top {
+position: fixed;
+bottom: 2em;
+right: 0px;
+text-decoration: none;
+color: #000000;
+background-color: rgba(235, 235, 235, 0.80);
+font-size: 12px;
+padding: 1em;
+display: none;}
+.back-to-top:hover {
+text-decoration: none;}</style>
+<a href="#" class="back-to-top"><img src="them-nut-len-dau-trang-back-to-top-button-63-4.jpg" alt="Back to Top" /></a>
 
 
 	<!--====== Javascripts & Jquery ======-->

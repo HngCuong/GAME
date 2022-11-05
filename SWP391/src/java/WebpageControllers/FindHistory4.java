@@ -35,11 +35,10 @@ public class FindHistory4 extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
            String a = request.getParameter("search");
             if(a.isEmpty()){
-            response.sendRedirect("ListBlog.jsp");}
+            response.sendRedirect("template/categories.jsp");}
         
         else {
-               request.setAttribute("username", a);
-               request.getRequestDispatcher("ListBlog1.jsp").forward(request, response);}
+              response.sendRedirect("template/Search.jsp?search="+a);}
         }
     }
 
