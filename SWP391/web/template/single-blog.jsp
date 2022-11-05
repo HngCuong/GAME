@@ -4,6 +4,9 @@
     Author     : DELL
 --%>
 
+<%@page import="models.Comment"%>
+<%@page import="models.Blog"%>
+<%@page import="DAO.UserDAO"%>
 <%@page import="models.Product"%>
 <%@page import="java.util.List"%>
 <%@page import="DAO.ProductDAO"%>
@@ -105,45 +108,23 @@
                             <h3><%=b%></h3>
                             <p><%=c%></p>
                         </div>
-                        <div class="comment-warp">
-                            <h4 class="comment-title">Top Coments</h4>
-                            <ul class="comment-list">
-                                <li>
-                                    <div class="comment">
-                                        <div class="comment-avator set-bg" data-setbg="img/authors/1.jpg"></div>
-                                        <div class="comment-content">
-                                            <h5>James Smith <span>June 21, 2018</span></h5>
-                                            <p>Donec venenatis at eros sit amet aliquam. Donec vel orci efficitur, dictum nisl vitae, scelerisque nibh. Curabitur eget ipsum pulvinar nunc gravida interdum. </p>
-                                            <a href="" class="reply">Reply</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="comment">
-                                        <div class="comment-avator set-bg" data-setbg="img/authors/2.jpg"></div>
-                                        <div class="comment-content">
-                                            <h5>James Smith <span>June 21, 2018</span></h5>
-                                            <p>Donec venenatis at eros sit amet aliquam. Donec vel orci efficitur, dictum nisl vitae, scelerisque nibh. Curabitur eget ipsum pulvinar nunc gravida interdum. </p>
-                                            <a href="" class="reply">Reply</a>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                
                         <div class="comment-form-warp">
                             <h4 class="comment-title">Leave Your Comment</h4>
-                            <form class="comment-form">
+                            <form class="comment-form" action="../Comment">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <input type="text" placeholder="Name">
+                                        <input type="text" placeholder="Name" name="name" required="">
                                     </div>
-                                    <div class="col-md-6">
-                                        <input type="email" placeholder="Email">
-                                    </div>
+                                   
                                     <div class="col-lg-12">
                                         <input type="text" placeholder="Subject">
-                                        <textarea placeholder="Message"></textarea>
+                                        <textarea placeholder="Message" name="msg" required=""></textarea>
                                         <button class="site-btn btn-sm">Send</button>
+                                        <input type="hidden" name="tittle" value="<%=b%>">
+                                        <input type="hidden" name="img" value="<%=a%>">
+                                        <input type="hidden" name="big" value="<%=c%>">
+                                        
                                     </div>
                                 </div>
                             </form>
@@ -159,60 +140,42 @@
                             </form>
                         </div>
                         <!-- widget -->
-                        <div class="widget-item">
+                    <div class="widget-item">
                             <h4 class="widget-title">Latest Posts</h4>
                             <div class="latest-blog">
+                                  <%
+                         UserDAO tool =new UserDAO();  
+                   List<Blog> blog1 = tool.showBlogdown();
+                    for (Blog o : blog1) {
+                %> 
                                 <div class="lb-item">
-                                    <div class="lb-thumb set-bg" data-setbg="img/latest-blog/1.jpg"></div>
+                                 <a href="single-blog.jsp?img=<%=o.getImage()%>&tittle=<%=o.getTittle()%>&big=<%=o.getBig()%>&small=<%=o.getSmall()%>" class="lb-author">     <div class="lb-thumb set-bg" data-setbg="<%=o.getImage()%>"></div></a>
                                     <div class="lb-content">
-                                        <div class="lb-date">June 21, 2018</div>
-                                        <p>Ipsum dolor sit amet, consectetur adipisc ing consecips</p>
-                                        <a href="#" class="lb-author">By Admin</a>
+                                        <%=o.getTittle()%>
+                                        <p><%=o.getSmall()%></p>
+                                        <p>    By Admin</p>
                                     </div>
                                 </div>
-                                <div class="lb-item">
-                                    <div class="lb-thumb set-bg" data-setbg="img/latest-blog/2.jpg"></div>
-                                    <div class="lb-content">
-                                        <div class="lb-date">June 21, 2018</div>
-                                        <p>Ipsum dolor sit amet, consectetur adipisc ing consecips</p>
-                                        <a href="#" class="lb-author">By Admin</a>
-                                    </div>
-                                </div>
-                                <div class="lb-item">
-                                    <div class="lb-thumb set-bg" data-setbg="img/latest-blog/3.jpg"></div>
-                                    <div class="lb-content">
-                                        <div class="lb-date">June 21, 2018</div>
-                                        <p>Ipsum dolor sit amet, consectetur adipisc ing consecips</p>
-                                        <a href="#" class="lb-author">By Admin</a>
-                                    </div>
-                                </div>
+                              <%}  %> 
                             </div>
                         </div>
                         <!-- widget -->
                         <div class="widget-item">
                             <h4 class="widget-title">Top Comments</h4>
                             <div class="top-comment">
+                                   <%
+                   List<Comment> blog2 = tool.showComment();
+                    for (Comment p : blog2) {
+                        if(p.getTittle().equals(b)){
+                %> 
                                 <div class="tc-item">
                                     <div class="tc-thumb set-bg" data-setbg="img/authors/1.jpg"></div>
                                     <div class="tc-content">
-                                        <p><a href="#">James Smith</a> <span>on</span> Lorem consec ipsum dolor sit amet, co</p>
-                                        <div class="tc-date">June 21, 2018</div>
+                                        <p><a href=""> <%=p.getName()%> </a> <span>on</span>  <%=p.getMsg()%></p>
+                                        <div class="tc-date"><%=p.getDate()%></div>
                                     </div>
-                                </div>
-                                <div class="tc-item">
-                                    <div class="tc-thumb set-bg" data-setbg="img/authors/2.jpg"></div>
-                                    <div class="tc-content">
-                                        <p><a href="#">Michael James</a> <span>on</span>Cras sit amet sapien aliquam</p>
-                                        <div class="tc-date">June 21, 2018</div>
-                                    </div>
-                                </div>
-                                <div class="tc-item">
-                                    <div class="tc-thumb set-bg" data-setbg="img/authors/3.jpg"></div>
-                                    <div class="tc-content">
-                                        <p><a href="#">Justin More</a> <span>on</span> Lorem ipsum dolor consecsit amet, co</p>
-                                        <div class="tc-date">June 21, 2018</div>
-                                    </div>
-                                </div>
+                                </div>                              
+                                <%}}  %> 
                             </div>
                         </div>
                     </div>
@@ -223,107 +186,142 @@
 </section>
 <!-- Page section end -->
 
-
-<!-- Footer top section -->
-<section class="footer-top-section">
-    <div class="container">
-        <div class="footer-top-bg">
-            <img src="img/footer-top-bg.png" alt="">
-        </div>
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="footer-logo text-white">
-                    <img src="img/footer-logo.png" alt="">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit ame.</p>
+        <!-- Footer top section -->
+        <section class="footer-top-section">
+            <div class="container">
+                <div class="footer-top-bg">
+                    <img src="img/footer-top-bg.png" alt="">
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="footer-widget mb-5 mb-md-0">
-                    <h4 class="fw-title">Latest Posts</h4>
-                    <div class="latest-blog">
-                        <div class="lb-item">
-                            <div class="lb-thumb set-bg" data-setbg="img/latest-blog/1.jpg"></div>
-                            <div class="lb-content">
-                                <div class="lb-date">June 21, 2018</div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum </p>
-                                <a href="#" class="lb-author">By Admin</a>
-                            </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="footer-logo text-white">
+                            <img src="img/footer-logo.png" alt="">
+                            <p>Our company's website is pleased to bring you games at extremely low prices. If you want to be part of our family. Join now.</p>
                         </div>
-                        <div class="lb-item">
-                            <div class="lb-thumb set-bg" data-setbg="img/latest-blog/2.jpg"></div>
-                            <div class="lb-content">
-                                <div class="lb-date">June 21, 2018</div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum </p>
-                                <a href="#" class="lb-author">By Admin</a>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-widget mb-5 mb-md-0">
+                            <h3 class="fw-title">Address</h3>
+                            </br>
+                            </br>
+                            <div class="latest-blog">
+                                <div class="lb-item">
+                                    <div class="lb-thumb set-bg" data-setbg="img/latest-blog/1.jpg"></div>
+                                    <div class="lb-content">
+                                        <p>FPT University, Hi-Tech Park, District 9 Ho Chi Minh City 71216 Vietnam · ~3.6 km </p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="lb-item">
-                            <div class="lb-thumb set-bg" data-setbg="img/latest-blog/3.jpg"></div>
-                            <div class="lb-content">
-                                <div class="lb-date">June 21, 2018</div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum </p>
-                                <a href="#" class="lb-author">By Admin</a>
+                            </br>
+                            </br>
+                            <h3 class="fw-title">Phone / Mail</h3></br>
+                            <div class="latest-blog">
+                                <div class="lb-item">
+                                    <div class="lb-thumb set-bg" data-setbg="img/latest-blog/1.jpg"></div>
+                                    <div class="lb-content">
+
+                                        <p>
+                                            Mail: CUONGHCSE150679@fpt.edu.vn Phone: +84 776 190 244</p>
+                                    </div></br></br>
+                                </div>
+
+                            </div>
+                        </div>    
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-widget">
+                            <h4 class="fw-title">Our Team</h4>
+                            <div class="top-comment">
+                                <div class="tc-item">
+                                    <div class="tc-thumb set-bg" data-setbg="1.jpg"></div>
+
+                                    <div class="tc-content">
+                                        <p><a href="#">Phan Thiên Ân</a></br> <span>on</span>  FPT University HCM</p>
+                                        <div class="tc-date">09xx.xxx.xxx</div>
+                                    </div>
+                                </div>
+                                <div class="tc-item">
+                                    <div class="tc-thumb set-bg" data-setbg="2.jpg"></div>
+
+                                    <div class="tc-content">
+                                        <p><a href="#">Nguyễn Quang Minh</a></br> <span>on</span>  FPT University HCM</p>
+                                        <div class="tc-date">09xx.xxx.xxx</div>
+                                    </div>
+                                </div>
+                                <div class="tc-item">
+                                    <div class="tc-thumb set-bg" data-setbg="3.jpg"></div>
+                                    <div class="tc-content">
+                                        <p><a href="#">Phạm Quang Quý</a></br> <span>on</span>  FPT University HCM</p>
+                                        <div class="tc-date">09xx.xxx.xxx</div>
+                                    </div>
+                                </div>
+                                <div class="tc-item">
+                                    <div class="tc-thumb set-bg" data-setbg="4.jpg"></div>
+                                    <div class="tc-content">
+                                        <p><a href="#">Huỳn Chí Cường</a></br> <span>on</span>  FPT University HCM</p>
+                                        <div class="tc-date">09xx.xxx.xxx</div>
+                                    </div>
+                                </div>
+                                <div class="tc-item">
+                                    <div class="tc-thumb set-bg" data-setbg="5.jpg"></div>
+                                    <div class="tc-content">
+                                        <p><a href="#">Võ Chí Cường</a></br> <span>on</span>  FPT University HCM</p>
+                                        <div class="tc-date">09xx.xxx.xxx</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="footer-widget">
-                    <h4 class="fw-title">Top Comments</h4>
-                    <div class="top-comment">
-                        <div class="tc-item">
-                            <div class="tc-thumb set-bg" data-setbg="img/authors/1.jpg"></div>
-                            <div class="tc-content">
-                                <p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
-                                <div class="tc-date">June 21, 2018</div>
-                            </div>
-                        </div>
-                        <div class="tc-item">
-                            <div class="tc-thumb set-bg" data-setbg="img/authors/2.jpg"></div>
-                            <div class="tc-content">
-                                <p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
-                                <div class="tc-date">June 21, 2018</div>
-                            </div>
-                        </div>
-                        <div class="tc-item">
-                            <div class="tc-thumb set-bg" data-setbg="img/authors/3.jpg"></div>
-                            <div class="tc-content">
-                                <p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
-                                <div class="tc-date">June 21, 2018</div>
-                            </div>
-                        </div>
-                        <div class="tc-item">
-                            <div class="tc-thumb set-bg" data-setbg="img/authors/4.jpg"></div>
-                            <div class="tc-content">
-                                <p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
-                                <div class="tc-date">June 21, 2018</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        </section>
+        <!-- Footer top section end -->
+
+        <!-- Footer section -->
+        <footer class="footer-section">
+            <div class="container">
+                <ul class="footer-menu">
+                    <li><a href="index.jsp">Home</a></li>
+                    <li><a href="review.jsp">Games</a></li>
+                    <li><a href="categories.jsp">Blog</a></li>
+                    <li><a href="community.jsp">Forums</a></li>
+                    <li><a href="contact.jsp">Contact</a></li>
+                </ul>
+
             </div>
-        </div>
-    </div>
-</section>
-<!-- Footer top section end -->
-
-
-<!-- Footer section -->
-<footer class="footer-section">
-    <div class="container">
-        <ul class="footer-menu">
-            <li><a href="index.jsp">Home</a></li>
-            <li><a href="review.jsp">Games</a></li>
-            <li><a href="categories.jsp">Blog</a></li>
-            <li><a href="community.jsp">Forums</a></li>
-            <li><a href="contact.jsp">Contact</a></li>
-        </ul>
-        <p class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-        </p>
-    </div>
+      
+        <script src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js'></script>
+        <!--Back to Top Button Start-www.thenaynhe.com--><script>
+jQuery(document).ready(function() {
+var offset = 220;
+var duration = 500;
+jQuery(window).scroll(function() {
+if (jQuery(this).scrollTop() > offset) {
+jQuery('.back-to-top').fadeIn(duration);} else {
+jQuery('.back-to-top').fadeOut(duration);}});
+jQuery('.back-to-top').click(function(event) {
+event.preventDefault();
+jQuery('html, body').animate({scrollTop: 0}, duration);
+return false;})});</script>
+<style>
+div#page {
+max-width: 900px;
+margin-left: auto;
+margin-right: auto;
+padding: 20px;}
+.back-to-top {
+position: fixed;
+bottom: 2em;
+right: 0px;
+text-decoration: none;
+color: #000000;
+background-color: rgba(235, 235, 235, 0.80);
+font-size: 12px;
+padding: 1em;
+display: none;}
+.back-to-top:hover {
+text-decoration: none;}</style>
+<a href="#" class="back-to-top"><img src="them-nut-len-dau-trang-back-to-top-button-63-4.jpg" alt="Back to Top" /></a>
 </footer>
 <!-- Footer section end -->
 

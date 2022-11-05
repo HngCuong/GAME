@@ -18,6 +18,7 @@ import java.util.Date;
 import java.util.List;
 import models.Blog;
 import models.Checkout;
+import models.Comment;
 import models.ContactDTO;
 import models.User;
 
@@ -108,6 +109,41 @@ public class UserDAO {
             con.close();
    
     }
+     public static void addComment(String a, String b, String c, String d) throws Exception {
+        //Connecting to a database
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+      
+            //Creating and executing sql statements            
+            String sql = "insert Comments values(?, ?, ?, ?)";
+            PreparedStatement stm = con.prepareStatement(sql);
+            stm.setString(1,a);
+            stm.setString(2,b );
+            stm.setString(3, c);
+            stm.setString(4, d);
+            stm.executeUpdate();
+            //Closing the connection
+            con.close();
+   
+    }
+     public static List<Comment> showComment() throws Exception {
+           List<Comment> list = new ArrayList();
+        //Connecting to a database
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+        //Creating and executing sql statements            
+        String sql = "select * from Comments ";
+        PreparedStatement stm = con.prepareStatement(sql);     
+        ResultSet rs = stm.executeQuery();
+        //if userId and password are correct
+        while (rs.next()) {
+            list.add(new Comment(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5)));
+        }
+        //Closing the connection
+        con.close();
+        return list;
+    }
+    
            public static List<User> showStaff() throws Exception {
            List<User> list = new ArrayList();
         //Connecting to a database
@@ -152,7 +188,7 @@ public class UserDAO {
         DBUtil db = new DBUtil();
         Connection con = db.getConnection();
         //Creating and executing sql statements            
-        String sql = "select * from Blog";
+        String sql = "select TOP(3) * from BlOG ORDER BY ID DESC ";
         PreparedStatement stm = con.prepareStatement(sql);
         ResultSet rs = stm.executeQuery();
         //if userId and password are correct

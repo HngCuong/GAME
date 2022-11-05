@@ -153,30 +153,20 @@
                         <div class="widget-item">
                             <h4 class="widget-title">Latest Posts</h4>
                             <div class="latest-blog">
+                                  <%
+                           
+                   List<Blog> blog1 = tool.showBlogdown();
+                    for (Blog o : blog1) {
+                %> 
                                 <div class="lb-item">
-                                    <div class="lb-thumb set-bg" data-setbg="img/latest-blog/1.jpg"></div>
+                                 <a href="single-blog.jsp?img=<%=o.getImage()%>&tittle=<%=o.getTittle()%>&big=<%=o.getBig()%>&small=<%=o.getSmall()%>" class="lb-author">     <div class="lb-thumb set-bg" data-setbg="<%=o.getImage()%>"></div></a>
                                     <div class="lb-content">
-                                        <div class="lb-date">June 21, 2018</div>
-                                        <p>Ipsum dolor sit amet, consectetur adipisc ing consecips</p>
-                                        <a href="#" class="lb-author">By Admin</a>
+                                        <%=o.getTittle()%>
+                                        <p><%=o.getSmall()%></p>
+                                        <p>    By Admin</p>
                                     </div>
                                 </div>
-                                <div class="lb-item">
-                                    <div class="lb-thumb set-bg" data-setbg="img/latest-blog/2.jpg"></div>
-                                    <div class="lb-content">
-                                        <div class="lb-date">June 21, 2018</div>
-                                        <p>Ipsum dolor sit amet, consectetur adipisc ing consecips</p>
-                                        <a href="#" class="lb-author">By Admin</a>
-                                    </div>
-                                </div>
-                                <div class="lb-item">
-                                    <div class="lb-thumb set-bg" data-setbg="img/latest-blog/3.jpg"></div>
-                                    <div class="lb-content">
-                                        <div class="lb-date">June 21, 2018</div>
-                                        <p>Ipsum dolor sit amet, consectetur adipisc ing consecips</p>
-                                        <a href="#" class="lb-author">By Admin</a>
-                                    </div>
-                                </div>
+                              <%}  %> 
                             </div>
                         </div>
                         <!-- widget -->

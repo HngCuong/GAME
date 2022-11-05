@@ -8,6 +8,8 @@ package WebpageControllers;
 import DAO.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -15,15 +17,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import models.User;
 
 /**
  *
  * @author DELL
  */
-@WebServlet(name = "FindHistory3", urlPatterns = {"/FindHistory3"})
-public class FindHistory3 extends HttpServlet {
+@WebServlet(name = "Comment", urlPatterns = {"/Comment"})
+public class Comment extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,14 +38,17 @@ public class FindHistory3 extends HttpServlet {
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String img = request.getParameter("image");
-            String author = request.getParameter("tittle");
-            String shortDescription = request.getParameter("short");
-            String longDescription = request.getParameter("long");
-            request.setAttribute("msg","Create Blog Success");
+            LocalDateTime current = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
+            String date = current.format(formatter);
             UserDAO dao = new UserDAO();
-            dao.addBlog(img, author,shortDescription, longDescription);
-            response.sendRedirect("create_blog.jsp");
+            String a = request.getParameter("name");
+            String b = request.getParameter("msg");
+            String c = request.getParameter("tittle");
+            String e = request.getParameter("img");
+            String f = request.getParameter("big");
+            dao.addComment(a, b, date, c);
+            response.sendRedirect("template/single-blog.jsp?img="+e+"&tittle="+c+"&big="+f);
         }
     }
 
@@ -64,7 +67,7 @@ public class FindHistory3 extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(FindHistory3.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Comment.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -82,7 +85,7 @@ public class FindHistory3 extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(FindHistory3.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Comment.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
