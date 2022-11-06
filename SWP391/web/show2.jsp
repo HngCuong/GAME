@@ -114,10 +114,11 @@
                                             </thead>
                                             <tbody class="table-body">
                                                 <%int count = 1;
-                                                int end = 1;
+                                                    String a = request.getParameter("index");
+                                                     int b = Integer.parseInt(a);
                                                     UserDAO dao = new UserDAO();
-                                                    String a = request.getParameter("all");
-                                                    List<User> list = dao.showStaff();
+                                                   List<User> list1 = dao.showStaff();
+                                                    List<User> list = dao.showStaffPaging(b);
                                                     for (User op : list) {
 
                                                 %> 
@@ -165,11 +166,7 @@
 
 
 
-                                                <% 
-                                                    end = end + 1;
-                                    if (end > 4) {
-                                        break;
-                                    }
+                                                <% count = count++;
                                                     }%>
 
                                             </tbody>
@@ -177,10 +174,10 @@
                                     </div>
                                 </div>
                                 <% int size = 0;
-                            if (list.size() % 4 != 0) {
-                                size = (list.size() / 4) + 1;
+                            if (list1.size() % 4 != 0) {
+                                size = (list1.size() / 4) + 1;
                             } else {
-                                size = list.size() / 4;
+                                size = list1.size() / 4;
                             }
 
                         %> 
@@ -188,15 +185,15 @@
                         <div class="site-pagination">
                             <!-- <span class="active">01.</span>-->
                             <%for (int i = 1; i <= size; i++) {
-                                   if (i < 2) {%>
-                            <a href="show2.jsp?index=<%=i%>"> 
-                                <button class="active"> <%=i%></button> </a> <%}%>
-                                <%if (i > 1) {%>
-                            <a href="show2.jsp?index=<%=i%>"> 
-                                <button class=""> <%=i%></buttonn> </a> <%}%>   
-                                <% }%>
-                        </div>
+                                   if (i == b) {%> 
+                            <a href="show2.jsp?index=<%=i%>"> <button class="active"> <%=i%> </button> </a> <% continue;
+                               }%>
 
+                            <a href="show2.jsp?index=<%=i%>"> <button class=""> <%=i%> </button> </a> 
+
+
+                            <% }%>
+                        </div>
                             </div>
                         </div>
                     </div>

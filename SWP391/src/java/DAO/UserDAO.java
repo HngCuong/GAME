@@ -178,19 +178,39 @@ public class UserDAO {
         con.close();
         return list;
     }
-     public static List<User> showStaff(String a) throws Exception {
+    
+       public static List<User> showStaff(String a) throws Exception {
         List<User> list = new ArrayList();
         //Connecting to a database
         DBUtil db = new DBUtil();
         Connection con = db.getConnection();
         //Creating and executing sql statements            
-        String sql = "select UserName,Passwords from Users where Roles = 'STAFF' and UserName =?";
+        String sql = "select UserName,Passwords from Users where Roles = 'STAFF' and UserName =? ";
         PreparedStatement stm = con.prepareStatement(sql);
         stm.setString(1, a);
         ResultSet rs = stm.executeQuery();
         //if userId and password are correct
         while (rs.next()) {
             list.add(new User(1, rs.getString(1), rs.getString(2), ""));
+        }
+        //Closing the connection
+        con.close();
+        return list;
+    }
+       
+     public static List<User> showStaffPaging(int a) throws Exception {
+        List<User> list = new ArrayList();
+        //Connecting to a database
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+        //Creating and executing sql statements            
+        String sql = "Select * from Users Where Roles = 'STAFF 'ORDER BY UserID OFFSET ? ROWS FETCH NEXT 4 ROWS ONLY";
+        PreparedStatement stm = con.prepareStatement(sql);
+        stm.setInt(1, (a - 1) * 4);
+        ResultSet rs = stm.executeQuery();
+        //if userId and password are correct
+        while (rs.next()) {
+            list.add(new User(1, rs.getString(2), rs.getString(3), ""));
         }
         //Closing the connection
         con.close();
