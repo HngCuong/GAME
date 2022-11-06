@@ -25,10 +25,14 @@
                     <div class="card p-3" style="">
                         <div class="e-navlist e-navlist--active-bg">
                             <ul class="nav">
-                                <li class="nav-item"><a class="nav-link px-2  " href="#"><i class="fa fa-fw fa-bar-chart mr-1"></i><span>Manage Product</span></a></li>
-                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="./home/homepage.do?op=list"/>"><i class="fa fa-shopping-cart mr-1"></i><span>Back to Shoping Site</span></a></li>
-                                 <li class="nav-item"><a class="nav-link px-2 " href="#" ><i class="fa fa-tachometer mr-1"></i><span>Dashboard</span></a></li>
-                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="./user/logout.do" />"><i class="fa fa-sign-out mr-1"></i><span>Log Out</span></a></li>
+                               <li class="nav-item"><a class="nav-link px-2  " href="#"><i class="fa fa-fw fa-bar-chart mr-1"></i><span>Manage Product</span></a></li>
+                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="http://localhost:8080/GameStore/home/homepage.do?op=list" />"><i class="fa fa-shopping-cart mr-1"></i><span>Back to Shoping Site</span></a></li>
+                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="index.jsp" />"><i class="fa fa-tachometert mr-1"></i><span>Dashboard</span></a></li>
+                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="index2.jsp" />"><i class="fa fa-tachometert mr-1"></i><span>Contact</span></a></li>
+                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="status.jsp" />"><i class="fa fa-tachometert mr-1"></i><span>Total Order</span></a></li>
+                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="admin.jsp" />"><i class="fa fa-tachometert mr-1"></i><span>Create Account</span></a></li>
+                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="show.jsp" />"><i class="fa fa-tachometert mr-1"></i><span>ShowAccount</span></a></li>
+                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="http://localhost:8080/GameStore/user/logout.do" />"><i class="fa fa-sign-out mr-1"></i><span>Log Out</span></a></li>
                             </ul>
                         </div>
                     </div>

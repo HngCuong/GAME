@@ -2,10 +2,10 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:setLocale value="en-us" />
 <link rel="stylesheet" href="../template/css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="../template/css/font-awesome.min.css"/>
-	<link rel="stylesheet" href="../template/css/owl.carousel.css"/>
-	<link rel="stylesheet" href="../template/css/style.css"/>
-	<link rel="stylesheet" href="../template/css/animate.css"/>
+<link rel="stylesheet" href="../template/css/font-awesome.min.css"/>
+<link rel="stylesheet" href="../template/css/owl.carousel.css"/>
+<link rel="stylesheet" href="../template/css/style.css"/>
+<link rel="stylesheet" href="../template/css/animate.css"/>
 <!-- Page Preloder -->
 <div id="preloder">
     <div class="loader"></div>
@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="<c:url value="/css/reset_pwd.css" />" type="text/css">
 
 <header class="header" style="padding-top:0px">
-    <div class="header__top">
+    <div class="header__top"  >
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 col-md-6">
@@ -25,9 +25,6 @@
                             <li><a href="../template/categories.jsp">Blog</a></li>
                             <li><a href="../template/community.jsp">forums</a></li>
                             <li><a href="../template/contact.jsp">Contact</a></li>
-
-
-
                         </ul>
                     </div>
                 </div>
@@ -50,94 +47,91 @@
                                                    background-color: #222222;
                                                    padding: 0;
                                                    padding-right: 30px">Reset Pass</button></a></li>
-                                                                        <li ><a href="<c:url value="../profile.jsp?user=${user.userName}" />"><button style="font-size: 20px;
-                                                   border: #222222;
-                                                   color: white;
-                                                   background-color: #222222;
-                                                   padding: 0;
-                                                   padding-right: 30px">Edit Profile</button></a></li>
-                                                                         <li ><a href="<c:url value="../status_user.jsp" />"><button style="font-size: 20px;
-                                                   border: #222222;
-                                                   color: white;
-                                                   background-color: #222222;
-                                                   padding: 0;
-                                                   padding-right: 30px">History Order</button></a></li>
-                                   <li ><a href="<c:url value="/user/logout.do" />"><button style="font-size: 20px;
-                                                   border: #222222;
-                                                   color: white;
-                                                   background-color: #222222;
-                                                   padding: 0;
-                                                   padding-right: 30px">Log out</button></a></li>
+                                    <li ><a href="<c:url value="../profile.jsp?user=${user.userName}" />"><button style="font-size: 20px;
+                                                                                                                  border: #222222;
+                                                                                                                  color: white;
+                                                                                                                  background-color: #222222;
+                                                                                                                  padding: 0;
+                                                                                                                  padding-right: 30px">Edit Profile</button></a></li>
+                                    <li ><a href="<c:url value="../status_user.jsp" />"><button style="font-size: 20px;
+                                                                                                border: #222222;
+                                                                                                color: white;
+                                                                                                background-color: #222222;
+                                                                                                padding: 0;
+                                                                                                padding-right: 30px">History Order</button></a></li>
+                                    <li ><a href="<c:url value="/user/logout.do" />"><button style="font-size: 20px;
+                                                                                             border: #222222;
+                                                                                             color: white;
+                                                                                             background-color: #222222;
+                                                                                             padding: 0;
+                                                                                             padding-right: 30px">Log out</button></a></li>
                                 </ul>
                             </c:if>                                       
-
-                                    <%--<li><a href="<c:url value="/user/reset_form.do" />">Reset Password</a></li>--%>
-                                    <c:if test="${user.role == 'ADMIN'}">
-                                       <div><i style="margin-right: 8px" class="fa fa-user"></i>${user.userName}</div>
-                                        <span class="arrow_carrot-down"></span>
-                                        <ul>
-                          
-                                        <li ><a href="<c:url value="/admin/manage.do?op=listFull" />"><button style="font-size: 20px;
-                                                   border: #222222;
-                                                   color: white;
-                                                   background-color: #222222;
-                                                   padding: 0;
-                                                   padding-right: 30px">Management</button></a></li>
-                                        <li ><a href="<c:url value="../index2.jsp" />"><button style="font-size: 20px;
-                                                   border: #222222;
-                                                   color: white;
-                                                   background-color: #222222;
-                                                   padding: 0;
-                                                   padding-right: 30px">Contact</button></a></li>
-                                         <li ><a href="<c:url value="http://localhost:8080/demoSWP/home.jsp" />"><button style="font-size: 20px;
-                                                   border: #222222;
-                                                   color: white;
-                                                   background-color: #222222;
-                                                   padding: 0;
-                                                   padding-right: 30px">Join</button></a></li>
-                                        <li ><a href="<c:url value="../show.jsp" />"><button style="font-size: 20px;
-                                                   border: #222222;
-                                                   color: white;
-                                                   background-color: #222222;
-                                                   padding: 0;
-                                                   padding-right: 30px">Account Staff</button></a></li>
-                                        <li ><a href="<c:url value="../admin.jsp" />"><button style="font-size: 20px;
-                                                   border: #222222;
-                                                   color: white;
-                                                   background-color: #222222;
-                                                   padding: 0;
-                                                   padding-right: 30px">New Account</button></a></li>
-                                        <li ><a href="<c:url value="/user/logout.do" />"><button style="font-size: 20px;
-                                                   border: #222222;
-                                                   color: white;
-                                                   background-color: #222222;
-                                                   padding: 0;
-                                                   padding-right: 30px">Log out</button></a></li>
+                            <%--<li><a href="<c:url value="/user/reset_form.do" />">Reset Password</a></li>--%>
+                            <c:if test="${user.role == 'ADMIN'}">
+                                <div><i style="margin-right: 8px" class="fa fa-user"></i>${user.userName}</div>
+                                <span class="arrow_carrot-down"></span>
+                                <ul>
+                                    <li ><a href="<c:url value="/admin/manage.do?op=listFull" />"><button style="font-size: 20px;
+                                                                                                          border: #222222;
+                                                                                                          color: white;
+                                                                                                          background-color: #222222;
+                                                                                                          padding: 0;
+                                                                                                          padding-right: 30px">Management</button></a></li>
+                                    <li ><a href="<c:url value="../index2.jsp" />"><button style="font-size: 20px;
+                                                                                           border: #222222;
+                                                                                           color: white;
+                                                                                           background-color: #222222;
+                                                                                           padding: 0;
+                                                                                           padding-right: 30px">Contact</button></a></li>
+                                  
+                                    <li ><a href="<c:url value="../show.jsp" />"><button style="font-size: 20px;
+                                                                                         border: #222222;
+                                                                                         color: white;
+                                                                                         background-color: #222222;
+                                                                                         padding: 0;
+                                                                                         padding-right: 30px">Account Staff</button></a></li>
+                                    <li ><a href="<c:url value="../admin.jsp" />"><button style="font-size: 20px;
+                                                                                          border: #222222;
+                                                                                          color: white;
+                                                                                          background-color: #222222;
+                                                                                          padding: 0;
+                                                                                          padding-right: 30px">New Account</button></a></li>
+                                     <li ><a href="<c:url value="../status.jsp" />"><button style="font-size: 20px;
+                                                                                          border: #222222;
+                                                                                          color: white;
+                                                                                          background-color: #222222;
+                                                                                          padding: 0;
+                                                                                          padding-right: 30px">Total Order</button></a></li>
+                                    <li ><a href="<c:url value="/user/logout.do" />"><button style="font-size: 20px;
+                                                                                             border: #222222;
+                                                                                             color: white;
+                                                                                             background-color: #222222;
+                                                                                             padding: 0;
+                                                                                             padding-right: 30px">Log out</button></a></li>
                                 </ul>
-                                        </c:if>
-                                 <c:if test="${user.role == 'STAFF'}">
+                            </c:if>
+                            <c:if test="${user.role == 'STAFF'}">
                                 <div><i style="margin-right: 8px" class="fa fa-user"></i>${user.userName}</div>
                                 <span class="arrow_carrot-down"></span>
                                 <ul>
                                     <!--<li><a href="#">My Profile</a></li>-->
-                                  
-                                                                        <li ><a href="<c:url value="../create_blog.jsp" />"><button style="font-size: 20px;
-                                                   border: #222222;
-                                                   color: white;
-                                                   background-color: #222222;
-                                                   padding: 0;
-                                                   padding-right: 30px">Post</button></a></li>
-                                                                        
-                                   <li ><a href="<c:url value="/user/logout.do" />"><button style="font-size: 20px;
-                                                   border: #222222;
-                                                   color: white;
-                                                   background-color: #222222;
-                                                   padding: 0;
-                                                   padding-right: 30px">Log out</button></a></li>
+
+                                    <li ><a href="<c:url value="../create_blog.jsp" />"><button style="font-size: 20px;
+                                                                                                border: #222222;
+                                                                                                color: white;
+                                                                                                background-color: #222222;
+                                                                                                padding: 0;
+                                                                                                padding-right: 30px">Post</button></a></li>
+
+                                    <li ><a href="<c:url value="/user/logout.do" />"><button style="font-size: 20px;
+                                                                                             border: #222222;
+                                                                                             color: white;
+                                                                                             background-color: #222222;
+                                                                                             padding: 0;
+                                                                                             padding-right: 30px">Log out</button></a></li>
                                 </ul>
                             </c:if>              
-                                   
-
                         </div>
                     </div>
                 </div>
@@ -160,7 +154,6 @@
                                 <button type="submit" class="site-btn" name="op" value="search">SEARCH</button>
                             </form>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -169,22 +162,15 @@
                     <ul>
                         <li><a href="<c:url value="/home/shoping-cart.do?op=view" />"><i class="fa fa-shopping-bag"></i></a></li>                       
                     </ul>
-
                     <div class="header__cart__price">item: <span><fmt:formatNumber value="${total}" type="currency" /></span></div>
-
-
-
                 </div>
             </div>
-
             <c:if test="${cap_userName != null}">
                 <div class="col-lg-12">
                     <p style="font-size: 35px; text-align: center; color: #000">Welcome back, ${cap_userName}</p>
                 </div>
             </c:if>
-
         </div>
-
         <div class="humberger__open">
             <i class="fa fa-bars"></i>
         </div>
@@ -216,7 +202,6 @@
                     </ul>
                 </nav>
             </div>
-
         </div>
     </div>
 </section>
@@ -238,23 +223,22 @@
         </div>
     </form>
 </div>
-
 <!--====== Javascripts & Jquery ======-->
-	<script src="../template/js/jquery-3.2.1.min.js"></script>
-	<script src="../template/js/bootstrap.min.js"></script>
-	<script src="../template/js/owl.carousel.min.js"></script>
-	<script src="../template/js/jquery.marquee.min.js"></script>
-	<script src="../template/js/main.js"></script>
+<script src="../template/js/jquery-3.2.1.min.js"></script>
+<script src="../template/js/bootstrap.min.js"></script>
+<script src="../template/js/owl.carousel.min.js"></script>
+<script src="../template/js/jquery.marquee.min.js"></script>
+<script src="../template/js/main.js"></script>
 <script>
-    // Get the modal
-    var modal = document.getElementById('reset');
+            // Get the modal
+            var modal = document.getElementById('reset');
 
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
 </script>      
 <!-- Header Section End -->
 

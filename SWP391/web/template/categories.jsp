@@ -53,7 +53,7 @@
                 <a class="site-logo" href="index.jsp">
                     <img src="./img/logo2.png" alt="">
                 </a>
-              
+
                 <!-- responsive -->
                 <div class="nav-switch">
                     <i class="fa fa-bars"></i>
@@ -71,7 +71,7 @@
             </div>
         </header>
         <!-- Header section end -->
-     
+
 
         <!-- Latest news section -->
         <div class="latest-news-section">
@@ -79,8 +79,8 @@
             <div class="news-ticker">
                 <div class="news-ticker-contant">
                     <% ProductDAO dao = new ProductDAO();
-                    List<Product> list = dao.latest();
-                    for (Product op : list) {%>
+                        List<Product> list = dao.latest();
+                        for (Product op : list) {%>
                     <div class="nt-item"><span class="new">new</span><%=op.getProductName()%></div>
                     <%}%>    
                 </div>
@@ -111,22 +111,24 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="row">
-                            
-                    <%
-                    UserDAO tool = new UserDAO();              
-                   List<Blog> blog = tool.showBlog();
-                    for (Blog op : blog) {
-                %> 
-                  
+
+                            <%
+                                int end = 1;
+                                UserDAO tool = new UserDAO();
+                                List<Blog> blog = tool.showBlog();
+                                for (Blog op : blog) {
+
+                            %> 
+
                             <div class="col-md-6" >
                                 <div class="recent-game-item">
                                     <div class="rgi-thumb set-bg" data-setbg="<%=op.getImage()%>">
-                               
+
                                     </div>
                                     <div class="rgi-content">
                                         <a href="single-blog.jsp?img=<%=op.getImage()%>&tittle=<%=op.getTittle()%>&big=<%=op.getBig()%>&small=<%=op.getSmall()%> " class="comment">     <h5><%=op.getTittle()%></h5></a>
                                         <p><%=op.getSmall()%></p>
-                                       
+
                                         <div class="rgi-extra">
                                             <div class="rgi-star"><img src="img/icons/star.png" alt=""></div>
                                             <div class="rgi-heart"><img src="img/icons/heart.png" alt=""></div>
@@ -134,13 +136,34 @@
                                     </div>
                                 </div>	
                             </div>
-                         <%}%> 
+                            <% end = end + 1;
+                                    if (end > 4) {
+                                        break;
+                                    }
+
+                                }
+                            %> 
 
                         </div>
+                        <% int size = 0;
+                            if (blog.size() % 4 != 0) {
+                                size = (blog.size() / 4) + 1;
+                            } else {
+                                size = blog.size() / 4;
+                            }
+
+                        %> 
+
                         <div class="site-pagination">
-                            <span class="active">01.</span>
-                            <a href="#">02.</a>
-                            <a href="#">03.</a>
+                            <!-- <span class="active">01.</span>-->
+                            <%for (int i = 1; i <= size; i++) {
+                                   if (i < 2) {%>
+                            <a href="Search1.jsp?index=<%=i%>"> 
+                                <span class="active"> <%=i%></span> </a> <%}%>
+                                <%if (i > 1) {%>
+                            <a href="Search1.jsp?index=<%=i%>"> 
+                                <span class=""> <%=i%></span> </a> <%}%>   
+                                <% }%>
                         </div>
                     </div>
                     <!-- sidebar -->
@@ -148,7 +171,7 @@
                         <!-- widget -->
                         <div class="widget-item">
                             <form action="../FindHistory4">
-                                 <input type="text" name="search">
+                                <input type="text" name="search">
                                 <button>Seach</button>
                             </form>
                         </div>
@@ -156,31 +179,31 @@
                         <div class="widget-item">
                             <h4 class="widget-title">Latest Posts</h4>
                             <div class="latest-blog">
-                                  <%
-                           
-                   List<Blog> blog1 = tool.showBlogdown();
-                    for (Blog o : blog1) {
-                %> 
+                                <%
+
+                                    List<Blog> blog1 = tool.showBlogdown();
+                                    for (Blog o : blog1) {
+                                %> 
                                 <div class="lb-item">
-                                 <a href="single-blog.jsp?img=<%=o.getImage()%>&tittle=<%=o.getTittle()%>&big=<%=o.getBig()%>&small=<%=o.getSmall()%>" class="lb-author">     <div class="lb-thumb set-bg" data-setbg="<%=o.getImage()%>"></div></a>
+                                    <a href="single-blog.jsp?img=<%=o.getImage()%>&tittle=<%=o.getTittle()%>&big=<%=o.getBig()%>&small=<%=o.getSmall()%>" class="lb-author">     <div class="lb-thumb set-bg" data-setbg="<%=o.getImage()%>"></div></a>
                                     <div class="lb-content">
                                         <%=o.getTittle()%>
                                         <p><%=o.getSmall()%></p>
                                         <p>    By Admin</p>
                                     </div>
                                 </div>
-                              <%}  %> 
+                                <%}  %> 
                             </div>
                         </div>
                         <!-- widget -->
-                           <div class="widget-item">
+                        <div class="widget-item">
                             <h4 class="widget-title">Top Comments</h4>
                             <div class="top-comment">
-                                   <%
-                   List<Comment> blog2 = tool.showComment();
-                    for (Comment p : blog2) {
-                       
-                %> 
+                                <%
+                                    List<Comment> blog2 = tool.showComment();
+                                    for (Comment p : blog2) {
+
+                                %> 
                                 <div class="tc-item">
                                     <div class="tc-thumb set-bg" data-setbg="img/authors/1.jpg"></div>
                                     <div class="tc-content">
@@ -192,7 +215,7 @@
                             </div>
                         </div>
                         <!-- widget -->
-                    
+
                     </div>
                 </div>
             </div>
@@ -320,8 +343,8 @@
                         event.preventDefault();
                         jQuery('html, body').animate({scrollTop: 0}, duration);
                         return false;
-                })
-            });</script>
+                    })
+                });</script>
             <style>
                 div#page {
                     max-width: 900px;

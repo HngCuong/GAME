@@ -4,6 +4,7 @@
     Author     : DELL
 --%>
 
+<%@page import="models.Comment"%>
 <%@page import="models.Blog"%>
 <%@page import="DAO.UserDAO"%>
 <%@page import="models.Product"%>
@@ -112,12 +113,14 @@
                         <div class="row">
 
                             <%
+                                String a = request.getParameter("index");
+                                int b = Integer.parseInt(a);
                                 UserDAO tool = new UserDAO();
-                                String b = request.getParameter("search");
-                                List<Blog> blog = tool.showBlog(b);
-                                for (Blog op : blog) {
-                            %> 
 
+                                List<Blog> blog = tool.showBlogPaging(b);
+                                List<Blog> check = tool.showBlog();
+                                for (Blog op : blog) {
+                            %>                
                             <div class="col-md-6" >
                                 <div class="recent-game-item">
                                     <div class="rgi-thumb set-bg" data-setbg="<%=op.getImage()%>">
@@ -135,10 +138,31 @@
                                 </div>	
                             </div>
                             <%
-                                }%>
+                                }
+                            %> 
 
                         </div>
+                        <% int size = 0;
+                            if (check.size() % 4 != 0) {
+                                size = (check.size() / 4) + 1;
+                            } else {
+                                size = check.size() / 4;
+                            }
 
+                        %> 
+
+                        <div class="site-pagination">
+                            <!-- <span class="active">01.</span>-->
+                            <%for (int i = 1; i <= size; i++) {
+                                   if (i == b) {%> 
+                            <a href="Search1.jsp?index=<%=i%>"> <span class="active"> <%=i%> </span> </a> <% continue;
+                               }%>
+
+                            <a href="Search1.jsp?index=<%=i%>"> <span class=""> <%=i%> </span> </a> 
+
+
+                            <% }%>
+                        </div>
                     </div>
                     <!-- sidebar -->
                     <div class="col-lg-4 col-md-7 sidebar pt-5 pt-lg-0">
@@ -146,7 +170,7 @@
                         <div class="widget-item">
                             <form action="../FindHistory4">
                                 <input type="text" name="search">
-                                <button><i class="fa fa-search"></i></button>
+                                <button>Seach</button>
                             </form>
                         </div>
                         <!-- widget -->
@@ -166,34 +190,26 @@
                                         <p>    By Admin</p>
                                     </div>
                                 </div>
-                                <%}%> 
+                                <%}  %> 
                             </div>
                         </div>
                         <!-- widget -->
                         <div class="widget-item">
                             <h4 class="widget-title">Top Comments</h4>
                             <div class="top-comment">
+                                <%
+                                    List<Comment> blog2 = tool.showComment();
+                                    for (Comment p : blog2) {
+
+                                %> 
                                 <div class="tc-item">
                                     <div class="tc-thumb set-bg" data-setbg="img/authors/1.jpg"></div>
                                     <div class="tc-content">
-                                        <p><a href="#">James Smith</a> <span>on</span> CHào các bạn của tôi</p>
-                                        <div class="tc-date">June 21, 2018</div>
+                                        <p><a href=""> <%=p.getName()%> </a> <span>on</span>  <%=p.getMsg()%></p>
+                                        <div class="tc-date"><%=p.getDate()%></div>
                                     </div>
-                                </div>
-                                <div class="tc-item">
-                                    <div class="tc-thumb set-bg" data-setbg="img/authors/2.jpg"></div>
-                                    <div class="tc-content">
-                                        <p><a href="#">Michael James</a> <span>on</span>CHào các bạn của tôi/p>
-                                        <div class="tc-date">June 21, 2018</div>
-                                    </div>
-                                </div>
-                                <div class="tc-item">
-                                    <div class="tc-thumb set-bg" data-setbg="img/authors/3.jpg"></div>
-                                    <div class="tc-content">
-                                        <p><a href="#">Justin More</a> <span>on</span>CHào các bạn của tôio</p>
-                                        <div class="tc-date">June 21, 2018</div>
-                                    </div>
-                                </div>
+                                </div>                              
+                                <%}%> 
                             </div>
                         </div>
                         <!-- widget -->

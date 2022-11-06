@@ -5,6 +5,7 @@
  */
 package WebpageControllers;
 
+import DAO.UserDAO;
 import jakarta.mail.Authenticator;
 import jakarta.mail.Message;
 import jakarta.mail.MessagingException;
@@ -42,13 +43,14 @@ public class Reply extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, AddressException, MessagingException {
+            throws ServletException, IOException, AddressException, MessagingException, Exception {
        
         response.setContentType("text/html;charset=UTF-8");
         
         try (PrintWriter out = response.getWriter()) {
              String a = request.getParameter("reply");
              String b = request.getParameter("email");
+             String c = request.getParameter("check");
         final String username = "cuonghc2011@gmail.com";
         final String password = "xadspblkqlqywohp";
 
@@ -82,7 +84,9 @@ public class Reply extends HttpServlet {
 
         } catch (MessagingException e) {
             e.printStackTrace();
-        }
+        }   
+            UserDAO dao = new UserDAO();
+            dao.searchContactEdit(c);
             request.setAttribute("check","Success");
             request.getRequestDispatcher("index2.jsp").forward(request, response);
         }
@@ -102,7 +106,7 @@ public class Reply extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (MessagingException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(Reply.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -120,7 +124,7 @@ public class Reply extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (MessagingException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(Reply.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

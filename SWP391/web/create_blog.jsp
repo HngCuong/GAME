@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%-- 
     Document   : create_blog
     Created on : Oct 28, 2022, 10:47:56 AM
@@ -29,32 +30,31 @@
                         <div class="form-group row mb-3">
                             <div class="col-md-12 mb-0">
                                 <p class="mb-1">Picture</p>                                
-                                <input type="file" name="image" >                             
+                                <input type="file" name="image" required="">                             
                             </div>
                         </div>
                         <div class="form-group row mb-3">
                             <div class="col-md-12 mb-0">
-                                <p class="mb-1">Tittle</p> <input id="e-mail" type="text" placeholder="Enter Tittle" name="tittle" class="form-control input-box rm-border">
+                                <p class="mb-1">Tittle</p> <input id="e-mail" type="text" placeholder="Enter Tittle" name="tittle" class="form-control input-box rm-border" required="">
                             </div>
                         </div>
                         <div class="form-group row mb-3">
                             <div class="col-md-12 mb-0">
-                                <p class="mb-1">Short Description</p> <input id="e-mail" type="text" placeholder="Enter short description" name="short" class="form-control input-box rm-border">
+                                <p class="mb-1">Short Description</p> <input id="e-mail" type="text" placeholder="Enter short description" name="short" class="form-control input-box rm-border" required="">
                             </div>
                         </div>
                         
                         <div class="form-group row">
                             <div class="col-md-12 mb-2">
-                                <p class="mb-1">Long Description</p> <textarea id="message" type="text" placeholder="Enter long description" name="long" class="form-control input-box rm-border"></textarea>
+                                <p class="mb-1">Long Description</p> <textarea id="message" type="text" placeholder="Enter long description" name="long" class="form-control input-box rm-border" required=""></textarea>
                             </div>
                         </div>
                             
                         <div class="form-group row">
                             <div class="col-md-12 mb-2">
-                                <p class="mb-1">
+                                <p class="mb-1" style="color:blue">
                                     
-                                            
-                                    ${msg}
+                                    <c:out value="${msg}" />
                                 </p> 
                             </div>
                         </div> 

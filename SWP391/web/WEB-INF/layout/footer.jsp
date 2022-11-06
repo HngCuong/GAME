@@ -61,21 +61,21 @@
 								</div>
 							</div>
 							<div class="tc-item">
-								<div class="tc-thumb set-bg" data-setbg="../template/img/authors/2.jpg"></div>
+								<div class="tc-thumb set-bg" data-setbg="../template/img/authors/1.jpg"></div>
 								<div class="tc-content">
 									<p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
 									<div class="tc-date">June 21, 2018</div>
 								</div>
 							</div>
 							<div class="tc-item">
-								<div class="tc-thumb set-bg" data-setbg="../template/img/authors/3.jpg"></div>
+								<div class="tc-thumb set-bg" data-setbg="../template/img/authors/1.jpg"></div>
 								<div class="tc-content">
 									<p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
 									<div class="tc-date">June 21, 2018</div>
 								</div>
 							</div>
 							<div class="tc-item">
-								<div class="tc-thumb set-bg" data-setbg="../template/img/authors/4.jpg"></div>
+								<div class="tc-thumb set-bg" data-setbg="../template/img/authors/1.jpg"></div>
 								<div class="tc-content">
 									<p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
 									<div class="tc-date">June 21, 2018</div>
@@ -98,11 +98,7 @@
 				<li><a href="../template/categories.jsp">Blog</a></li>
 				<li><a href="../template/community.jsp">Forums</a></li>
 				<li><a href="../template/contact.jsp">Contact</a></li>
-			</ul>
-			<p class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-</p>
+                        </u>
 		</div>
 	</footer>
      

@@ -45,7 +45,8 @@ public class FindHistory3 extends HttpServlet {
             request.setAttribute("msg","Create Blog Success");
             UserDAO dao = new UserDAO();
             dao.addBlog(img, author,shortDescription, longDescription);
-            response.sendRedirect("create_blog.jsp");
+             request.getRequestDispatcher("create_blog.jsp").forward(request, response);
+          
         }
     }
 

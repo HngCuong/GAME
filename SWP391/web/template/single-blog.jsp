@@ -134,9 +134,9 @@
                     <div class="col-lg-4 col-md-7 sidebar pt-5 pt-lg-0">
                         <!-- widget -->
                         <div class="widget-item">
-                            <form class="search-widget">
-                                <input type="text" placeholder="Search">
-                                <button><i class="fa fa-search"></i></button>
+                            <form action="../FindHistory4">
+                                 <input type="text" name="search">
+                                <button>Seach</button>
                             </form>
                         </div>
                         <!-- widget -->

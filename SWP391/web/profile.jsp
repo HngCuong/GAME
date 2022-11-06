@@ -167,7 +167,7 @@ select:focus{
                               <input type="hidden" name="user" value=<%=n%> 
         <div class="py-3 pb-4 border-bottom">
             <button class="btn btn-primary mr-3">Save Changes</button>
-            <button class="btn border button" onclick="location.href='home/homepage.do?op=list'">Cancel</button>
+            <button class="btn border button" onclick="location.href='http://localhost:8080/GameStore/home/homepage.do?op=list'">Cancel</button>
             <h1  </h1>
         </div>
       
