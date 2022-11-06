@@ -91,7 +91,7 @@ public class UserDAO {
         String sql = "select * from Users where UserName=? and Passwords=?";
         PreparedStatement stm = con.prepareStatement(sql);
         stm.setString(1, userName);
-        stm.setString(2, Hasher.hash(password));
+        stm.setString(2, password);
         ResultSet rs = stm.executeQuery();
         //if userId and password are correct
         if (rs.next()) {
