@@ -34,14 +34,16 @@
                     <div class="card p-3" style="">
                         <div class="e-navlist e-navlist--active-bg">
                             <ul class="nav">
-                              <li class="nav-item"><a class="nav-link px-2  " href="<c:url value="http://localhost:8080/GameStore/admin/manage.do?op=listFull" />"><i class="fa fa-fw fa-bar-chart mr-1"></i><span>Manage Product</span></a></li>
-                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="http://localhost:8080/GameStore/home/homepage.do?op=list" />"><i class="fa fa-shopping-cart mr-1"></i><span>Back to Shoping Site</span></a></li>
-                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="index.jsp" />"><i class="fa fa-tachometert mr-1"></i><span>Dashboard</span></a></li>
-                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="index2.jsp" />"><i class="fa fa-tachometert mr-1"></i><span>Contact</span></a></li>
-                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="status.jsp" />"><i class="fa fa-tachometert mr-1"></i><span>Total Order</span></a></li>
-                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="admin.jsp" />"><i class="fa fa-tachometert mr-1"></i><span>Create Account</span></a></li>
-                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="show.jsp" />"><i class="fa fa-tachometert mr-1"></i><span>ShowAccount</span></a></li>
-                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="http://localhost:8080/GameStore/user/logout.do" />"><i class="fa fa-sign-out mr-1"></i><span>Log Out</span></a></li>
+                                <li class="nav-item"><a class="nav-link px-2  " href="<c:url value="http://localhost:8080/GameStore/admin/manage.do?op=listFull" />"><span>Manage Product</span></a></li>
+                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="http://localhost:8080/GameStore/home/homepage.do?op=list" />"><span>Back to Shoping Site</span></a></li>
+                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="index.jsp" />"><span>Dashboard</span></a></li>
+                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="index2.jsp" />"><i class="fa fa-tachometert "></i><span>Contact</span></a></li>
+                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="status.jsp" />"><span>Total Order</span></a></li>
+                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="admin.jsp" />"><span>Create Account</span></a></li>
+                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="show.jsp" />"><span>ShowAccount</span></a></li>
+                                 <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="EditComment" />"><span>All Comments</span></a></li>
+                                 <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="EditBlog.jsp?index=1" />"><span>All Blog</span></a></li>
+                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="http://localhost:8080/GameStore/user/logout.do" />"><span>Log Out</span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -77,9 +79,11 @@
                                     <div class="card-body p-4">
                                         <div class="">
                                             <h5>UserName: <%= op.getUser()%></h5>
-                                           
+                                            <%if(op.getStauts().equals("CHECK")){ %>
+                                            <p style="color:blue"><%=op.getStauts()%></p><%}else{%>
+                                            
                                                 <p style="color:red"><%=op.getStauts()%></p>
-
+                                                    <%}%>
                                             <p>
                                               Email: <%= op.getEmail()%></p>
                                             <p> Tittle: <%= op.getSubject()%></p>
@@ -89,14 +93,14 @@
                                             <div class="d-flex justify-content-between align-items-center">
 
                                                 <form action="Reply"">
-                                                    <textarea placeholder="Message" name="reply" style="width: 800px;"></textarea>
+                                                    <textarea placeholder="Message" name="reply" style="width: 800px;height: 64px"></textarea>
                                                     <input type="hidden" name="email" value=" <%= op.getEmail()%>"
                                                     <i class=" fa-reply me-1"></i> <button>Reply</button>
                                                     <input type="hidden" name="check" value="<%=op.getMsg()%> " >
                                                 </form>
                                                 </br>
 
-                                                <a href="DeleteReply?name=<%= op.getUser()%>&msg=<%= op.getMsg()%> " class="link-muted"><i class="fas fa-times me-1"></i> Check</a>
+                                                <a href="DeleteReply?name=<%= op.getUser()%>&msg=<%= op.getMsg()%> "><button value="">Check</button> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -105,7 +109,7 @@
 
                             <br>
                             <% }%>
-                            <div style="text-align: center"><a href="index3.jsp"><button>Hide</button></a></div>
+                         
 
                         </div>
                 </div>

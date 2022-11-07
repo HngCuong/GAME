@@ -3,10 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Setting;
+package WebpageControllers;
 
+import DAO.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author DELL
  */
-@WebServlet(name = "Edit", urlPatterns = {"/Edit"})
-public class Edit extends HttpServlet {
+@WebServlet(name = "DeleteBlog", urlPatterns = {"/DeleteBlog"})
+public class DeleteBlog extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,19 +33,15 @@ public class Edit extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Edit</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Edit at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+           UserDAO dao = new UserDAO();
+           String user = request.getParameter("name");
+           String a = user;
+            dao.clearBlog(a);
+           response.sendRedirect("EditBlog.jsp?index=1");
         }
     }
 
@@ -58,7 +57,11 @@ public class Edit extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(DeleteBlog.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -72,7 +75,11 @@ public class Edit extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(DeleteBlog.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

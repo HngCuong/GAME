@@ -81,10 +81,10 @@ thead {
                         <div class="e-navlist e-navlist--active-bg">
                             <ul class="nav">
                                
-                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="http://localhost:8080/GameStore/home/homepage.do?op=list" />"><i class="fa fa-shopping-cart mr-1"></i><span>Back to Shoping Site</span></a></li>
-                                <li class="nav-item"><a class="nav-link px-2 " href="profile.jsp" ><i class="fa fa-tachometer mr-1"></i><span>Edit Profile</span></a></li>
-                                <li class="nav-item"><a class="nav-link px-2 " href="status_user.jsp" ><i class="fa fa-tachometer mr-1"></i><span>History Order</span></a></li>
-                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="http://localhost:8080/GameStore/user/logout.do" />"><i class="fa fa-sign-out mr-1"></i><span>Log Out</span></a></li>
+                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="http://localhost:8080/GameStore/home/homepage.do?op=list" />"><span>Back to Shoping Site</span></a></li>
+                        
+                                <li class="nav-item"><a class="nav-link px-2 " href="status_user.jsp" ><span>History Order</span></a></li>
+                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="http://localhost:8080/GameStore/user/logout.do" />"><span>Log Out</span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -135,14 +135,13 @@ thead {
                
                 <% count = count+1;
              
-                    if(count > 1 && d==null)
-                    {break;}
+                   
                         }%>
                                 
                                
                             </tbody>
                         </table>
-                                <div style="text-align: center; color: blue"><p><a href="http://localhost:8080/GameStore/status_user.jsp?all=1">show all</a><p></div>
+                                
                     </div>
                 </div>
             </div>

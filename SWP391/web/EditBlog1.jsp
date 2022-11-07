@@ -1,3 +1,5 @@
+<%@page import="models.Blog"%>
+<%@page import="models.Comment"%>
 <%@page import="models.User"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.List"%>
@@ -97,7 +99,7 @@
                     <div class="container mt-5">
                         <div class="d-flex justify-content-center row">
                             <div class="col-md-10">
-                                <form action="FindAccount">
+                                <form action="FindAccount4">
                                     <input type="text" name="search"><button>Search</button>
                                 </form>
                                 <div class="rounded">
@@ -107,69 +109,26 @@
                                                 <tr>
                                                     <th class="text-center">S. No.</th>
                                                     <th>Name</th>
-                                                    <th>Password</th>
-                                                    <th>Change Pass</th>
+                                                    <th>Description</th>
+                                            
                                                     <th>Delete account</th>
-                                                    <th>Created</th>
-                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody class="table-body">
                                                 <%int count = 1;
-                                                    String a = request.getParameter("index");
-                                                    int b = Integer.parseInt(a);
-                                                    count =(( b -1 ) * 4) + 1; 
-                                                    UserDAO dao = new UserDAO();
-                                                   List<User> list1 = dao.showStaff();
-                                                    List<User> list = dao.showStaffPaging(b);
-                                                    for (User op : list) {
-
+                    UserDAO dao = new UserDAO();
+                    String a =request.getParameter("search");
+                    List<Blog> list = dao.showBlog(a);
+                    for (Blog op : list) {
+                    
                                                 %> 
-                                                <tr class="cell-1" data-toggle="collapse" data-target="#demo">
+                                               <tr class="cell-1" data-toggle="collapse" data-target="#demo">
                                                     <td class="text-center"><%=count%></td>
-                                                    <td><%=op.getUserName()%></td>
-                                                    <td><%=op.getPassword()%></td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                            Edit
-                                                        </button>       
-                                                        
-                                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                
-                                                                <div class="modal-dialog">
-                                                                   
-                                                                    <div class="modal-content">
-                                                                        <form action="Change">
-                                                                        <div class="modal-header">
-                                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Reset Password</h1>
-                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                            
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            <p>Enter Account</p>
-                                                                            <input type = "text" name ="name">
-                                                                            <p>Enter Password</p>
-                                                                            <input type = "text" name ="new">
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                             
-                                                                            <button type="submit" class="btn btn-primary">Save changes</button>
-                                                                           
-
-                                                                        </div>
-                                                                    </form>
-                                                                    </div>
-                                                                         
-                                                                </div>
-                                                                                                                               
-
-                                                            </div>
-                                                           
-
-                                                    </td>
-                                                    <td><a href="test?name=<%=op.getUserName()%>">Delete</a></td>
-                                                    <td>ADMIN</td>
+                                                    <td><%=op.getTittle()%></td>
+                                                    <td><%=op.getSmall()%></td>
+                                                   
+                                                    <td>    <a href="DeleteBlog?name=<%=op.getSmall()%>"><button value="">Delete</button> </a></td>
+                                                
                                                     <td class="table-elipse" data-toggle="collapse" data-target="#demo"><i class="fa fa-ellipsis-h text-black-50"></i></td>
                                                 </tr>
 
@@ -182,27 +141,9 @@
                                         </table>
                                     </div>
                                 </div>
-                                <% int size = 0;
-                            if (list1.size() % 4 != 0) {
-                                size = (list1.size() / 4) + 1;
-                            } else {
-                                size = list1.size() / 4;
-                            }
+                          
 
-                        %> 
-
-                        <div class="site-pagination">
-                            <!-- <span class="active">01.</span>-->
-                            <%for (int i = 1; i <= size; i++) {
-                                   if (i == b) {%> 
-                            <a href="show2.jsp?index=<%=i%>"> <button class="active"> <%=i%> </button> </a> <% continue;
-                               }%>
-
-                            <a href="show2.jsp?index=<%=i%>"> <button class=""> <%=i%> </button> </a> 
-
-
-                            <% }%>
-                        </div>
+                      
                             </div>
                         </div>
                     </div>

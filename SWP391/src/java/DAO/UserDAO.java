@@ -20,6 +20,7 @@ import models.Blog;
 import models.Checkout;
 import models.Comment;
 import models.ContactDTO;
+import models.Forum;
 import models.User;
 
 /**
@@ -70,6 +71,25 @@ public class UserDAO {
         stm.executeUpdate();
 
     }
+     public static void clearComment(int a) throws SQLException, Exception {
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+        String sql = "DELETE FROM Comments WHERE CmtID =?";
+        PreparedStatement stm = con.prepareStatement(sql);
+        stm.setInt(1, a);
+        stm.executeUpdate();
+
+    }
+      public static void clearBlog(String a) throws SQLException, Exception {
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+        String sql = "DELETE FROM Blog WHERE Small =?";
+        PreparedStatement stm = con.prepareStatement(sql);
+        stm.setString(1, a);
+        stm.executeUpdate();
+
+    }
+    
 
     public static void clearAccount(String user) throws SQLException, Exception {
         DBUtil db = new DBUtil();
@@ -141,6 +161,25 @@ public class UserDAO {
         con.close();
 
     }
+    
+    
+    public static void addForum(String a, String b, String c,String d) throws Exception {
+        //Connecting to a database
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+
+        //Creating and executing sql statements            
+        String sql = "insert Forum values(?, ?, ?, ?)";
+        PreparedStatement stm = con.prepareStatement(sql);
+        stm.setString(1, a);
+        stm.setString(2, b);
+        stm.setString(3, c);
+        stm.setString(4, d);
+        stm.executeUpdate();
+        //Closing the connection
+        con.close();
+
+    }
 
     public static List<Comment> showComment() throws Exception {
         List<Comment> list = new ArrayList();
@@ -150,6 +189,41 @@ public class UserDAO {
         //Creating and executing sql statements            
         String sql = "select * from Comments ";
         PreparedStatement stm = con.prepareStatement(sql);
+        ResultSet rs = stm.executeQuery();
+        //if userId and password are correct
+        while (rs.next()) {
+            list.add(new Comment(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getString(5)));
+        }
+        //Closing the connection
+        con.close();
+        return list;
+    }
+      public static List<Forum> showForum() throws Exception {
+        List<Forum> list = new ArrayList();
+        //Connecting to a database
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+        //Creating and executing sql statements            
+        String sql = "select * from Forum ";
+        PreparedStatement stm = con.prepareStatement(sql);
+        ResultSet rs = stm.executeQuery();
+        //if userId and password are correct
+        while (rs.next()) {
+            list.add(new Forum(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getString(5)));
+        }
+        //Closing the connection
+        con.close();
+        return list;
+    }
+      public static List<Comment> showComment(String a ) throws Exception {
+        List<Comment> list = new ArrayList();
+        //Connecting to a database
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+        //Creating and executing sql statements            
+        String sql = "select * from Comments WHERE NameBlog =? ";
+        PreparedStatement stm = con.prepareStatement(sql);
+        stm.setString(1, a);
         ResultSet rs = stm.executeQuery();
         //if userId and password are correct
         while (rs.next()) {
@@ -216,6 +290,44 @@ public class UserDAO {
         con.close();
         return list;
     }
+     public static List<Forumdasdsadasdas> showForumPaging(int a) throws Exception {
+        List<Forum> list = new ArrayList();
+        //Connecting to a database
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+        //Creating and executing sql statements            
+        String sql = "Select * from Forum ORDER BY ID OFFSET ? ROWS FETCH NEXT 4 ROWS ONLY";
+        PreparedStatement stm = con.prepareStatement(sql);
+        stm.setInt(1, (a - 1) * 4);
+        ResultSet rs = stm.executeQuery();
+        //if userId and password are correct
+        while (rs.next()) {
+           list.add(new Forum(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getString(5)));
+        }
+        //Closing the connection
+        con.close();
+        return list;
+    }
+     
+     public static List<Comment> showCommentPaging(int a) throws Exception {
+        List<Comment> list = new ArrayList();
+        //Connecting to a database
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+        //Creating and executing sql statements            
+        String sql = "Select * from Comments ORDER BY CmtID OFFSET ? ROWS FETCH NEXT 4 ROWS ONLY";
+        PreparedStatement stm = con.prepareStatement(sql);
+        stm.setInt(1, (a - 1) * 4);
+        ResultSet rs = stm.executeQuery();
+        //if userId and password are correct
+        while (rs.next()) {
+             list.add(new Comment(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getString(5)));
+        }
+        //Closing the connection
+        con.close();
+        return list;
+    }
+   
      
 
     public static List<Blog> showBlog() throws Exception {

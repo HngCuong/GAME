@@ -1,3 +1,4 @@
+<%@page import="models.Comment"%>
 <%@page import="models.User"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.List"%>
@@ -97,7 +98,7 @@
                     <div class="container mt-5">
                         <div class="d-flex justify-content-center row">
                             <div class="col-md-10">
-                                <form action="FindAccount">
+                                <form action="FindAccount5">
                                     <input type="text" name="search"><button>Search</button>
                                 </form>
                                 <div class="rounded">
@@ -107,8 +108,8 @@
                                                 <tr>
                                                     <th class="text-center">S. No.</th>
                                                     <th>Name</th>
-                                                    <th>Password</th>
-                                                    <th>Change Pass</th>
+                                                    <th>Comment</th>
+                                                    <th>Tittle</th>
                                                     <th>Delete account</th>
                                                     <th>Created</th>
                                                     <th></th>
@@ -120,56 +121,21 @@
                                                     int b = Integer.parseInt(a);
                                                     count =(( b -1 ) * 4) + 1; 
                                                     UserDAO dao = new UserDAO();
-                                                   List<User> list1 = dao.showStaff();
-                                                    List<User> list = dao.showStaffPaging(b);
-                                                    for (User op : list) {
+                                                   List<Comment> list1 = dao.showComment();
+                                                    List<Comment> list = dao.showCommentPaging(b);
+                                                    for (Comment op : list) {
 
                                                 %> 
                                                 <tr class="cell-1" data-toggle="collapse" data-target="#demo">
                                                     <td class="text-center"><%=count%></td>
-                                                    <td><%=op.getUserName()%></td>
-                                                    <td><%=op.getPassword()%></td>
+                                                    <td><%=op.getName()%></td>
+                                                    <td><%=op.getMsg()%></td>
                                                     <td>
-                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                            Edit
-                                                        </button>       
-                                                        
-                                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                
-                                                                <div class="modal-dialog">
-                                                                   
-                                                                    <div class="modal-content">
-                                                                        <form action="Change">
-                                                                        <div class="modal-header">
-                                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Reset Password</h1>
-                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                            
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            <p>Enter Account</p>
-                                                                            <input type = "text" name ="name">
-                                                                            <p>Enter Password</p>
-                                                                            <input type = "text" name ="new">
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                             
-                                                                            <button type="submit" class="btn btn-primary">Save changes</button>
-                                                                           
-
-                                                                        </div>
-                                                                    </form>
-                                                                    </div>
-                                                                         
-                                                                </div>
-                                                                                                                               
-
-                                                            </div>
-                                                           
+                                                        <%=op.getTittle()%>
 
                                                     </td>
-                                                    <td><a href="test?name=<%=op.getUserName()%>">Delete</a></td>
-                                                    <td>ADMIN</td>
+                                                    <td>    <a href="DeleteComment?name=<%=op.getID()%>"><button value="">Delete</button> </a></td>
+                                                    <td><%=op.getDate()%></td>
                                                     <td class="table-elipse" data-toggle="collapse" data-target="#demo"><i class="fa fa-ellipsis-h text-black-50"></i></td>
                                                 </tr>
 
@@ -195,10 +161,10 @@
                             <!-- <span class="active">01.</span>-->
                             <%for (int i = 1; i <= size; i++) {
                                    if (i == b) {%> 
-                            <a href="show2.jsp?index=<%=i%>"> <button class="active"> <%=i%> </button> </a> <% continue;
+                            <a href="EditComment.jsp?index=<%=i%>"> <button class="active"> <%=i%> </button> </a> <% continue;
                                }%>
 
-                            <a href="show2.jsp?index=<%=i%>"> <button class=""> <%=i%> </button> </a> 
+                            <a href="EditComment.jsp?index=<%=i%>"> <button class=""> <%=i%> </button> </a> 
 
 
                             <% }%>

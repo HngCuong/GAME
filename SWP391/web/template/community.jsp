@@ -1,21 +1,21 @@
 <%-- 
-    Document   : categories
-    Created on : Sep 29, 2022, 10:34:40 AM
+    Document   : community.jsp
+    Created on : Nov 7, 2022, 4:39:18 PM
     Author     : DELL
 --%>
 
-<%@page import="models.Comment"%>
-<%@page import="models.Blog"%>
+
+<%@page import="models.Forum"%>
 <%@page import="DAO.UserDAO"%>
-<%@page import="models.Product"%>
-<%@page import="java.util.List"%>
 <%@page import="java.util.List"%>
 <%@page import="DAO.ProductDAO"%>
+<%@page import="models.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Game Warrior Template</title>
+	    <title>Game Warrior Template</title>
+         <title>Game Warrior Template</title>
         <meta charset="UTF-8">
         <meta name="description" content="SWP GAME STORE">
         <meta name="keywords" content="warrior, game, creative, html">
@@ -33,22 +33,18 @@
         <link rel="stylesheet" href="css/style.css"/>
         <link rel="stylesheet" href="css/animate.css"/>
 
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+</head>
+<body>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
 
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-    </head>
-    <body>
-        <!-- Page Preloder -->
-        <div id="preloder">
-            <div class="loader"></div>
-        </div>
-
-        <!-- Header section -->
-        <header class="header-section">
-            <div class="container">
+	<!-- Header section -->
+	 <header class="header-section">
+		<div class="container">
 			<!-- logo -->
 			<a class="site-logo" href="index.jsp">
 				<img src="./img/logo2.png" alt="">
@@ -69,87 +65,135 @@
 				</ul>
 			</nav>
 		</div>
-        </header>
-        <!-- Header section end -->
+	</header>
+	<!-- Header section end -->
 
 
-        <!-- Latest news section -->
-        <div class="latest-news-section">
-            <div class="ln-title">Latest News</div>
-            <div class="news-ticker">
-                <div class="news-ticker-contant">
-                    <% ProductDAO dao = new ProductDAO();
+	<!-- Latest news section -->
+	<div class="latest-news-section">
+		<div class="ln-title">Latest News</div>
+		<div class="news-ticker">
+			<div class="news-ticker-contant">
+				   <% ProductDAO dao = new ProductDAO();
                         List<Product> list = dao.latest();
                         for (Product op : list) {%>
                     <div class="nt-item"><span class="new">new</span><%=op.getProductName()%></div>
-                    <%}%>    
-                </div>
-            </div>
-        </div>
-        <!-- Latest news section end -->
+                    <%}%>  
+			</div>
+		</div>
+	</div>
+	<!-- Latest news section end -->
 
 
-        <!-- Page info section -->
-        <section class="page-info-section set-bg" data-setbg="img/page-top-bg/1.jpg">
-            <div class="pi-content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-5 col-lg-6 text-white">
-                            <h2>Our Blog</h2>
-                            <p>Welcome to our Blog. Here we will update the hottest articles we have seen on the forums. Hope we can bring you interesting news.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Page info section -->
+	<!-- Page info section -->
+	<section class="page-info-section set-bg" data-setbg="img/page-top-bg/4.jpg">
+		<div class="pi-content">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-5 col-lg-6 text-white">
+						<h2>Our Community</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Page info section -->
 
 
-        <!-- Page section -->
-        <section class="page-section recent-game-page spad">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8">
-                        <div class="row">
+	<!-- Page section -->
+	<section class="page-section community-page set-bg" data-setbg="img/community-bg.jpg">
+		<div class="community-warp spad">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<h3 class="community-top-title">All Member</h3>
+					</div>
+					<div class="col-md-6 text-lg-right">
+						<form class="community-filter">
+							<label for="fdf5">Show</label>
+							<select id="fdf5">
+								<option value="#">Everything</option>
+								<option value="#">Everything</option>
+							</select>
+						</form>
+					</div>
+                                       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                            Post on Forum
+                                                        </button>       
 
-                            <%
-                                int end = 1;
-                                UserDAO tool = new UserDAO();
-                                List<Blog> blog = tool.showBlog();
-                                for (Blog op : blog) {
+                                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
-                            %> 
+                                                            <div class="modal-dialog">
 
-                            <div class="col-md-6" >
-                                <div class="recent-game-item">
-                                    <div class="rgi-thumb set-bg" data-setbg="<%=op.getImage()%>">
+                                                                <div class="modal-content">
+                                                                    <form action="../Forum">
+                                                                        <div class="modal-header">
+                                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Reset Password</h1>
+                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                            
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <p>Enter Name</p>
+                                                                            <input type = "text" name ="name">
+                                                                            <p>Enter Message</p>
+                                                                            <input type = "text" name ="msg">
+                                                                            <p>Enter Image</p>
+                                                                            <input type = "file" name ="img">
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                             
+                                                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                                                           
 
-                                    </div>
-                                    <div class="rgi-content">
-                                        <a href="single-blog.jsp?img=<%=op.getImage()%>&tittle=<%=op.getTittle()%>&big=<%=op.getBig()%>&small=<%=op.getSmall()%> " class="comment">     <h5><%=op.getTittle()%></h5></a>
-                                        <p><%=op.getSmall()%></p>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
 
-                                        <div class="rgi-extra">
-                                            <div class="rgi-star"><img src="img/icons/star.png" alt=""></div>
-                                            <div class="rgi-heart"><img src="img/icons/heart.png" alt=""></div>
-                                        </div>
-                                    </div>
-                                </div>	
-                            </div>
-                            <% end = end + 1;
-                                    if (end > 4) {
-                                        break;
-                                    }
+                                                            </div>
 
-                                }
-                            %> 
 
-                        </div>
-                        <% int size = 0;
-                            if (blog.size() % 4 != 0) {
-                                size = (blog.size() / 4) + 1;
+                                                        </div>
+				</div>
+				<ul class="community-post-list">
+					<%        String a = request.getParameter("index");
+                                                  int b = Integer.parseInt(a);
+                             
+
+                                     List<Blog> blog = tool.showBlogPaging(b);
+                                      List<Blog> check = tool.showBlog();
+                               
+                                                 
+                                                UserDAO util = new UserDAO();
+                                                List<Forum> list1 = util.showForum();
+                                                
+                                                    for (Forum o : list1) {
+
+                                                %> 
+                                                <li>
+						<div class="community-post">
+							<div class="author-avator set-bg" data-setbg="img/authors/1.jpg"></div>
+							<div class="post-content">
+								<h5><%=o.getName()%><span>posted an update</span></h5>
+								<div class="post-date"><%=o.getDate()%></div>
+								<p><%=o.getMsg()%></p>
+                                                                <%if(o.getImg().isEmpty()){}else{ %>
+								<div class="attachment-file">
+									<img src="<%=o.getImg()%>" alt="">
+								</div>
+							<%}%>
+                                                        </div>
+						</div>
+					</li>
+                                                <% 
+                                                    }%>		
+				</ul>
+                                     <% int size = 0;
+                            if (list1.size() % 4 != 0) {
+                                size = (list1.size() / 4) + 1;
                             } else {
-                                size = blog.size() / 4;
+                                size = list1.size() / 4;
                             }
 
                         %> 
@@ -165,65 +209,16 @@
                                 <span class=""> <%=i%></span> </a> <%}%>   
                                 <% }%>
                         </div>
-                    </div>
-                    <!-- sidebar -->
-                    <div class="col-lg-4 col-md-7 sidebar pt-5 pt-lg-0">
-                        <!-- widget -->
-                        <div class="widget-item">
-                            <form action="../FindHistory4">
-                                <input type="text" name="search">
-                                <button>Seach</button>
-                            </form>
-                        </div>
-                        <!-- widget -->
-                        <div class="widget-item">
-                            <h4 class="widget-title">Latest Posts</h4>
-                            <div class="latest-blog">
-                                <%
-
-                                    List<Blog> blog1 = tool.showBlogdown();
-                                    for (Blog o : blog1) {
-                                %> 
-                                <div class="lb-item">
-                                    <a href="single-blog.jsp?img=<%=o.getImage()%>&tittle=<%=o.getTittle()%>&big=<%=o.getBig()%>&small=<%=o.getSmall()%>" class="lb-author">     <div class="lb-thumb set-bg" data-setbg="<%=o.getImage()%>"></div></a>
-                                    <div class="lb-content">
-                                        <%=o.getTittle()%>
-                                        <p><%=o.getSmall()%></p>
-                                        <p>    By Admin</p>
-                                    </div>
-                                </div>
-                                <%}  %> 
-                            </div>
-                        </div>
-                        <!-- widget -->
-                        <div class="widget-item">
-                            <h4 class="widget-title">Top Comments</h4>
-                            <div class="top-comment">
-                                <%  int stop = 1;
-                                    List<Comment> blog2 = tool.showComment();
-                                    for (Comment p : blog2) {
-                                    
-                                %> 
-                                <div class="tc-item">
-                                    <div class="tc-thumb set-bg" data-setbg="img/authors/1.jpg"></div>
-                                    <div class="tc-content">
-                                        <p><a href=""> <%=p.getName()%> </a> <span>on</span>  <%=p.getMsg()%></p>
-                                        <div class="tc-date"><%=p.getDate()%></div>
-                                    </div>
-                                </div>                              
-                                <%stop = stop + 1; if(stop > 3){break;}}%> 
-                            </div>
-                        </div>
-                        <!-- widget -->
-
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Page section end -->
+				
+			</div>
+                                
+		</div>
+                           
+	</section>
+	<!-- Page section end -->
 
 
-        <!-- Footer top section -->
+	  <!-- Footer top section -->
         <section class="footer-top-section">
             <div class="container">
                 <div class="footer-top-bg">
@@ -313,7 +308,6 @@
             </div>
         </section>
         <!-- Footer top section end -->
-
         <!-- Footer section -->
         <footer class="footer-section">
             <div class="container">
@@ -326,7 +320,6 @@
                 </ul>
 
             </div>
-
             <script src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js'></script>
             <!--Back to Top Button Start-www.thenaynhe.com--><script>
                 jQuery(document).ready(function () {
@@ -364,13 +357,11 @@
                 .back-to-top:hover {
                     text-decoration: none;}</style>
             <a href="#" class="back-to-top"><img src="them-nut-len-dau-trang-back-to-top-button-63-4.jpg" alt="Back to Top" /></a>
-
-
-            <!--====== Javascripts & Jquery ======-->
-            <script src="js/jquery-3.2.1.min.js"></script>
-            <script src="js/bootstrap.min.js"></script>
-            <script src="js/owl.carousel.min.js"></script>
-            <script src="js/jquery.marquee.min.js"></script>
-            <script src="js/main.js"></script>
+	<!--====== Javascripts & Jquery ======-->
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.marquee.min.js"></script>
+	<script src="js/main.js"></script>
     </body>
 </html>
