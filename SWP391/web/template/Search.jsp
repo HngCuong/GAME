@@ -63,7 +63,7 @@
                         <li><a href="index.jsp">Home</a></li>
                         <li><a href="../home/homepage.do?op=list">Games</a></li>
                         <li><a href="categories.jsp">Blog</a></li>
-                        <li><a href="community.jsp">Forums</a></li>
+                        <li><a href="community.jsp?index=1">Forums</a></li>
                         <li><a href="contact.jsp">Contact</a></li>
                     </ul>
                 </nav>

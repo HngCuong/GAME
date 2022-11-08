@@ -290,7 +290,7 @@ public class UserDAO {
         con.close();
         return list;
     }
-     public static List<Forumdasdsadasdas> showForumPaging(int a) throws Exception {
+     public static List<Forum> showForumPaging(int a) throws Exception {
         List<Forum> list = new ArrayList();
         //Connecting to a database
         DBUtil db = new DBUtil();

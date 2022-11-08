@@ -62,6 +62,9 @@
         height: 200px;
     }
 </style>
+<script>
+    alert("Hello");
+ </script>
 <div class="container mt-4">
     <button>BACK</button>
     <div class="card p-3">

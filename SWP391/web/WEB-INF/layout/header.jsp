@@ -23,7 +23,7 @@
                             <li>Support 24/24</li>
                             <li><a href="../template/index.jsp">Home</a></li>
                             <li><a href="../template/categories.jsp">Blog</a></li>
-                            <li><a href="../template/community.jsp">forums</a></li>
+                            <li><a href="../template/community.jsp?index=1">forums</a></li>
                             <li><a href="../template/contact.jsp">Contact</a></li>
                         </ul>
                     </div>

@@ -38,6 +38,17 @@ public class FindHistory3 extends HttpServlet {
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet SearchHistory</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println ("<script>alert('Hello World!');</script>");
+            out.println("<h1>Servlet SearchHistory at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+          
             String img = request.getParameter("image");
             String author = request.getParameter("tittle");
             String shortDescription = request.getParameter("short");
@@ -45,6 +56,7 @@ public class FindHistory3 extends HttpServlet {
             request.setAttribute("msg","Create Blog Success");
             UserDAO dao = new UserDAO();
             dao.addBlog(img, author,shortDescription, longDescription);
+            
              request.getRequestDispatcher("create_blog.jsp").forward(request, response);
           
         }

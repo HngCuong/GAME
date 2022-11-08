@@ -60,7 +60,7 @@
 					<li><a href="index.jsp">Home</a></li>
 					<li><a href="../home/homepage.do?op=list">Games</a></li>
 					<li><a href="categories.jsp">Blog</a></li>
-					<li><a href="community.jsp">Forums</a></li>
+					<li><a href="community.jsp?index=1">Forums</a></li>
 					<li><a href="contact.jsp">Contact</a></li>
 				</ul>
 			</nav>
@@ -158,17 +158,11 @@
 				</div>
 				<ul class="community-post-list">
 					<%        String a = request.getParameter("index");
-                                                  int b = Integer.parseInt(a);
-                             
-
-                                     List<Blog> blog = tool.showBlogPaging(b);
-                                      List<Blog> check = tool.showBlog();
-                               
-                                                 
+                                                  int b = Integer.parseInt(a);                     
                                                 UserDAO util = new UserDAO();
                                                 List<Forum> list1 = util.showForum();
-                                                
-                                                    for (Forum o : list1) {
+                                                 List<Forum> blog = util.showForumPaging(b);
+                                                    for (Forum o : blog) {
 
                                                 %> 
                                                 <li>
@@ -201,13 +195,14 @@
                         <div class="site-pagination">
                             <!-- <span class="active">01.</span>-->
                             <%for (int i = 1; i <= size; i++) {
-                                   if (i < 2) {%>
-                            <a href="Search1.jsp?index=<%=i%>"> 
-                                <span class="active"> <%=i%></span> </a> <%}%>
-                                <%if (i > 1) {%>
-                            <a href="Search1.jsp?index=<%=i%>"> 
-                                <span class=""> <%=i%></span> </a> <%}%>   
-                                <% }%>
+                                   if (i == b) {%> 
+                            <a href="community.jsp?index=<%=i%>"> <span class="active"> <%=i%> </span> </a> <% continue;
+                               }%>
+
+                            <a href="community.jsp?index=<%=i%>"> <span class=""> <%=i%> </span> </a> 
+
+
+                            <% }%>
                         </div>
 				
 			</div>
