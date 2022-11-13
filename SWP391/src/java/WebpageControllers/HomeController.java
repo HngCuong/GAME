@@ -10,6 +10,7 @@ import DAO.ConsolesDAO;
 import DAO.GenreDAO;
 import DAO.ProductDAO;
 import DAO.UserDAO;
+import com.paypal.base.rest.PayPalRESTException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
@@ -30,6 +31,9 @@ import models.Consoles;
 import models.Genre;
 import models.Product;
 import models.User;
+import net.codejava.AuthorizePaymentServlet;
+import net.codejava.OrderDetail;
+import net.codejava.PaymentServices;
 
 /**
  *
@@ -600,6 +604,22 @@ public class HomeController extends HttpServlet {
 
                     }
                     session.invalidate();
+                     String product = request.getParameter("product");
+        String subtotal = request.getParameter("subtotal");
+        String shipping = request.getParameter("shipping");
+        String tax = request.getParameter("tax");
+        String total1 = request.getParameter("total");
+         
+        OrderDetail orderDetail = new OrderDetail(product, subtotal, shipping, tax, total1);
+ 
+        PaymentServices paymentServices = new PaymentServices();
+        String approvalLink = null;
+        try {
+            approvalLink = paymentServices.authorizePayment(orderDetail);
+        } catch (PayPalRESTException ex) {
+            Logger.getLogger(AuthorizePaymentServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        response.sendRedirect(approvalLink);
                     response.sendRedirect("homepage.do?op=list");
                 }
             }

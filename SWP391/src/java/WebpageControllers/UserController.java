@@ -125,12 +125,12 @@ public class UserController extends HttpServlet {
                 message.setFrom(new InternetAddress(username));
                 message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
                 message.setSubject("Confirm your email.");
-                String htmlContent = "<h1>Welcome to <a href=\"gpcoder.com\">GP Coder</a></h1>";
-                /**String htmlContent ="<h1>Enter to create account <a href = \"http://localhost:8080/GameStore/user/register.do?userName="+userName
+              
+                String htmlContent ="<h1>Enter to create account <a href = \"http://localhost:8080/GameStore/user/register.do?userName="+userName
                         + "&email="+email
                         + "&password="+password1
                         + "&password2="+password2
-                        + " \">Confirm</a></h1>" ;*/
+                        + " \">Confirm</a></h1>" ;
                 message.setContent(htmlContent,"text/html");
                 Transport.send(message);
                 request.setAttribute("confirm", "Please check your mail to create account");

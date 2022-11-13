@@ -594,7 +594,7 @@ public class UserDAO {
             String sql = "insert Users values(?, ?, ?, ?)";
             PreparedStatement stm = con.prepareStatement(sql);
             stm.setString(1, user.getUserName());
-            stm.setString(2, Hasher.hash(user.getPassword()));
+            stm.setString(2, user.getPassword());
             stm.setString(3, "USER");
             stm.setString(4, user.getEmail());
             stm.executeUpdate();
