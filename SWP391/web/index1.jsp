@@ -15,4 +15,3 @@
 <%--<jsp:forward page="/home/homepage.do?op=list"/>--%>
 <jsp:forward page="/home/homepage.do"/>
 <%--<jsp:forward page="${context}/admin/manage.do?op=listFull"/>--%>
-

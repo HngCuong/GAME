@@ -77,13 +77,14 @@
     </head>
 
     <body>
+        
 
-        <div class="container">
-            <div class="row flex-lg-nowrap" >
-                <div class="col-12 col-lg-auto mb-3" style="width: 200px;padding-top:34px">
-                    <div class="card p-3" style="">
-                        <div class="e-navlist e-navlist--active-bg">
-                                <ul class="nav">
+    <div class="container">
+        <div class="row flex-lg-nowrap" >
+            <div class="col-12 col-lg-auto mb-3" style="width: 200px;padding-top:34px">
+                <div class="card p-3" style="">
+                    <div class="e-navlist e-navlist--active-bg">
+                        <ul class="nav">
                             <li class="nav-item"><a class="nav-link px-2  " href="<c:url value="http://localhost:8080/GameStore/admin/manage.do?op=listFull" />"><span>Manage Product</span></a></li>
                             <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="http://localhost:8080/GameStore/home/homepage.do?op=list" />"><span>Back to Shoping Site</span></a></li>
                             <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="index.jsp" />"><span>Dashboard</span></a></li>
@@ -94,9 +95,9 @@
                             <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="EditComment" />"><span>All Comments</span></a></li>
                             <%
 
-            UserDAO dao1 = new UserDAO();
-            List<Forum> list3 = dao1.showSpam();
-            if (!list3.isEmpty()) {
+            UserDAO dao = new UserDAO();
+            List<Forum> list1 = dao.showSpam();
+            if (!list1.isEmpty()) {
         %> 
     <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="spam.jsp" />"><span style="color:red">Spam on Forum</span></a></li>
         <%} else {
@@ -108,71 +109,66 @@
 
                             <li  class="nav-item"><a class="nav-link px-2 " href="<c:url value="http://localhost:8080/GameStore/user/logout.do" />"><span id="sp">Log Out</span></a></li>
                         </ul>
-                        </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="container mt-5">
-                        <div class="d-flex justify-content-center row">
-                            <div class="col-md-10">
-                                <form action="FindAccount5">
-                                    <input type="text" name="search"><button>Search</button>
-                                </form>
-                                <div class="rounded">
-                                    <div class="table-responsive table-borderless">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-center">S. No.</th>
-                                                    <th>Name</th>
-                                                    <th>Comment</th>
-                                                    <th>Tittle</th>
-                                                    <th>Delete account</th>
-                                                    <th>Created</th>
-                                                    <th></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="table-body">
-                                                <%int count = 1;
-                    UserDAO dao = new UserDAO();
-                    String a =request.getParameter("search");
-                    List<Comment> list = dao.showComment(a);
-                    for (Comment op : list) {
-                    
-                                                %> 
-                                                <tr class="cell-1" data-toggle="collapse" data-target="#demo">
-                                                    <td class="text-center"><%=count%></td>
-                                                    <td><%=op.getName()%></td>
-                                                    <td><%=op.getMsg()%></td>
-                                                    <td>
-                                                        <%=op.getTittle()%>
+            </div>
+            <div class="col">
+                <div class="container mt-5">
+                    <div class="d-flex justify-content-center row">
+                        <div class="col-md-10">
+                            <form action="FindAccount5">
+                                <input type="text" name="search"><button>Search</button>
+                            </form>
+                            <div class="rounded">
+                                <div class="table-responsive table-borderless">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">S. No.</th>
+                                                <th>Name</th>
+                                                <th>Content</th>
 
-                                                    </td>
-                                                    <td>    <a href="DeleteComment?name=<%=op.getID()%>"><button value="">Delete</button> </a></td>
-                                                    <td><%=op.getDate()%></td>
-                                                    <td class="table-elipse" data-toggle="collapse" data-target="#demo"><i class="fa fa-ellipsis-h text-black-50"></i></td>
-                                                </tr>
+                                                <th>Delete</th>
+                                                <th>Created</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="table-body">
+                                            <%
+
+                                                int count = 1;
+
+                                                for (Forum op : list1) {
+
+                                            %> 
+                                            <tr class="cell-1" data-toggle="collapse" data-target="#demo">
+                                                <td class="text-center"><%=count%></td>
+                                                <td><%=op.getName()%></td>
+                                                <td><%=op.getMsg()%></td>
+
+                                                <td>    <a href="Deleteforum?name=<%=op.getMsg()%>"><button value="">Delete</button> </a></td>
+                                                <td><%=op.getDate()%></td>
+                                                <td class="table-elipse" data-toggle="collapse" data-target="#demo"><i class="fa fa-ellipsis-h text-black-50"></i></td>
+                                            </tr>
 
 
 
-                                                <% count = count + 1;
+                                            <% count = count + 1;
                                                     }%>
 
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                        </tbody>
+                                    </table>
                                 </div>
-                          
-
-                      
                             </div>
+
                         </div>
                     </div>
-
                 </div>
+
             </div>
         </div>
     </div>
+</div>
 </body>
 
 </html>

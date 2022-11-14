@@ -1,3 +1,6 @@
+<%@page import="models.Blog"%>
+<%@page import="java.util.List"%>
+<%@page import="DAO.UserDAO"%>
 <!DOCTYPE html>
 <!dashboard>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -5,6 +8,9 @@
 <html lang="en">
 
     <head>
+        <script>
+            window.history.replaceState("new","","GameStore")
+         </script>   
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -50,7 +56,13 @@
     <div class="container">
         <div class="row justify justify-content-center" style="background-color: white">
             <div class="col-11 col-md-8 col-lg-6 col-xl-5">
-               
+                      <%int count = 1;
+                    UserDAO dao = new UserDAO();
+                    String a =request.getParameter("name");
+                    List<Blog> list = dao.showBlog(a);
+                    for (Blog op : list) {
+                    
+                                                %> 
                     <div class="card bg-dark">
                         <div class="row mt-0">
                             <div class="col-md-12 ">
@@ -58,27 +70,29 @@
                                 <p>Please fill in a blank</p>
                             </div>
                         </div>
-                         <form action ="FindHistory3">
+                         <form action ="UpdateBlog">
                         <div class="form-group row mb-3">
                             <div class="col-md-12 mb-0">
                                 <p class="mb-1">Picture</p>                                
-                                <input type="file" name="image" required="">                             
+                                <input type="file" name="image"  required="">
+                                 <p class="mb-1">Previous image: <%=op.getImage()%> </p>  
                             </div>
                         </div>
                         <div class="form-group row mb-3">
                             <div class="col-md-12 mb-0">
-                                <p class="mb-1">Tittle</p> <input id="e-mail" type="text" placeholder="Enter Tittle" name="tittle" class="form-control input-box rm-border" required="">
+                                <p class="mb-1">Tittle</p> <input id="e-mail" type="text" placeholder="Enter Tittle" name="tittle" class="form-control input-box rm-border" value="<%=op.getTittle()%>" required="">
                             </div>
                         </div>
                         <div class="form-group row mb-3">
                             <div class="col-md-12 mb-0">
-                                <p class="mb-1">Short Description</p> <input id="e-mail" type="text" placeholder="Enter short description" name="short" class="form-control input-box rm-border" required="">
+                                <p class="mb-1">Short Description</p> <input id="e-mail" type="text" placeholder="Enter short description" name="short" class="form-control input-box rm-border" value="<%=op.getSmall()%>" required="">
                             </div>
                         </div>
+                            <input type="hidden" name="name" value="<%=op.getSmall()%>" >
                         
                         <div class="form-group row">
                             <div class="col-md-12 mb-2">
-                                <p class="mb-1">Long Description</p> <textarea id="message" type="text" placeholder="Enter long description" name="long" class="form-control input-box rm-border" required=""></textarea>
+                                <p class="mb-1">Long Description</p> <textarea id="message" type="text" placeholder="Enter long description" name="long" class="form-control input-box rm-border"  required=""><%=op.getBig()%></textarea>
                             </div>
                         </div>
                             
@@ -98,6 +112,7 @@
                                         Cancel
                                 </button>
                     </div>
+                                <%}%>
               
                
             </div>

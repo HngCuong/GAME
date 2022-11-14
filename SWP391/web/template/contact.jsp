@@ -13,6 +13,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+            window.history.replaceState("new","","GameStore")
+         </script>   
 	<title>SWP GAME STORE</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="SWP GAME STORE">
@@ -39,6 +42,7 @@
 
 </head>
 <body>
+   
 	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
@@ -134,21 +138,21 @@
 				<div class="col-lg-8">
 					<div class="contact-form-warp" >
 						<h4 class="comment-title">Leave a Reply</h4>
-                                                <form class="comment-form" action="<c:url value="../contact" />" >
+                                                <form class="comment-form" action="../contact" >
 							<div class="row" >
 								<div class=" col-md-6">
-                                                                    <input type="text" name="user" placeholder="Name">
+                                                                    <input type="text" name="user" placeholder="Name" required="">
 								</div>
 								<div class="col-md-6">
-									<input type="email" name="email" placeholder="Email">
+									<input type="email" name="email" placeholder="Email" required="">
 								</div>
 								<div class="col-lg-12">
-									<input type="text" name="subject" placeholder="Subject">
-                                                                        <textarea placeholder="Message" name="msg"></textarea>
+									<input type="text" name="subject" placeholder="Subject" required="">
+                                                                        <textarea placeholder="Message" name="msg" required=""></textarea>
 									<button class="site-btn btn-sm">Send</button>
 								</div>
 							</div>
-                                                    <h3>${nof}</h3>
+                                                    
 						</form>
 					</div>
 				</div>

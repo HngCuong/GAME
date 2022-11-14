@@ -4,6 +4,10 @@
     Author     : buile
 --%>
 
+<%@page import="models.Forum"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.List"%>
+<%@page import="DAO.UserDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -27,16 +31,31 @@
                 <div class="col-12 col-lg-auto mb-3" style="width: 200px;">
                     <div class="card p-3">
                         <div class="e-navlist e-navlist--active-bg">
-                            <ul class="nav">
-                                <li class="nav-item"><a class="nav-link px-2  " href="#"><i class="fa fa-fw fa-bar-chart mr-1"></i><span>Manage Product</span></a></li>
-                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="/home/homepage.do?op=list" />"><i class="fa fa-shopping-cart mr-1"></i><span>Back to Shoping Site</span></a></li>
-                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="../index.jsp" />"><i class="fa fa-tachometert mr-1"></i><span>Dashboard</span></a></li>
-                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="../index2.jsp" />"><i class="fa fa-tachometert mr-1"></i><span>Contact</span></a></li>
-                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="../status.jsp" />"><i class="fa fa-tachometert mr-1"></i><span>Total Order</span></a></li>
-                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="../admin.jsp" />"><i class="fa fa-tachometert mr-1"></i><span>Create Account</span></a></li>
-                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="../show.jsp" />"><i class="fa fa-tachometert mr-1"></i><span>ShowAccount</span></a></li>
-                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="/user/logout.do" />"><i class="fa fa-sign-out mr-1"></i><span>Log Out</span></a></li>
-                            </ul>
+                                <ul class="nav">
+                            <li class="nav-item"><a class="nav-link px-2  " href="<c:url value="http://localhost:8080/GameStore/admin/manage.do?op=listFull" />"><span>Manage Product</span></a></li>
+                            <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="http://localhost:8080/GameStore/home/homepage.do?op=list" />"><span>Back to Shoping Site</span></a></li>
+                            <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="../index.jsp" />"><span>Dashboard</span></a></li>
+                            <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="../index2.jsp" />"><i class="fa fa-tachometert "></i><span>Contact</span></a></li>
+                            <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="../status.jsp" />"><span>Total Order</span></a></li>
+                            <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="../admin.jsp" />"><span>Create Account</span></a></li>
+                            <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="../show.jsp" />"><span>ShowAccount</span></a></li>
+                            <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="../EditComment" />"><span>All Comments</span></a></li>
+                            <%
+
+            UserDAO dao1 = new UserDAO();
+            List<Forum> list3 = dao1.showSpam();
+            if (!list3.isEmpty()) {
+        %> 
+    <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="../spam.jsp" />"><span style="color:red">Spam on Forum</span></a></li>
+        <%} else {
+
+        %> 
+    <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="../spam.jsp" />"><span>Spam on Forum</span></a></li>
+        <%}   %> 
+                           
+
+                            <li  class="nav-item"><a class="nav-link px-2 " href="<c:url value="http://localhost:8080/GameStore/user/logout.do" />"><span id="sp">Log Out</span></a></li>
+                        </ul>
                         </div>
                     </div>
                 </div>

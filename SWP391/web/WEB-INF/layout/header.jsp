@@ -54,6 +54,7 @@
                                                                                                 background-color: #222222;
                                                                                                 padding: 0;
                                                                                                 padding-right: 30px">History Order</button></a></li>
+                                    
                                     <li ><a href="<c:url value="/user/logout.do" />"><button style="font-size: 20px;
                                                                                              border: #222222;
                                                                                              color: white;
@@ -118,6 +119,12 @@
                                                                                                 background-color: #222222;
                                                                                                 padding: 0;
                                                                                                 padding-right: 30px">Post</button></a></li>
+                                    <li ><a href="<c:url value="../EditBlog.jsp?index=1" />"><button style="font-size: 20px;
+                                                                                                border: #222222;
+                                                                                                color: white;
+                                                                                                background-color: #222222;
+                                                                                                padding: 0;
+                                                                                                padding-right: 30px">All Blog</button></a></li>
 
                                     <li ><a href="<c:url value="/user/logout.do" />"><button style="font-size: 20px;
                                                                                              border: #222222;

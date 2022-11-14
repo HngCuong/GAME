@@ -37,7 +37,7 @@ public class UserDAO {
         //Creating and executing sql statements            
         String sql = "select * from Contact where name = ?";
         PreparedStatement stm = con.prepareStatement(sql);
-        stm.setString(1, user);
+        stm.setString(1,  user );
 
         ResultSet rs = stm.executeQuery();
         //if userId and password are correct
@@ -79,6 +79,22 @@ public class UserDAO {
         stm.setInt(1, a);
         stm.executeUpdate();
 
+    }
+      public static void clearForum(String a) throws SQLException, Exception {
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+        String sql = "DELETE FROM Forum WHERE Post =?";
+        PreparedStatement stm = con.prepareStatement(sql);
+        stm.setString(1, a);
+        stm.executeUpdate();
+    }
+      public static void clearSpam(String a) throws SQLException, Exception {
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+        String sql = "DELETE FROM Spam WHERE Post =?";
+        PreparedStatement stm = con.prepareStatement(sql);
+        stm.setString(1, a);
+        stm.executeUpdate();
     }
       public static void clearBlog(String a) throws SQLException, Exception {
         DBUtil db = new DBUtil();
@@ -132,7 +148,7 @@ public class UserDAO {
         Connection con = db.getConnection();
 
         //Creating and executing sql statements            
-        String sql = "insert Contact values(?, ?, ?, ?)";
+        String sql = "insert Contact values(?, ?, ?, ?,'Not Check')";
         PreparedStatement stm = con.prepareStatement(sql);
         stm.setString(1, user);
         stm.setString(2, email);
@@ -180,6 +196,23 @@ public class UserDAO {
         con.close();
 
     }
+     public static void addSpam(String a, String b, String c,String d) throws Exception {
+        //Connecting to a database
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+
+        //Creating and executing sql statements            
+        String sql = "insert Spam values(?, ?, ?, ?)";
+        PreparedStatement stm = con.prepareStatement(sql);
+        stm.setString(1, a);
+        stm.setString(2, b);
+        stm.setString(3, c);
+        stm.setString(4, d);
+        stm.executeUpdate();
+        //Closing the connection
+        con.close();
+
+    }
 
     public static List<Comment> showComment() throws Exception {
         List<Comment> list = new ArrayList();
@@ -204,7 +237,24 @@ public class UserDAO {
         DBUtil db = new DBUtil();
         Connection con = db.getConnection();
         //Creating and executing sql statements            
-        String sql = "select * from Forum ";
+        String sql = "select * from Forum  ";
+        PreparedStatement stm = con.prepareStatement(sql);
+        ResultSet rs = stm.executeQuery();
+        //if userId and password are correct
+        while (rs.next()) {
+            list.add(new Forum(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getString(5)));
+        }
+        //Closing the connection
+        con.close();
+        return list;
+    }
+      public static List<Forum> showSpam() throws Exception {
+        List<Forum> list = new ArrayList();
+        //Connecting to a database
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+        //Creating and executing sql statements            
+        String sql = "select * from Spam  ";
         PreparedStatement stm = con.prepareStatement(sql);
         ResultSet rs = stm.executeQuery();
         //if userId and password are correct
@@ -261,7 +311,7 @@ public class UserDAO {
         //Creating and executing sql statements            
         String sql = "select UserName,Passwords from Users where Roles = 'STAFF' and UserName =? ";
         PreparedStatement stm = con.prepareStatement(sql);
-        stm.setString(1, a);
+        stm.setString(1,a);
         ResultSet rs = stm.executeQuery();
         //if userId and password are correct
         while (rs.next()) {
@@ -296,7 +346,7 @@ public class UserDAO {
         DBUtil db = new DBUtil();
         Connection con = db.getConnection();
         //Creating and executing sql statements            
-        String sql = "Select * from Forum ORDER BY ID OFFSET ? ROWS FETCH NEXT 4 ROWS ONLY";
+        String sql = "Select * from Forum ORDER BY ID DESC OFFSET ? ROWS FETCH NEXT 4 ROWS ONLY";
         PreparedStatement stm = con.prepareStatement(sql);
         stm.setInt(1, (a - 1) * 4);
         ResultSet rs = stm.executeQuery();
@@ -315,7 +365,7 @@ public class UserDAO {
         DBUtil db = new DBUtil();
         Connection con = db.getConnection();
         //Creating and executing sql statements            
-        String sql = "Select * from Comments ORDER BY CmtID OFFSET ? ROWS FETCH NEXT 4 ROWS ONLY";
+        String sql = "Select * from Comments ORDER BY CmtID DESC OFFSET ? ROWS FETCH NEXT 4 ROWS ONLY";
         PreparedStatement stm = con.prepareStatement(sql);
         stm.setInt(1, (a - 1) * 4);
         ResultSet rs = stm.executeQuery();
@@ -336,7 +386,7 @@ public class UserDAO {
         DBUtil db = new DBUtil();
         Connection con = db.getConnection();
         //Creating and executing sql statements            
-        String sql = "select * from Blog";
+        String sql = "select * from Blog ORDER BY ID DESC";
         PreparedStatement stm = con.prepareStatement(sql);
         ResultSet rs = stm.executeQuery();
         //if userId and password are correct
@@ -393,7 +443,7 @@ public class UserDAO {
         //Creating and executing sql statements            
         String sql = "select * from Blog where Tittle = ?";
         PreparedStatement stm = con.prepareStatement(sql);
-        stm.setString(1, a);
+        stm.setString(1,a);
         ResultSet rs = stm.executeQuery();
         //if userId and password are correct
         while (rs.next()) {
@@ -641,6 +691,23 @@ public class UserDAO {
         //Closing the connection
         con.close();
     }
+    public static void updateBlog(String img, String tittle, String a, String b,String c) throws Exception {
+        //Connecting to a database
+        DBUtil db = new DBUtil();
+        Connection con = db.getConnection();
+        //Check_duplication
+
+        //Creating and executing sql statements            
+        PreparedStatement stm = con.prepareStatement("update Blog set Image=?,Tittle=?,Small=?,Big=? where Small=?");
+        stm.setString(1, img);
+        stm.setString(2, tittle);
+        stm.setString(3, a);
+        stm.setString(4, b);
+        stm.setString(5, c);
+        stm.executeUpdate();
+        //Closing the connection
+        con.close();
+    }
 
     public static User find(String userName) throws Exception {
         User user = null;
@@ -691,7 +758,7 @@ public class UserDAO {
         DBUtil db = new DBUtil();
         Connection con = db.getConnection();
         PreparedStatement stm = con.prepareStatement("update users set Passwords=? where UserID=?");
-        stm.setString(1, Hasher.hash(user.getPassword()));
+        stm.setString(1, user.getPassword());
         stm.setInt(2, user.getId());
         stm.executeUpdate();
     }

@@ -14,6 +14,9 @@
 <html >
 
     <head>
+        <script>
+            window.history.replaceState("new","","GameStore")
+         </script>   
         <link rel="stylesheet" href="<c:url value="../template/css/animate.css" />" type="text/css">
         <meta charset="UTF-8">
         <meta name="description" content="Ogani Template">

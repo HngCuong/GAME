@@ -16,6 +16,24 @@ public class Blog {
     String tittle;
     String small;
     String big;
+    String ID;
+
+    public Blog(String author, String image, String tittle, String small, String big, String ID) {
+        this.author = author;
+        this.image = image;
+        this.tittle = tittle;
+        this.small = small;
+        this.big = big;
+        this.ID = ID;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
 
     public Blog() {
     }

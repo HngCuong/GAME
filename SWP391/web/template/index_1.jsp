@@ -11,9 +11,6 @@
 <!DOCTYPE html>
 <html lang="zxx">
     <head>
-        <script>
-            window.history.replaceState("new","","GameStore")
-         </script>   
         <title>SWP GAME STORE</title>
         <meta charset="UTF-8">
         <meta name="description" content="SWP GAME STORE">
@@ -80,7 +77,7 @@
             </div>
         </header>
         <!-- Header section end -->
- 
+
         <!-- Hero section -->
         <section class="hero-section">
             <div class="hero-slider owl-carousel">

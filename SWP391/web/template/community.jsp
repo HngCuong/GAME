@@ -14,6 +14,9 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <script>
+            window.history.replaceState("new","","GameStore")
+         </script>   
 	    <title>Game Warrior Template</title>
          <title>Game Warrior Template</title>
         <meta charset="UTF-8">
@@ -36,6 +39,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </head>
+
 <body>
 	<!-- Page Preloder -->
 	<div id="preloder">
@@ -129,7 +133,7 @@
                                                                 <div class="modal-content">
                                                                     <form action="../Forum">
                                                                         <div class="modal-header">
-                                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Reset Password</h1>
+                                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Forum</h1>
                                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                             
                                                                         </div>
@@ -163,25 +167,37 @@
                                                 List<Forum> list1 = util.showForum();
                                                  List<Forum> blog = util.showForumPaging(b);
                                                     for (Forum o : blog) {
+                                                        String flag = "OK";
+                                                    
 
                                                 %> 
                                                 <li>
 						<div class="community-post">
 							<div class="author-avator set-bg" data-setbg="img/authors/1.jpg"></div>
 							<div class="post-content">
-								<h5><%=o.getName()%><span>posted an update</span></h5>
+                                                            <h5>
+                                                            <%=o.getName()%><span>posted an update</span>
+                                                                
+                                                                <%                                                                         
+                                                List<Forum> list2 = util.showSpam();
+                                                for (Forum o1 : list2) {if(o.getMsg().equals(o1.getMsg())){flag = "FAIL";} }
+                                                if(flag=="OK"){
+                                                %> 
+                                                <a href="http://localhost:8080/GameStore/Spam?name=<%=o.getName()%>&msg=<%=o.getMsg()%>&img=<%=o.getImg()%>"><button style="color:white;background-color: red">SPAM</button></a>
+                                                <%}%>
+                                                            </h5> 
 								<div class="post-date"><%=o.getDate()%></div>
 								<p><%=o.getMsg()%></p>
                                                                 <%if(o.getImg().isEmpty()){}else{ %>
 								<div class="attachment-file">
 									<img src="<%=o.getImg()%>" alt="">
 								</div>
-							<%}%>
+							
                                                         </div>
 						</div>
 					</li>
                                                 <% 
-                                                    }%>		
+                                                   } }%>		
 				</ul>
                                      <% int size = 0;
                             if (list1.size() % 4 != 0) {

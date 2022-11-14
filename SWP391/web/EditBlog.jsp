@@ -11,6 +11,9 @@
 <html lang="en">
 
     <head>
+        <script>
+            window.history.replaceState("new","","GameStore")
+         </script>   
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -81,15 +84,10 @@
                     <div class="card p-3" style="">
                         <div class="e-navlist e-navlist--active-bg">
                             <ul class="nav">
-                                   <li class="nav-item"><a class="nav-link px-2  " href="<c:url value="http://localhost:8080/GameStore/admin/manage.do?op=listFull" />"><span>Manage Product</span></a></li>
+                                   
                                 <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="http://localhost:8080/GameStore/home/homepage.do?op=list" />"><span>Back to Shoping Site</span></a></li>
-                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="index.jsp" />"><span>Dashboard</span></a></li>
-                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="index2.jsp" />"><i class="fa fa-tachometert "></i><span>Contact</span></a></li>
-                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="status.jsp" />"><span>Total Order</span></a></li>
-                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="admin.jsp" />"><span>Create Account</span></a></li>
-                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="show.jsp" />"><span>ShowAccount</span></a></li>
-                                 <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="EditComment" />"><span>All Comments</span></a></li>
-                                 <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="EditBlog.jsp?index=1" />"><span>All Blog</span></a></li>
+                                <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="EditBlog.jsp?index=1" />"><span>Edit Blog</span></a></li>
+                                 <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="create_blog.jsp" />"><span>Create Blog</span></a></li>
                                 <li class="nav-item"><a class="nav-link px-2 " href="<c:url value="http://localhost:8080/GameStore/user/logout.do" />"><span>Log Out</span></a></li>
                             </ul>
                         </div>
@@ -110,9 +108,9 @@
                                                     <th class="text-center">S. No.</th>
                                                     <th>Name</th>
                                                     <th>Description</th>
-                                            
-                                                    <th>Delete account</th>
-
+                                                    <th>Update</th>
+                                                    <th>Delete</th>
+                                                    
                                                     <th></th>
                                                 </tr>
                                             </thead>
@@ -131,8 +129,8 @@
                                                     <td class="text-center"><%=count%></td>
                                                     <td><%=op.getTittle()%></td>
                                                     <td><%=op.getSmall()%></td>
-                                                   
-                                                    <td>    <a href="DeleteBlog?name=<%=op.getSmall()%>"><button value="">Delete</button> </a></td>
+                                                    <td><a href="create_blog1.jsp?name=<%=op.getTittle()%>"><button value="">Update</button> </a></td>
+                                                    <td><a href="DeleteBlog?name=<%=op.getSmall()%>"><button value="">Delete</button> </a></td>
                                                 
                                                     <td class="table-elipse" data-toggle="collapse" data-target="#demo"><i class="fa fa-ellipsis-h text-black-50"></i></td>
                                                 </tr>

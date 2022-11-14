@@ -14,6 +14,9 @@
 <!DOCTYPE html>
 <html lang="zxx">
     <head>
+        <script>
+            window.history.replaceState("new","","GameStore")
+         </script>   
         <title>SWP GAME STORE</title>
         <meta charset="UTF-8">
         <meta name="description" content="SWP GAME STORE">
@@ -140,30 +143,12 @@
                             </form>
                         </div>
                         <!-- widget -->
-                    <div class="widget-item">
-                            <h4 class="widget-title">Latest Posts</h4>
-                            <div class="latest-blog">
-                                  <%
-                         UserDAO tool =new UserDAO();  
-                   List<Blog> blog1 = tool.showBlogdown();
-                    for (Blog o : blog1) {
-                %> 
-                                <div class="lb-item">
-                                 <a href="single-blog.jsp?img=<%=o.getImage()%>&tittle=<%=o.getTittle()%>&big=<%=o.getBig()%>&small=<%=o.getSmall()%>" class="lb-author">     <div class="lb-thumb set-bg" data-setbg="<%=o.getImage()%>"></div></a>
-                                    <div class="lb-content">
-                                        <%=o.getTittle()%>
-                                        <p><%=o.getSmall()%></p>
-                                        <p>    By Admin</p>
-                                    </div>
-                                </div>
-                              <%}  %> 
-                            </div>
-                        </div>
+                    
                         <!-- widget -->
                         <div class="widget-item">
                             <h4 class="widget-title">Top Comments</h4>
                             <div class="top-comment">
-                                   <%
+                                   <%  UserDAO tool =new UserDAO();  
                    List<Comment> blog2 = tool.showComment();
                     for (Comment p : blog2) {
                         if(p.getTittle().equals(b)){
@@ -176,6 +161,25 @@
                                     </div>
                                 </div>                              
                                 <%}}  %> 
+                            </div>
+                        </div>
+                            <div class="widget-item">
+                            <h4 class="widget-title">Latest Posts</h4>
+                            <div class="latest-blog">
+                                  <%
+                       
+                   List<Blog> blog1 = tool.showBlogdown();
+                    for (Blog o : blog1) {
+                %> 
+                                <div class="lb-item">
+                                 <a href="single-blog.jsp?img=<%=o.getImage()%>&tittle=<%=o.getTittle()%>&big=<%=o.getBig()%>&small=<%=o.getSmall()%>" class="lb-author">     <div class="lb-thumb set-bg" data-setbg="<%=o.getImage()%>"></div></a>
+                                    <div class="lb-content">
+                                        <%=o.getTittle()%>
+                                        <p><%=o.getSmall()%></p>
+                                        <p>    By Admin</p>
+                                    </div>
+                                </div>
+                              <%}  %> 
                             </div>
                         </div>
                     </div>

@@ -15,6 +15,9 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <script>
+            window.history.replaceState("new","","GameStore")
+         </script>   
         <title>Game Warrior Template</title>
         <meta charset="UTF-8">
         <meta name="description" content="SWP GAME STORE">
@@ -32,7 +35,7 @@
         <link rel="stylesheet" href="css/owl.carousel.css"/>
         <link rel="stylesheet" href="css/style.css"/>
         <link rel="stylesheet" href="css/animate.css"/>
-
+       
 
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
