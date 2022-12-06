@@ -26,9 +26,11 @@
    * Users will pay by PayPal.
 ## `GUI (Screenshot of project):`
 
-    * ### Page for User:
-    * ### Page for Employee:
-    * ### Page for Admin:
+    * Page for User:
+    
+    * Page for Employee:
+    
+    * Page for Admin:
 
 
 #### CUONGHCSE150679@fpt.edu.vn
