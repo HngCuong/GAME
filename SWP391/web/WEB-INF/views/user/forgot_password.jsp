@@ -41,6 +41,10 @@
                         <input type="hidden" name="id" value="${user.id}" />
                         <input type="hidden" name="userName" value="${user.userName}" />
                         <input type="hidden" name="role" value="${user.role}" />
+                       
+                        <label><b>Confirm Code in your mail:</b></label>
+                        <input id="np2" type="password" name="newPass" placeholder="Confirm password"  /><br/>  
+                        <input type="hidden" value="${confirm}" name="newPass1">
                         <label for="np1"><b>Enter new password:</b></label>
                         <input id="np1" type="password" name="newPassword1" placeholder="Password" value="${empty newPassword2 ? "" : newPassword}" /><br/>                      
                         <br/>

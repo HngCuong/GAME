@@ -328,7 +328,7 @@ public class UserController extends HttpServlet {
               //  String htmlContent = "<h1>Welcome to <a href=\"gpcoder.com\">GP Coder</a></h1>";
                 message.setText(html);
                 Transport.send(message);
-                request.setAttribute("confirm", "Please check your mail to create account");
+                request.setAttribute("confirm", html);
                 request.getRequestDispatcher("user/forgot_password.do").forward(request, response);
             }catch(Exception e){
                 
@@ -362,10 +362,12 @@ public class UserController extends HttpServlet {
             String userName = request.getParameter("userName").toLowerCase();
             String newPassword = request.getParameter("newPassword1");
             String newPassword2 = request.getParameter("newPassword2");
+            String newPass = request.getParameter("newPass");
+           
             String role = request.getParameter("role");
 
             User account = UserDAO.find(userName);
-            if (newPassword.equals(newPassword2)) {
+            if (newPassword.equals(newPassword2) && newPass.contains("a")) {
                 // create new user
                 User user = new User();
                 user.setId(id);;
@@ -379,13 +381,27 @@ public class UserController extends HttpServlet {
                 request.setAttribute("message", "Reset Password Completed. Please login to see change.");
 //                //Cho hiện lại trang login.jsp
 //                request.getRequestDispatcher("/WEB-INF/views/user/forgot_password.jsp").forward(request, response);
-            } else {
+            } else if(newPassword.equals(newPassword2) && newPass.contains("a")==false){
+                request.setAttribute("user", account);
+                request.setAttribute("newPassword", newPassword);
+                request.setAttribute("newPassword2", newPassword2);
+                // send message
+                request.setAttribute("message", "Confirm Code not Correct.");
+            }
+            else if(newPassword.equals(newPassword2)==false && newPass.contains("a")){
+                request.setAttribute("user", account);
+                request.setAttribute("newPassword", newPassword);
+                request.setAttribute("newPassword2", newPassword2);
+                // send message
+                request.setAttribute("message", "Password Code not match.");
+            }
+                    else {
                 // save unmatched password
                 request.setAttribute("user", account);
                 request.setAttribute("newPassword", newPassword);
                 request.setAttribute("newPassword2", newPassword2);
                 // send message
-                request.setAttribute("message", "Confirm Password not matched.");
+                request.setAttribute("message", "Confirm Password and code are wrong.");
             }
             //Cho hiện lại trang forgot_password.jsp
             request.getRequestDispatcher("/WEB-INF/views/user/forgot_password.jsp").forward(request, response);

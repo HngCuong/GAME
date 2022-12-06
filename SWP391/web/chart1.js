@@ -1,11 +1,12 @@
 var ctx = document.getElementById('lineChart').getContext('2d');
 var myChart = new Chart(ctx, {
+    var a = document.getElementById();
     type: 'line',
     data: {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         datasets: [{
             label: 'Earnings in $',
-            data: [2050, 1900, 2100, 2800, 1800, 2000, 2500, 2600, 2450, 1950, 2300, 2900],
+            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2300, 0],
             backgroundColor: [
                 'rgba(85,85,85, 1)'
 

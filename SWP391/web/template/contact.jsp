@@ -135,10 +135,22 @@
 						<a href="#"><i class="fa fa-linkedin"></i></a>
 					</div>
 				</div>
+                             <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                             <script>
+                           
+  function check(){
+  if(grecaptcha.getResponse()){
+      return true;
+  }
+  else
+  { return false;
+  }
+}</script>
+                             
 				<div class="col-lg-8">
 					<div class="contact-form-warp" >
 						<h4 class="comment-title">Leave a Reply</h4>
-                                                <form class="comment-form" action="../contact" >
+                                                <form class="comment-form" action="../contact" id="form" onsubmit="return check()">
 							<div class="row" >
 								<div class=" col-md-6">
                                                                     <input type="text" name="user" placeholder="Name" required="">
@@ -149,11 +161,16 @@
 								<div class="col-lg-12">
 									<input type="text" name="subject" placeholder="Subject" required="">
                                                                         <textarea placeholder="Message" name="msg" required=""></textarea>
-									<button class="site-btn btn-sm">Send</button>
+                                                                        <div class="g-recaptcha" data-sitekey="6LfaWQwjAAAAALjnJ2d2E3a3lJYVEBXcAlcP3Zvv"></div>
+                                                                        <input type="submit" class="site-btn btn-sm" value="Submit"/>
 								</div>
 							</div>
                                                     
 						</form>
+                                                <h4 class="comment-title" id ="error"></h4>
+                                                
+                          
+                                                
 					</div>
 				</div>
 			</div>
