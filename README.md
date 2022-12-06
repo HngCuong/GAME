@@ -17,7 +17,7 @@
 * ### Web features (For employee)
    - Employee can add/delete/edit posts.
 ## `Who is the customer:`
-   - Young people have a passion for e-sports. Those who want to buy games with cheaper prices than the market.
+   - **Young people** have a passion for e-sports. Those who want to buy games with cheaper prices than the market.
 ## `Tools and Technologies:`
    - **Technology:** HTML, CSS, JavaScript, Bootstrap, Java, Servlet, JSP.<br />
    - **Application Servicer:** Apache Tomcat Server.<br />
